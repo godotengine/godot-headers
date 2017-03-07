@@ -1,7 +1,7 @@
 # FAQ
 
 ### What is DLScript?
-**DLScript is for loading shared libraries into Godot.** You can build these libraries with C++ as well as C, D, Rust, or any other language that supports C linkage and creating dynamic libraries.
+DLScript stands for **Dynamic Linking Script**. It's a module that enables you to use shared libraries, which are dynamically linked, for scripting. DLScript was originally named "cscript" because it exposes a C API, but people thought it was related to C#, which is sometimes abbreviated as "cs". You can build these libraries with C++ as well as C, D, Rust, or any other language that supports C linkage and creating dynamic libraries.
 
 One of the immediate powers to DLScript is the ability to link other shared libraries or to use critical code without recompiling the engine.
 
@@ -20,7 +20,7 @@ Currently there are [C++ bindings](https://github.com/GodotNativeTools/cpp_bindi
 **Yes.** You may use DLScript and GDScript in the same project.
 
 ### How can I add my own bindings for DLScript?
-**A more detailed will be available soon.**
+**More details will be available soon.**
 
 ### What are the requirements?
 Linux implementation is available as of right now.
@@ -44,7 +44,7 @@ Manually create a **DLLibrary** resource. Save it as a **.tres**. This resource 
 
 ![](images/faq/create_dllibrary_resource.png?raw=true)
 
-Now, **create a new DLScript on your node.** You may prefer built-in script for DLScript, unless you would prefer to organize many **.dl** files which only contain a name. **You must specify the name of the class you would like to use.**
+Now, **create a new DLScript on your node.** You may prefer built-in script for DLScript, unless you want to organize many **.dl** files which only contain a name. **You must specify the name of the class you would like to use.**
 
 ![](images/faq/create_dlscript.png?raw=true)
 
