@@ -25,7 +25,7 @@ Currently there are [C++ bindings](https://github.com/GodotNativeTools/cpp_bindi
 ### What are the requirements?
 Linux implementation is available as of right now.
 
-[You must build Godot with the DLScript module.](https://github.com/bojidar-bg/godot/tree/dlscript-module)
+[You must build Godot with the DLScript module.](https://github.com/GodotNativeTools/godot_dlscript_fork)
 
 ### How do I compile my library?
 First, create a function with C linkage ```void godot_dlscript_init(godot_dlscript_init_options*)```, which will be the entry point for Godot.
