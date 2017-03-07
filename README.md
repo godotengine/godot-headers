@@ -40,9 +40,16 @@ Then, compile your code into a dynamic library. Example for C:
 
 ### How do I use DLScript from the editor?
 
-Manually create a **DLLibrary** resource. Save it as a **.tres**. This resource contains links to the libraries for each platform.
+Manually create a **DLLibrary** resource.
+![](images/faq/dllibrary_create_new_resource.png)
 
-![](images/faq/create_dllibrary_resource.png?raw=true)
+![](images/faq/dllibrary_create_new_dllibrary.png)
+
+Save it as a **.tres**.
+
+![](images/faq/dllibrary_save_as_resource.png)
+
+This resource contains links to the libraries for each platform.
 
 Now, **create a new DLScript on your node.** You may prefer built-in script for DLScript, unless you want to organize many **.dl** files which only contain a name. **You must specify the name of the class you would like to use.**
 
