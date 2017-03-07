@@ -8,7 +8,7 @@ One of the immediate powers to DLScript is the ability to link other shared libr
 Currently there are [C++ bindings](https://github.com/GodotNativeTools/cpp_bindings) that make developing for Godot with C++ easier, but **DLScript is not limited to C++.**
 
 ### Will DLScript be official?
-**Yes.** DLScript will be official. GDscript would continue to be the primary scripting language, and progress on integrating other languages into Godot will continue.
+**Yes.** DLScript will be official. GDscript will continue to be the primary scripting language, and progress on integrating other languages into Godot will continue.
 
 ### Can you use one library for all scripts?
 **Yes.** You may use one library for all scripts. Remember the name field that is always greyed out for GDScript? You need to set a name for the script here.
