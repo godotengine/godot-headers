@@ -273,10 +273,11 @@ typedef void (godot_script_destroy_func)(godot_object*,void*); //passed an insta
 void GDAPI godot_script_register(const char* p_name,const char* p_base,godot_script_instance_func p_instance_func,godot_script_destroy_func p_free_func);
 
 
-typedef GDAPI godot_variant (godot_script_func)(godot_object*,void*,int,godot_variant**); //instance,userdata,arguments,argument count. Return something or NULL. Arguments must not be freed.
+typedef GDAPI godot_variant (godot_script_func)(godot_object*, void*, void*, int, godot_variant**); //instance,userdata,arguments,argument count. Return something or NULL. Arguments must not be freed.
+typedef GDAPI void (godot_script_func_data_free_func)(void *);
 
-void GDAPI godot_script_add_method(const char* p_name,const char* p_function_name,godot_method_attributes *p_attr, godot_script_func p_func);
-void GDAPI godot_script_add_validated_method(const char* p_name,const char* p_function_name,godot_method_attributes *p_attr, godot_script_func p_func,int p_arg_count,int* p_arg_types,int p_default_arg_count,godot_variant** p_default_args);
+void GDAPI godot_script_add_method(const char *p_name, const char *p_function_name, godot_method_attributes *p_attr, godot_script_func p_func);
+void GDAPI godot_script_add_method_with_data(const char *p_name, const char *p_function_name, godot_method_attributes *p_attr, godot_script_func p_func, void *p_method_data, godot_script_func_data_free_func p_free_func);
 
 
 typedef void (godot_set_property_func)(godot_object*,void*,godot_variant); //instance,userdata,value. Value must not be freed.
