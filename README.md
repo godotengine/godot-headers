@@ -23,7 +23,7 @@ Currently there are [C++ bindings](https://github.com/GodotNativeTools/cpp_bindi
 **More details will be available soon.**
 
 ### What are the requirements?
-Linux implementation is available as of right now.
+Linux implementation is tested. OSX and Android *should* work as well. Windows is implemented but not tested yet. 
 
 [You must build Godot with the DLScript module.](https://github.com/GodotNativeTools/godot_dlscript_fork)
 
