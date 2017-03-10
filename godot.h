@@ -51,7 +51,7 @@ extern "C" {
 
 ////// Error
 
-enum godot_error {
+typedef enum godot_error {
 	GODOT_OK,
 	GODOT_FAILED, ///< Generic fail error
 	GODOT_ERR_UNAVAILABLE, ///< What is requested is unsupported/unavailable
@@ -103,8 +103,7 @@ enum godot_error {
 	GODOT_ERR_PRINTER_ON_FIRE, /// the parallel port printer is engulfed in flames
 	GODOT_ERR_OMFG_THIS_IS_VERY_VERY_BAD, ///< shit happens, has never been used, though
 	GODOT_ERR_WTF = GODOT_ERR_OMFG_THIS_IS_VERY_VERY_BAD ///< short version of the above
-};
-typedef enum godot_error godot_error;
+} godot_error;
 
 
 ////// bool
@@ -233,24 +232,22 @@ void GDAPI godot_method_bind_ptrcall(godot_method_bind *p_method_bind, godot_obj
 
 
 
-struct godot_dlscript_init_options {
+typedef struct godot_dlscript_init_options {
 	godot_bool in_editor;
 	uint64_t core_api_hash;
 	uint64_t editor_api_hash;
 	uint64_t no_api_hash;
-};
-typedef struct godot_dlscript_init_options godot_dlscript_init_options;
+} godot_dlscript_init_options;
 
 
 
-enum godot_method_rpc_mode {
+typedef enum godot_method_rpc_mode {
 	GODOT_METHOD_RPC_MODE_DISABLED,
 	GODOT_METHOD_RPC_MODE_REMOTE,
 	GODOT_METHOD_RPC_MODE_SYNC,
 	GODOT_METHOD_RPC_MODE_MASTER,
 	GODOT_METHOD_RPC_MODE_SLAVE,
-};
-typedef enum godot_method_rpc_mode godot_method_rpc_mode;
+} godot_method_rpc_mode;
 
 typedef struct godot_method_attributes {
 	godot_method_rpc_mode rpc_type;
@@ -267,23 +264,57 @@ typedef struct godot_property_attributes {
 	godot_variant default_value;
 } godot_property_attributes;
 
-typedef void* (godot_script_instance_func)(godot_object*); //passed an instance, return a pointer to your userdata
-typedef void (godot_script_destroy_func)(godot_object*,void*); //passed an instance, please free your userdata
-
-void GDAPI godot_script_register(const char* p_name,const char* p_base,godot_script_instance_func p_instance_func,godot_script_destroy_func p_free_func);
 
 
-typedef GDAPI godot_variant (godot_script_func)(godot_object*, void*, void*, int, godot_variant**); //instance,userdata,arguments,argument count. Return something or NULL. Arguments must not be freed.
-typedef GDAPI void (godot_script_func_data_free_func)(void *);
 
-void GDAPI godot_script_add_method(const char *p_name, const char *p_function_name, godot_method_attributes *p_attr, godot_script_func p_func);
-void GDAPI godot_script_add_method_with_data(const char *p_name, const char *p_function_name, godot_method_attributes *p_attr, godot_script_func p_func, void *p_method_data, godot_script_func_data_free_func p_free_func);
+typedef struct godot_instance_create_func {
+	// instance pointer, method_data - return user data
+	void *(*create_func)(godot_object *, void *);
+	void *method_data;
+	void (*free_func)(void *);
+} godot_script_instance_func;
+
+typedef struct godot_instance_destroy_func {
+	// instance pointer, method data, user data
+	void (*destroy_func)(godot_object *, void *, void *);
+	void *method_data;
+	void (*free_func)(void *);
+} godot_instance_destroy_func;
+
+void GDAPI godot_script_register_class(const char *p_name, const char *p_base, godot_instance_create_func p_create_func, godot_instance_destroy_func p_destroy_func);
 
 
-typedef void (godot_set_property_func)(godot_object*,void*,godot_variant); //instance,userdata,value. Value must not be freed.
-typedef godot_variant (godot_get_property_func)(godot_object*,void*); //instance,userdata. Return a value
 
-void GDAPI godot_script_add_property(const char* p_name,const char* p_path,godot_property_attributes *p_attr, godot_set_property_func p_set_func,godot_get_property_func p_get_func);
+
+
+typedef struct godot_instance_method {
+	// instance pointer, method data, user data, num args, args - return result as varaint
+	godot_variant (*method)(godot_object *, void *, void *, int, godot_variant **);
+	void *method_data;
+	void (*free_func)(void *);
+} godot_instance_method;
+
+void GDAPI godot_script_register_method(const char *p_name, const char *p_function_name, godot_method_attributes p_attr, godot_instance_method p_method);
+
+
+
+
+
+typedef struct godot_property_set_func {
+	// instance pointer, method data, user data, value
+	void (*set_func)(godot_object *, void *, void *, godot_variant);
+	void *method_data;
+	void (*free_func)(void *);
+} godot_property_set_func;
+
+typedef struct godot_property_get_func {
+	// instance pointer, method data, user data, value
+	godot_variant (*get_func)(godot_object *, void *, void *);
+	void *method_data;
+	void (*free_func)(void *);
+} godot_property_get_func;
+
+void GDAPI godot_script_register_property(const char *p_name, const char *p_path, godot_property_attributes *p_attr, godot_property_set_func p_set_func, godot_property_get_func p_get_func);
 
 ////// System Functions
 
