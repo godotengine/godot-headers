@@ -33,21 +33,18 @@
 extern "C" {
 #endif
 
-
 #if defined(GDAPI_BUILT_IN) || !defined(WINDOWS_ENABLED)
 #define GDAPI
 #elif defined(GDAPI_EXPORTS)
-#define GDAPI __declspec(dllexport)
-#else
 #define GDAPI __declspec(dllimport)
+#else
+#define GDAPI __declspec(dllexport)
 #endif
 
 #include <stdbool.h>
 #include <stdint.h>
 
 #define GODOT_API_VERSION 1
-
-
 
 ////// Error
 
@@ -62,7 +59,7 @@ typedef enum godot_error {
 	GODOT_ERR_FILE_NOT_FOUND,
 	GODOT_ERR_FILE_BAD_DRIVE,
 	GODOT_ERR_FILE_BAD_PATH,
-	GODOT_ERR_FILE_NO_PERMISSION,	// (10)
+	GODOT_ERR_FILE_NO_PERMISSION, // (10)
 	GODOT_ERR_FILE_ALREADY_IN_USE,
 	GODOT_ERR_FILE_CANT_OPEN,
 	GODOT_ERR_FILE_CANT_WRITE,
@@ -72,12 +69,12 @@ typedef enum godot_error {
 	GODOT_ERR_FILE_MISSING_DEPENDENCIES,
 	GODOT_ERR_FILE_EOF,
 	GODOT_ERR_CANT_OPEN, ///< Can't open a resource/socket/file
-	GODOT_ERR_CANT_CREATE,		// (20)
+	GODOT_ERR_CANT_CREATE, // (20)
 	GODOT_ERR_QUERY_FAILED,
 	GODOT_ERR_ALREADY_IN_USE,
 	GODOT_ERR_LOCKED, ///< resource is locked
 	GODOT_ERR_TIMEOUT,
-	GODOT_ERR_CANT_CONNECT,		// (25)
+	GODOT_ERR_CANT_CONNECT, // (25)
 	GODOT_ERR_CANT_RESOLVE,
 	GODOT_ERR_CONNECTION_ERROR,
 	GODOT_ERR_CANT_AQUIRE_RESOURCE,
@@ -92,19 +89,18 @@ typedef enum godot_error {
 	GODOT_ERR_METHOD_NOT_FOUND,
 	GODOT_ERR_LINK_FAILED,
 	GODOT_ERR_SCRIPT_FAILED,
-	GODOT_ERR_CYCLIC_LINK,		// (40)
+	GODOT_ERR_CYCLIC_LINK, // (40)
 	GODOT_ERR_INVALID_DECLARATION,
 	GODOT_ERR_DUPLICATE_SYMBOL,
 	GODOT_ERR_PARSE_ERROR,
 	GODOT_ERR_BUSY,
-	GODOT_ERR_SKIP,			// (45)
+	GODOT_ERR_SKIP, // (45)
 	GODOT_ERR_HELP, ///< user requested help!!
 	GODOT_ERR_BUG, ///< a bug in the software certainly happened, due to a double check failing or unexpected behavior.
 	GODOT_ERR_PRINTER_ON_FIRE, /// the parallel port printer is engulfed in flames
 	GODOT_ERR_OMFG_THIS_IS_VERY_VERY_BAD, ///< shit happens, has never been used, though
 	GODOT_ERR_WTF = GODOT_ERR_OMFG_THIS_IS_VERY_VERY_BAD ///< short version of the above
 } godot_error;
-
 
 ////// bool
 
@@ -194,30 +190,18 @@ typedef void godot_object;
 
 #include "godot/godot_array.h"
 
-
 // single API file for Pool*Array
 #include "godot/godot_pool_arrays.h"
 
-
-
-
-
-
 void GDAPI godot_object_destroy(godot_object *p_o);
-
-
 
 ////// Variant
 
 #include "godot/godot_variant.h"
 
-
-
-
-
 ////// Singleton API
 
-godot_object *GDAPI godot_global_get_singleton(char* p_name); // result shouldn't be freed
+godot_object *GDAPI godot_global_get_singleton(char *p_name); // result shouldn't be freed
 
 ////// MethodBind API
 
@@ -230,8 +214,6 @@ void GDAPI godot_method_bind_ptrcall(godot_method_bind *p_method_bind, godot_obj
 
 ////// Script API
 
-
-
 typedef struct godot_dlscript_init_options {
 	godot_bool in_editor;
 	uint64_t core_api_hash;
@@ -239,7 +221,9 @@ typedef struct godot_dlscript_init_options {
 	uint64_t no_api_hash;
 } godot_dlscript_init_options;
 
-
+typedef struct godot_dlscript_terminate_options {
+	godot_bool in_editor;
+} godot_dlscript_terminate_options;
 
 typedef enum godot_method_rpc_mode {
 	GODOT_METHOD_RPC_MODE_DISABLED,
@@ -264,9 +248,6 @@ typedef struct godot_property_attributes {
 	godot_variant default_value;
 } godot_property_attributes;
 
-
-
-
 typedef struct godot_instance_create_func {
 	// instance pointer, method_data - return user data
 	void *(*create_func)(godot_object *, void *);
@@ -283,10 +264,6 @@ typedef struct godot_instance_destroy_func {
 
 void GDAPI godot_script_register_class(const char *p_name, const char *p_base, godot_instance_create_func p_create_func, godot_instance_destroy_func p_destroy_func);
 
-
-
-
-
 typedef struct godot_instance_method {
 	// instance pointer, method data, user data, num args, args - return result as varaint
 	godot_variant (*method)(godot_object *, void *, void *, int, godot_variant **);
@@ -295,10 +272,6 @@ typedef struct godot_instance_method {
 } godot_instance_method;
 
 void GDAPI godot_script_register_method(const char *p_name, const char *p_function_name, godot_method_attributes p_attr, godot_instance_method p_method);
-
-
-
-
 
 typedef struct godot_property_set_func {
 	// instance pointer, method data, user data, value
@@ -320,13 +293,11 @@ void GDAPI godot_script_register_property(const char *p_name, const char *p_path
 
 //using these will help Godot track how much memory is in use in debug mode
 void GDAPI *godot_alloc(int p_bytes);
-void GDAPI *godot_realloc(void* p_ptr,int p_bytes);
-void GDAPI godot_free(void* p_ptr);
-
+void GDAPI *godot_realloc(void *p_ptr, int p_bytes);
+void GDAPI godot_free(void *p_ptr);
 
 #ifdef __cplusplus
 }
 #endif
-
 
 #endif // GODOT_C_H
