@@ -33,12 +33,16 @@
 extern "C" {
 #endif
 
-#if defined(GDAPI_BUILT_IN) || !defined(WINDOWS_ENABLED)
+#ifdef GDAPI_BUILT_IN
+#define GDAPI_EXPORT
+#endif
+
+#if !defined(_WIN32) && !defined(_MSC_VER)
 #define GDAPI
-#elif defined(GDAPI_EXPORTS)
-#define GDAPI __declspec(dllimport)
+#elif defined(GDAPI_EXPORT)
+#define GDAPI __declspec(dllexport) __stdcall
 #else
-#define GDAPI __declspec(dllexport)
+#define GDAPI __declspec(dllimport) __stdcall
 #endif
 
 #include <stdbool.h>
