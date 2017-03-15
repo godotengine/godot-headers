@@ -7,7 +7,6 @@ extern "C" {
 
 #include <stdint.h>
 
-
 #ifndef GODOT_CORE_API_GODOT_TRANSFORM2D_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_TRANSFORM2D_TYPE_DEFINED
 typedef struct godot_transform2d {
@@ -38,7 +37,6 @@ void GDAPI godot_transform2d_set_axis(godot_transform2d *p_t, const godot_int p_
 void GDAPI godot_transform2d_invert(godot_transform2d *p_t);
 godot_transform2d GDAPI godot_transform2d_inverse(const godot_transform2d *p_t);
 */
-
 
 // @Incomplete
 // I feel like it should be enough to expose get and set, the whole logic can be done in the bindings.

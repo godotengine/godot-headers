@@ -13,9 +13,8 @@ typedef struct godot_dictionary {
 } godot_dictionary;
 #endif
 
-
-#include "godot_variant.h"
 #include "godot_array.h"
+#include "godot_variant.h"
 
 void GDAPI godot_dictionary_new(godot_dictionary *p_dict);
 
@@ -44,7 +43,6 @@ godot_string GDAPI godot_dictionary_to_json(const godot_dictionary *p_dict);
 godot_array GDAPI godot_dictionary_values(const godot_dictionary *p_dict);
 
 void GDAPI godot_dictionary_destroy(godot_dictionary *p_dict);
-
 
 #ifdef __cplusplus
 }

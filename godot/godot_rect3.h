@@ -13,7 +13,6 @@ typedef struct godot_rect3 {
 } godot_rect3;
 #endif
 
-
 #include "../godot.h"
 
 void GDAPI godot_rect3_new(godot_rect3 *p_rect);
@@ -24,7 +23,6 @@ void GDAPI godot_rect3_set_pos(godot_rect3 *p_rect, const godot_vector3 *p_pos);
 
 godot_vector3 GDAPI *godot_rect3_get_size(godot_rect3 *p_rect);
 void GDAPI godot_rect3_set_size(godot_rect3 *p_rect, const godot_vector3 *p_size);
-
 
 #ifdef __cplusplus
 }

@@ -32,8 +32,6 @@ godot_real GDAPI godot_vector2_length_squared(const godot_vector2 *p_v);
 godot_real GDAPI godot_vector2_distance_to(const godot_vector2 *p_a, const godot_vector2 *p_b);
 godot_real GDAPI godot_vector2_distance_squared_to(const godot_vector2 *p_a, const godot_vector2 *p_b);
 
-
-
 // @Incomplete
 /*
  * missing:
@@ -63,8 +61,6 @@ godot_real GDAPI godot_vector2_distance_squared_to(const godot_vector2 *p_a, con
  *	to_string
  */
 
-
-
 void GDAPI godot_vector2_operator_add(godot_vector2 *p_dest, const godot_vector2 *p_a, const godot_vector2 *p_b);
 void GDAPI godot_vector2_operator_subtract(godot_vector2 *p_dest, const godot_vector2 *p_a, const godot_vector2 *p_b);
 void GDAPI godot_vector2_operator_multiply_vector(godot_vector2 *p_dest, const godot_vector2 *p_a, const godot_vector2 *p_b);
@@ -74,7 +70,6 @@ void GDAPI godot_vector2_operator_divide_scalar(godot_vector2 *p_dest, const god
 
 godot_bool GDAPI godot_vector2_operator_equal(const godot_vector2 *p_a, const godot_vector2 *p_b);
 godot_bool GDAPI godot_vector2_operator_less(const godot_vector2 *p_a, const godot_vector2 *p_b);
-
 
 #ifdef __cplusplus
 }

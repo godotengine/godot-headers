@@ -61,7 +61,6 @@ godot_real GDAPI godot_vector3_distance_squared_to(const godot_vector3 *p_a, con
  * reflect
  */
 
-
 void GDAPI godot_vector3_operator_add(godot_vector3 *p_dest, const godot_vector3 *p_a, const godot_vector3 *p_b);
 void GDAPI godot_vector3_operator_subtract(godot_vector3 *p_dest, const godot_vector3 *p_a, const godot_vector3 *p_b);
 void GDAPI godot_vector3_operator_multiply_vector(godot_vector3 *p_dest, const godot_vector3 *p_a, const godot_vector3 *p_b);

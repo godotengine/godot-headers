@@ -13,7 +13,6 @@ typedef struct godot_image {
 } godot_image;
 #endif
 
-
 #include "godot_pool_arrays.h"
 
 #include "../godot.h"
@@ -65,9 +64,6 @@ enum godot_image_format {
 };
 typedef enum godot_image_format godot_image_format;
 
-
-
-
 void GDAPI godot_image_new(godot_image *p_img);
 // p_len can be -1
 void GDAPI godot_image_new_with_png_jpg(godot_image *p_img, const uint8_t *p_mem_png_jpg, int p_len);
@@ -91,7 +87,6 @@ int GDAPI godot_image_get_mipmap_count(const godot_image *p_img);
 // export all methods here. That takes a while so it's on my @Todo list
 
 void GDAPI godot_image_destroy(godot_image *p_img);
-
 
 #ifdef __cplusplus
 }

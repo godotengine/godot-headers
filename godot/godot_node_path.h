@@ -31,7 +31,6 @@ godot_string GDAPI godot_node_path_as_string(const godot_node_path *p_np);
 
 void GDAPI godot_node_path_destroy(godot_node_path *p_np);
 
-
 #ifdef __cplusplus
 }
 #endif

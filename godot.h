@@ -40,9 +40,9 @@ extern "C" {
 #if !defined(_WIN32) && !defined(_MSC_VER)
 #define GDAPI
 #elif defined(GDAPI_EXPORT)
-#define GDAPI __declspec(dllexport)
+#define GDAPI __declspec(dllexport) __stdcall
 #else
-#define GDAPI __declspec(dllimport)
+#define GDAPI __declspec(dllimport) __stdcall
 #endif
 
 #include <stdbool.h>
@@ -257,7 +257,7 @@ typedef struct godot_instance_create_func {
 	void *(*create_func)(godot_object *, void *);
 	void *method_data;
 	void (*free_func)(void *);
-} godot_instance_create_func;
+} godot_script_instance_func;
 
 typedef struct godot_instance_destroy_func {
 	// instance pointer, method data, user data

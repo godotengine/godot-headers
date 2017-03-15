@@ -13,7 +13,6 @@ typedef struct godot_transform {
 } godot_transform;
 #endif
 
-
 #include "../godot.h"
 
 void GDAPI godot_transform_new(godot_transform *p_trans);
@@ -22,7 +21,6 @@ void GDAPI godot_transform_new_with_basis_origin(godot_transform *p_trans, const
 
 godot_basis GDAPI *godot_transform_get_basis(godot_transform *p_trans);
 godot_vector3 GDAPI *godot_transform_get_origin(godot_transform *p_trans);
-
 
 #ifdef __cplusplus
 }

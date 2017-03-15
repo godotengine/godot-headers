@@ -30,8 +30,6 @@ godot_vector3 GDAPI godot_plane_get_normal(const godot_plane *p_pl);
 godot_real GDAPI godot_plane_get_d(const godot_plane *p_pl);
 void GDAPI godot_plane_set_d(godot_plane *p_pl, const godot_real p_d);
 
-
-
 #ifdef __cplusplus
 }
 #endif

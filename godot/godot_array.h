@@ -49,7 +49,7 @@ godot_int GDAPI godot_array_find(const godot_array *p_arr, const godot_variant *
 
 godot_int GDAPI godot_array_find_last(const godot_array *p_arr, const godot_variant *p_what);
 
-godot_bool GDAPI godot_array_has(const godot_array *p_arr,const  godot_variant *p_value);
+godot_bool GDAPI godot_array_has(const godot_array *p_arr, const godot_variant *p_value);
 
 uint32_t GDAPI godot_array_hash(const godot_array *p_arr);
 
@@ -80,7 +80,6 @@ void GDAPI godot_array_sort(godot_array *p_arr);
 void GDAPI godot_array_sort_custom(godot_array *p_arr, godot_object *p_obj, const godot_string *p_func);
 
 void GDAPI godot_array_destroy(godot_array *p_arr);
-
 
 #ifdef __cplusplus
 }

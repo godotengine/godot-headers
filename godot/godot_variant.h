@@ -1,8 +1,6 @@
 #ifndef GODOT_VARIANT_H
 #define GODOT_VARIANT_H
 
-
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -15,17 +13,15 @@ typedef struct godot_variant {
 } godot_variant;
 #endif
 
-
 struct godot_transform2d;
 typedef struct godot_transform2d godot_transform2d;
 
-#include "godot_transform2d.h"
+#include "godot_array.h"
+#include "godot_dictionary.h"
+#include "godot_input_event.h"
 #include "godot_node_path.h"
 #include "godot_rid.h"
-#include "godot_input_event.h"
-#include "godot_dictionary.h"
-#include "godot_array.h"
-
+#include "godot_transform2d.h"
 
 enum godot_variant_type {
 	GODOT_VARIANT_TYPE_NIL,
@@ -38,37 +34,36 @@ enum godot_variant_type {
 
 	// math types
 
-	GODOT_VARIANT_TYPE_VECTOR2,		// 5
+	GODOT_VARIANT_TYPE_VECTOR2, // 5
 	GODOT_VARIANT_TYPE_RECT2,
 	GODOT_VARIANT_TYPE_VECTOR3,
 	GODOT_VARIANT_TYPE_TRANSFORM2D,
 	GODOT_VARIANT_TYPE_PLANE,
-	GODOT_VARIANT_TYPE_QUAT,			// 10
+	GODOT_VARIANT_TYPE_QUAT, // 10
 	GODOT_VARIANT_TYPE_RECT3, //sorry naming convention fail :( not like it's used often
 	GODOT_VARIANT_TYPE_BASIS,
 	GODOT_VARIANT_TYPE_TRANSFORM,
 
 	// misc types
 	GODOT_VARIANT_TYPE_COLOR,
-	GODOT_VARIANT_TYPE_IMAGE,			// 15
+	GODOT_VARIANT_TYPE_IMAGE, // 15
 	GODOT_VARIANT_TYPE_NODE_PATH,
 	GODOT_VARIANT_TYPE_RID,
 	GODOT_VARIANT_TYPE_OBJECT,
 	GODOT_VARIANT_TYPE_INPUT_EVENT,
-	GODOT_VARIANT_TYPE_DICTIONARY,		// 20
+	GODOT_VARIANT_TYPE_DICTIONARY, // 20
 	GODOT_VARIANT_TYPE_ARRAY,
 
 	// arrays
 	GODOT_VARIANT_TYPE_POOL_BYTE_ARRAY,
 	GODOT_VARIANT_TYPE_POOL_INT_ARRAY,
 	GODOT_VARIANT_TYPE_POOL_REAL_ARRAY,
-	GODOT_VARIANT_TYPE_POOL_STRING_ARRAY,	// 25
+	GODOT_VARIANT_TYPE_POOL_STRING_ARRAY, // 25
 	GODOT_VARIANT_TYPE_POOL_VECTOR2_ARRAY,
 	GODOT_VARIANT_TYPE_POOL_VECTOR3_ARRAY,
 	GODOT_VARIANT_TYPE_POOL_COLOR_ARRAY,
 };
 typedef enum godot_variant_type godot_variant_type;
-
 
 godot_variant_type GDAPI godot_variant_get_type(const godot_variant *p_v);
 
@@ -105,8 +100,6 @@ void GDAPI godot_variant_new_pool_vector2_array(godot_variant *p_v, const godot_
 void GDAPI godot_variant_new_pool_vector3_array(godot_variant *p_v, const godot_pool_vector3_array *p_pv3a);
 void GDAPI godot_variant_new_pool_color_array(godot_variant *p_v, const godot_pool_color_array *p_pca);
 
-
-
 godot_bool GDAPI godot_variant_as_bool(const godot_variant *p_v);
 uint64_t GDAPI godot_variant_as_int(const godot_variant *p_v);
 godot_real GDAPI godot_variant_as_real(const godot_variant *p_v);
@@ -136,12 +129,9 @@ godot_pool_vector2_array GDAPI godot_variant_as_pool_vector2_array(const godot_v
 godot_pool_vector3_array GDAPI godot_variant_as_pool_vector3_array(const godot_variant *p_v);
 godot_pool_color_array GDAPI godot_variant_as_pool_color_array(const godot_variant *p_v);
 
-
-
 godot_variant GDAPI godot_variant_call(godot_variant *p_v, const godot_string *p_method, const godot_variant **p_args, const godot_int p_argcount /*, godot_variant_call_error *r_error */);
 
 godot_bool GDAPI godot_variant_has_method(godot_variant *p_v, const godot_string *p_method);
-
 
 godot_bool GDAPI godot_variant_operator_equal(const godot_variant *p_a, const godot_variant *p_b);
 godot_bool GDAPI godot_variant_operator_less(const godot_variant *p_a, const godot_variant *p_b);
@@ -151,7 +141,6 @@ godot_bool GDAPI godot_variant_hash_compare(const godot_variant *p_a, const godo
 godot_bool GDAPI godot_variant_booleanize(const godot_variant *p_v, godot_bool *p_valid);
 
 void GDAPI godot_variant_destroy(godot_variant *p_v);
-
 
 #ifdef __cplusplus
 }
