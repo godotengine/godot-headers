@@ -40,9 +40,9 @@ extern "C" {
 #if !defined(_WIN32) && !defined(_MSC_VER)
 #define GDAPI
 #elif defined(GDAPI_EXPORT)
-#define GDAPI __declspec(dllexport) __stdcall
+#define GDAPI __declspec(dllexport)
 #else
-#define GDAPI __declspec(dllimport) __stdcall
+#define GDAPI __declspec(dllimport)
 #endif
 
 #include <stdbool.h>
@@ -205,7 +205,7 @@ void GDAPI godot_object_destroy(godot_object *p_o);
 
 ////// Singleton API
 
-godot_object *GDAPI godot_global_get_singleton(char *p_name); // result shouldn't be freed
+godot_object GDAPI *godot_global_get_singleton(char *p_name); // result shouldn't be freed
 
 ////// MethodBind API
 
@@ -213,7 +213,7 @@ typedef struct godot_method_bind {
 	uint8_t _dont_touch_that[1]; // TODO
 } godot_method_bind;
 
-godot_method_bind *GDAPI godot_method_bind_get_method(const char *p_classname, const char *p_methodname);
+godot_method_bind GDAPI *godot_method_bind_get_method(const char *p_classname, const char *p_methodname);
 void GDAPI godot_method_bind_ptrcall(godot_method_bind *p_method_bind, godot_object *p_instance, const void **p_args, void *p_ret);
 
 ////// Script API
