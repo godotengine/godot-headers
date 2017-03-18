@@ -241,14 +241,76 @@ typedef struct godot_method_attributes {
 	godot_method_rpc_mode rpc_type;
 } godot_method_attributes;
 
+typedef enum godot_property_hint {
+	GODOT_PROPERTY_HINT_NONE, ///< no hint provided.
+	GODOT_PROPERTY_HINT_RANGE, ///< hint_text = "min,max,step,slider; //slider is optional"
+	GODOT_PROPERTY_HINT_EXP_RANGE, ///< hint_text = "min,max,step", exponential edit
+	GODOT_PROPERTY_HINT_ENUM, ///< hint_text= "val1,val2,val3,etc"
+	GODOT_PROPERTY_HINT_EXP_EASING, /// exponential easing funciton (Math::ease)
+	GODOT_PROPERTY_HINT_LENGTH, ///< hint_text= "length" (as integer)
+	GODOT_PROPERTY_HINT_SPRITE_FRAME,
+	GODOT_PROPERTY_HINT_KEY_ACCEL, ///< hint_text= "length" (as integer)
+	GODOT_PROPERTY_HINT_FLAGS, ///< hint_text= "flag1,flag2,etc" (as bit flags)
+	GODOT_PROPERTY_HINT_LAYERS_2D_RENDER,
+	GODOT_PROPERTY_HINT_LAYERS_2D_PHYSICS,
+	GODOT_PROPERTY_HINT_LAYERS_3D_RENDER,
+	GODOT_PROPERTY_HINT_LAYERS_3D_PHYSICS,
+	GODOT_PROPERTY_HINT_FILE, ///< a file path must be passed, hint_text (optionally) is a filter "*.png,*.wav,*.doc,"
+	GODOT_PROPERTY_HINT_DIR, ///< a directort path must be passed
+	GODOT_PROPERTY_HINT_GLOBAL_FILE, ///< a file path must be passed, hint_text (optionally) is a filter "*.png,*.wav,*.doc,"
+	GODOT_PROPERTY_HINT_GLOBAL_DIR, ///< a directort path must be passed
+	GODOT_PROPERTY_HINT_RESOURCE_TYPE, ///< a resource object type
+	GODOT_PROPERTY_HINT_MULTILINE_TEXT, ///< used for string properties that can contain multiple lines
+	GODOT_PROPERTY_HINT_COLOR_NO_ALPHA, ///< used for ignoring alpha component when editing a color
+	GODOT_PROPERTY_HINT_IMAGE_COMPRESS_LOSSY,
+	GODOT_PROPERTY_HINT_IMAGE_COMPRESS_LOSSLESS,
+	GODOT_PROPERTY_HINT_OBJECT_ID,
+	GODOT_PROPERTY_HINT_TYPE_STRING, ///< a type string, the hint is the base type to choose
+	GODOT_PROPERTY_HINT_NODE_PATH_TO_EDITED_NODE, ///< so something else can provide this (used in scripts)
+	GODOT_PROPERTY_HINT_METHOD_OF_VARIANT_TYPE, ///< a method of a type
+	GODOT_PROPERTY_HINT_METHOD_OF_BASE_TYPE, ///< a method of a base type
+	GODOT_PROPERTY_HINT_METHOD_OF_INSTANCE, ///< a method of an instance
+	GODOT_PROPERTY_HINT_METHOD_OF_SCRIPT, ///< a method of a script & base
+	GODOT_PROPERTY_HINT_PROPERTY_OF_VARIANT_TYPE, ///< a property of a type
+	GODOT_PROPERTY_HINT_PROPERTY_OF_BASE_TYPE, ///< a property of a base type
+	GODOT_PROPERTY_HINT_PROPERTY_OF_INSTANCE, ///< a property of an instance
+	GODOT_PROPERTY_HINT_PROPERTY_OF_SCRIPT, ///< a property of a script & base
+	GODOT_PROPERTY_HINT_MAX,
+} godot_property_hint;
+
+typedef enum godot_property_usage_flags {
+
+	GODOT_PROPERTY_USAGE_STORAGE = 1,
+	GODOT_PROPERTY_USAGE_EDITOR = 2,
+	GODOT_PROPERTY_USAGE_NETWORK = 4,
+	GODOT_PROPERTY_USAGE_EDITOR_HELPER = 8,
+	GODOT_PROPERTY_USAGE_CHECKABLE = 16, //used for editing global variables
+	GODOT_PROPERTY_USAGE_CHECKED = 32, //used for editing global variables
+	GODOT_PROPERTY_USAGE_INTERNATIONALIZED = 64, //hint for internationalized strings
+	GODOT_PROPERTY_USAGE_GROUP = 128, //used for grouping props in the editor
+	GODOT_PROPERTY_USAGE_CATEGORY = 256,
+	GODOT_PROPERTY_USAGE_STORE_IF_NONZERO = 512, //only store if nonzero
+	GODOT_PROPERTY_USAGE_STORE_IF_NONONE = 1024, //only store if false
+	GODOT_PROPERTY_USAGE_NO_INSTANCE_STATE = 2048,
+	GODOT_PROPERTY_USAGE_RESTART_IF_CHANGED = 4096,
+	GODOT_PROPERTY_USAGE_SCRIPT_VARIABLE = 8192,
+	GODOT_PROPERTY_USAGE_STORE_IF_NULL = 16384,
+	GODOT_PROPERTY_USAGE_ANIMATE_AS_TRIGGER = 32768,
+	GODOT_PROPERTY_USAGE_UPDATE_ALL_IF_MODIFIED = 65536,
+
+	GODOT_PROPERTY_USAGE_DEFAULT = GODOT_PROPERTY_USAGE_STORAGE | GODOT_PROPERTY_USAGE_EDITOR | GODOT_PROPERTY_USAGE_NETWORK,
+	GODOT_PROPERTY_USAGE_DEFAULT_INTL = GODOT_PROPERTY_USAGE_STORAGE | GODOT_PROPERTY_USAGE_EDITOR | GODOT_PROPERTY_USAGE_NETWORK | GODOT_PROPERTY_USAGE_INTERNATIONALIZED,
+	GODOT_PROPERTY_USAGE_NOEDITOR = GODOT_PROPERTY_USAGE_STORAGE | GODOT_PROPERTY_USAGE_NETWORK,
+} godot_property_usage_flags;
+
 typedef struct godot_property_attributes {
 	godot_method_rpc_mode rset_type;
 
 	godot_bool listed;
 	godot_int type;
-	godot_int hint;
+	godot_property_hint hint;
 	godot_string hint_string;
-	godot_int usage;
+	godot_property_usage_flags usage;
 	godot_variant default_value;
 } godot_property_attributes;
 
