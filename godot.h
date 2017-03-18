@@ -306,7 +306,6 @@ typedef enum godot_property_usage_flags {
 typedef struct godot_property_attributes {
 	godot_method_rpc_mode rset_type;
 
-	godot_bool listed;
 	godot_int type;
 	godot_property_hint hint;
 	godot_string hint_string;
@@ -356,6 +355,25 @@ typedef struct godot_property_get_func {
 } godot_property_get_func;
 
 void GDAPI godot_script_register_property(const char *p_name, const char *p_path, godot_property_attributes *p_attr, godot_property_set_func p_set_func, godot_property_get_func p_get_func);
+
+typedef struct godot_signal_argument {
+	godot_string name;
+	godot_int type;
+	godot_property_hint hint;
+	godot_string hint_string;
+	godot_property_usage_flags usage;
+	godot_variant default_value;
+} godot_signal_argument;
+
+typedef struct godot_signal {
+	godot_string name;
+	int num_args;
+	godot_signal_argument *args;
+	int num_default_args;
+	godot_variant *default_args;
+} godot_signal;
+
+void GDAPI godot_script_register_signal(const char *p_name, const godot_signal *p_signal);
 
 ////// System Functions
 
