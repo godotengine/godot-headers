@@ -40,9 +40,9 @@ extern "C" {
 #if !defined(_WIN32) && !defined(_MSC_VER)
 #define GDAPI
 #elif defined(GDAPI_EXPORT)
-#define GDAPI __declspec(dllexport) __stdcall
+#define GDAPI __declspec(dllexport)
 #else
-#define GDAPI __declspec(dllimport) __stdcall
+#define GDAPI __declspec(dllimport)
 #endif
 
 #include <stdbool.h>
