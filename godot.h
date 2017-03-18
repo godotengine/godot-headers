@@ -330,6 +330,8 @@ typedef struct godot_instance_destroy_func {
 
 void GDAPI godot_script_register_class(const char *p_name, const char *p_base, godot_instance_create_func p_create_func, godot_instance_destroy_func p_destroy_func);
 
+void GDAPI godot_script_register_tool_class(const char *p_name, const char *p_base, godot_instance_create_func p_create_func, godot_instance_destroy_func p_destroy_func);
+
 typedef struct godot_instance_method {
 	// instance pointer, method data, user data, num args, args - return result as varaint
 	godot_variant (*method)(godot_object *, void *, void *, int, godot_variant **);
