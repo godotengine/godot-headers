@@ -23,7 +23,7 @@ typedef struct godot_transform2d godot_transform2d;
 #include "godot_rid.h"
 #include "godot_transform2d.h"
 
-enum godot_variant_type {
+typedef enum godot_variant_type {
 	GODOT_VARIANT_TYPE_NIL,
 
 	// atomic types
@@ -62,8 +62,7 @@ enum godot_variant_type {
 	GODOT_VARIANT_TYPE_POOL_VECTOR2_ARRAY,
 	GODOT_VARIANT_TYPE_POOL_VECTOR3_ARRAY,
 	GODOT_VARIANT_TYPE_POOL_COLOR_ARRAY,
-};
-typedef enum godot_variant_type godot_variant_type;
+} godot_variant_type;
 
 godot_variant_type GDAPI godot_variant_get_type(const godot_variant *p_v);
 
