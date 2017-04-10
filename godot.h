@@ -1,11 +1,12 @@
 /*************************************************************************/
-/*  godot_c.h                                                            */
+/*  godot.h                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
 /*                    http://www.godotengine.org                         */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
+/* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -121,8 +122,6 @@ typedef int godot_int;
 
 typedef float godot_real;
 
-typedef double godot_real64; // for Variant in 3.0
-
 /////// Object (forward declared)
 typedef void godot_object;
 
@@ -218,16 +217,16 @@ void GDAPI godot_method_bind_ptrcall(godot_method_bind *p_method_bind, godot_obj
 
 ////// Script API
 
-typedef struct godot_dlscript_init_options {
+typedef struct godot_native_init_options {
 	godot_bool in_editor;
 	uint64_t core_api_hash;
 	uint64_t editor_api_hash;
 	uint64_t no_api_hash;
-} godot_dlscript_init_options;
+} godot_native_init_options;
 
-typedef struct godot_dlscript_terminate_options {
+typedef struct godot_native_terminate_options {
 	godot_bool in_editor;
-} godot_dlscript_terminate_options;
+} godot_native_terminate_options;
 
 typedef enum godot_method_rpc_mode {
 	GODOT_METHOD_RPC_MODE_DISABLED,
@@ -375,7 +374,13 @@ typedef struct godot_signal {
 
 void GDAPI godot_script_register_signal(const char *p_name, const godot_signal *p_signal);
 
-void GDAPI *godot_dlinstance_get_userdata(godot_object *p_instance);
+void GDAPI *godot_native_get_userdata(godot_object *p_instance);
+
+typedef godot_object *(*godot_class_constructor)();
+
+godot_class_constructor GDAPI godot_get_class_constructor(const char *p_classname);
+
+godot_dictionary GDAPI godot_get_global_constants();
 
 ////// System Functions
 
