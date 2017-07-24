@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_plane.h                                                        */
+/*  plane.h                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -36,15 +36,17 @@ extern "C" {
 
 #include <stdint.h>
 
+#define GODOT_PLANE_SIZE 16
+
 #ifndef GODOT_CORE_API_GODOT_PLANE_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_PLANE_TYPE_DEFINED
-typedef struct godot_plane {
-	uint8_t _dont_touch_that[16];
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_PLANE_SIZE];
 } godot_plane;
 #endif
 
-#include "../godot.h"
-#include "godot_vector3.h"
+#include "gdnative.h"
+#include "vector3.h"
 
 void GDAPI godot_plane_new_with_reals(godot_plane *r_dest, const godot_real p_a, const godot_real p_b, const godot_real p_c, const godot_real p_d);
 void GDAPI godot_plane_new_with_vectors(godot_plane *r_dest, const godot_vector3 *p_v1, const godot_vector3 *p_v2, const godot_vector3 *p_v3);

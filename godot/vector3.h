@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_vector3.h                                                      */
+/*  vector3.h                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -36,15 +36,17 @@ extern "C" {
 
 #include <stdint.h>
 
+#define GODOT_VECTOR3_SIZE 12
+
 #ifndef GODOT_CORE_API_GODOT_VECTOR3_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_VECTOR3_TYPE_DEFINED
-typedef struct godot_vector3 {
-	uint8_t _dont_touch_that[12];
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_VECTOR3_SIZE];
 } godot_vector3;
 #endif
 
-#include "../godot.h"
-#include "godot_basis.h"
+#include "basis.h"
+#include "gdnative.h"
 
 typedef enum {
 	GODOT_VECTOR3_AXIS_X,
@@ -70,7 +72,7 @@ godot_vector3 GDAPI godot_vector3_normalized(const godot_vector3 *p_self);
 
 godot_vector3 GDAPI godot_vector3_inverse(const godot_vector3 *p_self);
 
-godot_vector3 GDAPI godot_vector3_snapped(const godot_vector3 *p_self, const godot_real p_by);
+godot_vector3 GDAPI godot_vector3_snapped(const godot_vector3 *p_self, const godot_vector3 *p_by);
 
 godot_vector3 GDAPI godot_vector3_rotated(const godot_vector3 *p_self, const godot_vector3 *p_axis, const godot_real p_phi);
 

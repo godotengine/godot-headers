@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_string.h                                                       */
+/*  string.h                                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -37,13 +37,16 @@ extern "C" {
 #include <stdint.h>
 #include <wchar.h>
 
+#define GODOT_STRING_SIZE 8
+
 #ifndef GODOT_CORE_API_GODOT_STRING_TYPE_DEFINED
-typedef struct godot_string {
-	uint8_t _dont_touch_that[8];
+#define GODOT_CORE_API_GODOT_STRING_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_STRING_SIZE];
 } godot_string;
 #endif
 
-#include "../godot.h"
+#include "gdnative.h"
 
 void GDAPI godot_string_new(godot_string *r_dest);
 void GDAPI godot_string_new_copy(godot_string *r_dest, const godot_string *p_src);

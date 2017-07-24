@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_variant.h                                                      */
+/*  variant.h                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -36,9 +36,12 @@ extern "C" {
 
 #include <stdint.h>
 
+#define GODOT_VARIANT_SIZE 24
+
 #ifndef GODOT_CORE_API_GODOT_VARIANT_TYPE_DEFINED
-typedef struct godot_variant {
-	uint8_t _dont_touch_that[24];
+#define GODOT_CORE_API_GODOT_VARIANT_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_VARIANT_SIZE];
 } godot_variant;
 #endif
 
@@ -96,25 +99,25 @@ typedef struct godot_variant_call_error {
 	godot_variant_type expected;
 } godot_variant_call_error;
 
-#include "godot_array.h"
-#include "godot_basis.h"
-#include "godot_color.h"
-#include "godot_dictionary.h"
-#include "godot_node_path.h"
-#include "godot_plane.h"
-#include "godot_pool_arrays.h"
-#include "godot_quat.h"
-#include "godot_rect2.h"
-#include "godot_rect3.h"
-#include "godot_rid.h"
-#include "godot_string.h"
-#include "godot_transform.h"
-#include "godot_transform2d.h"
-#include "godot_variant.h"
-#include "godot_vector2.h"
-#include "godot_vector3.h"
+#include "array.h"
+#include "basis.h"
+#include "color.h"
+#include "dictionary.h"
+#include "node_path.h"
+#include "plane.h"
+#include "pool_arrays.h"
+#include "quat.h"
+#include "rect2.h"
+#include "rect3.h"
+#include "rid.h"
+#include "string.h"
+#include "transform.h"
+#include "transform2d.h"
+#include "variant.h"
+#include "vector2.h"
+#include "vector3.h"
 
-#include "../godot.h"
+#include "gdnative.h"
 
 godot_variant_type GDAPI godot_variant_get_type(const godot_variant *p_v);
 

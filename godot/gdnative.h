@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot.h                                                              */
+/*  gdnative.h                                                           */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -27,8 +27,8 @@
 /* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE     */
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
-#ifndef GODOT_C_H
-#define GODOT_C_H
+#ifndef GODOT_GDNATIVE_H
+#define GODOT_GDNATIVE_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -74,7 +74,7 @@ extern "C" {
 
 ////// Error
 
-typedef enum godot_error {
+typedef enum {
 	GODOT_OK,
 	GODOT_FAILED, ///< Generic fail error
 	GODOT_ERR_UNAVAILABLE, ///< What is requested is unsupported/unavailable
@@ -147,6 +147,7 @@ typedef float godot_real;
 typedef void godot_object;
 
 /////// Brute force forward declarations for the rest
+/*
 typedef struct godot_variant godot_variant;
 typedef struct godot_string godot_string;
 typedef struct godot_vector2 godot_vector2;
@@ -170,75 +171,75 @@ typedef struct godot_pool_string_array godot_pool_string_array;
 typedef struct godot_pool_vector2_array godot_pool_vector2_array;
 typedef struct godot_pool_vector3_array godot_pool_vector3_array;
 typedef struct godot_pool_color_array godot_pool_color_array;
-
+*/
 /////// String
 
-#include "godot/godot_string.h"
+#include "string.h"
 
 ////// Vector2
 
-#include "godot/godot_vector2.h"
+#include "vector2.h"
 
 ////// Rect2
 
-#include "godot/godot_rect2.h"
+#include "rect2.h"
 
 ////// Vector3
 
-#include "godot/godot_vector3.h"
+#include "vector3.h"
 
 ////// Transform2D
 
-#include "godot/godot_transform2d.h"
+#include "transform2d.h"
 
 /////// Plane
 
-#include "godot/godot_plane.h"
+#include "plane.h"
 
 /////// Quat
 
-#include "godot/godot_quat.h"
+#include "quat.h"
 
 /////// Rect3
 
-#include "godot/godot_rect3.h"
+#include "rect3.h"
 
 /////// Basis
 
-#include "godot/godot_basis.h"
+#include "basis.h"
 
 /////// Transform
 
-#include "godot/godot_transform.h"
+#include "transform.h"
 
 /////// Color
 
-#include "godot/godot_color.h"
+#include "color.h"
 
 /////// NodePath
 
-#include "godot/godot_node_path.h"
+#include "node_path.h"
 
 /////// RID
 
-#include "godot/godot_rid.h"
+#include "rid.h"
 
 /////// Dictionary
 
-#include "godot/godot_dictionary.h"
+#include "dictionary.h"
 
 /////// Array
 
-#include "godot/godot_array.h"
+#include "array.h"
 
 // single API file for Pool*Array
-#include "godot/godot_pool_arrays.h"
+#include "pool_arrays.h"
 
 void GDAPI godot_object_destroy(godot_object *p_o);
 
 ////// Variant
 
-#include "godot/godot_variant.h"
+#include "variant.h"
 
 ////// Singleton API
 
@@ -246,7 +247,7 @@ godot_object GDAPI *godot_global_get_singleton(char *p_name); // result shouldn'
 
 ////// MethodBind API
 
-typedef struct godot_method_bind {
+typedef struct {
 	uint8_t _dont_touch_that[1]; // TODO
 } godot_method_bind;
 
@@ -255,164 +256,16 @@ void GDAPI godot_method_bind_ptrcall(godot_method_bind *p_method_bind, godot_obj
 godot_variant GDAPI godot_method_bind_call(godot_method_bind *p_method_bind, godot_object *p_instance, const godot_variant **p_args, const int p_arg_count, godot_variant_call_error *p_call_error);
 ////// Script API
 
-typedef struct godot_native_init_options {
+typedef struct {
 	godot_bool in_editor;
 	uint64_t core_api_hash;
 	uint64_t editor_api_hash;
 	uint64_t no_api_hash;
-} godot_native_init_options;
+} godot_gdnative_init_options;
 
-typedef struct godot_native_terminate_options {
+typedef struct {
 	godot_bool in_editor;
-} godot_native_terminate_options;
-
-typedef enum godot_method_rpc_mode {
-	GODOT_METHOD_RPC_MODE_DISABLED,
-	GODOT_METHOD_RPC_MODE_REMOTE,
-	GODOT_METHOD_RPC_MODE_SYNC,
-	GODOT_METHOD_RPC_MODE_MASTER,
-	GODOT_METHOD_RPC_MODE_SLAVE,
-} godot_method_rpc_mode;
-
-typedef struct godot_method_attributes {
-	godot_method_rpc_mode rpc_type;
-} godot_method_attributes;
-
-typedef enum godot_property_hint {
-	GODOT_PROPERTY_HINT_NONE, ///< no hint provided.
-	GODOT_PROPERTY_HINT_RANGE, ///< hint_text = "min,max,step,slider; //slider is optional"
-	GODOT_PROPERTY_HINT_EXP_RANGE, ///< hint_text = "min,max,step", exponential edit
-	GODOT_PROPERTY_HINT_ENUM, ///< hint_text= "val1,val2,val3,etc"
-	GODOT_PROPERTY_HINT_EXP_EASING, /// exponential easing funciton (Math::ease)
-	GODOT_PROPERTY_HINT_LENGTH, ///< hint_text= "length" (as integer)
-	GODOT_PROPERTY_HINT_SPRITE_FRAME,
-	GODOT_PROPERTY_HINT_KEY_ACCEL, ///< hint_text= "length" (as integer)
-	GODOT_PROPERTY_HINT_FLAGS, ///< hint_text= "flag1,flag2,etc" (as bit flags)
-	GODOT_PROPERTY_HINT_LAYERS_2D_RENDER,
-	GODOT_PROPERTY_HINT_LAYERS_2D_PHYSICS,
-	GODOT_PROPERTY_HINT_LAYERS_3D_RENDER,
-	GODOT_PROPERTY_HINT_LAYERS_3D_PHYSICS,
-	GODOT_PROPERTY_HINT_FILE, ///< a file path must be passed, hint_text (optionally) is a filter "*.png,*.wav,*.doc,"
-	GODOT_PROPERTY_HINT_DIR, ///< a directort path must be passed
-	GODOT_PROPERTY_HINT_GLOBAL_FILE, ///< a file path must be passed, hint_text (optionally) is a filter "*.png,*.wav,*.doc,"
-	GODOT_PROPERTY_HINT_GLOBAL_DIR, ///< a directort path must be passed
-	GODOT_PROPERTY_HINT_RESOURCE_TYPE, ///< a resource object type
-	GODOT_PROPERTY_HINT_MULTILINE_TEXT, ///< used for string properties that can contain multiple lines
-	GODOT_PROPERTY_HINT_COLOR_NO_ALPHA, ///< used for ignoring alpha component when editing a color
-	GODOT_PROPERTY_HINT_IMAGE_COMPRESS_LOSSY,
-	GODOT_PROPERTY_HINT_IMAGE_COMPRESS_LOSSLESS,
-	GODOT_PROPERTY_HINT_OBJECT_ID,
-	GODOT_PROPERTY_HINT_TYPE_STRING, ///< a type string, the hint is the base type to choose
-	GODOT_PROPERTY_HINT_NODE_PATH_TO_EDITED_NODE, ///< so something else can provide this (used in scripts)
-	GODOT_PROPERTY_HINT_METHOD_OF_VARIANT_TYPE, ///< a method of a type
-	GODOT_PROPERTY_HINT_METHOD_OF_BASE_TYPE, ///< a method of a base type
-	GODOT_PROPERTY_HINT_METHOD_OF_INSTANCE, ///< a method of an instance
-	GODOT_PROPERTY_HINT_METHOD_OF_SCRIPT, ///< a method of a script & base
-	GODOT_PROPERTY_HINT_PROPERTY_OF_VARIANT_TYPE, ///< a property of a type
-	GODOT_PROPERTY_HINT_PROPERTY_OF_BASE_TYPE, ///< a property of a base type
-	GODOT_PROPERTY_HINT_PROPERTY_OF_INSTANCE, ///< a property of an instance
-	GODOT_PROPERTY_HINT_PROPERTY_OF_SCRIPT, ///< a property of a script & base
-	GODOT_PROPERTY_HINT_MAX,
-} godot_property_hint;
-
-typedef enum godot_property_usage_flags {
-
-	GODOT_PROPERTY_USAGE_STORAGE = 1,
-	GODOT_PROPERTY_USAGE_EDITOR = 2,
-	GODOT_PROPERTY_USAGE_NETWORK = 4,
-	GODOT_PROPERTY_USAGE_EDITOR_HELPER = 8,
-	GODOT_PROPERTY_USAGE_CHECKABLE = 16, //used for editing global variables
-	GODOT_PROPERTY_USAGE_CHECKED = 32, //used for editing global variables
-	GODOT_PROPERTY_USAGE_INTERNATIONALIZED = 64, //hint for internationalized strings
-	GODOT_PROPERTY_USAGE_GROUP = 128, //used for grouping props in the editor
-	GODOT_PROPERTY_USAGE_CATEGORY = 256,
-	GODOT_PROPERTY_USAGE_STORE_IF_NONZERO = 512, //only store if nonzero
-	GODOT_PROPERTY_USAGE_STORE_IF_NONONE = 1024, //only store if false
-	GODOT_PROPERTY_USAGE_NO_INSTANCE_STATE = 2048,
-	GODOT_PROPERTY_USAGE_RESTART_IF_CHANGED = 4096,
-	GODOT_PROPERTY_USAGE_SCRIPT_VARIABLE = 8192,
-	GODOT_PROPERTY_USAGE_STORE_IF_NULL = 16384,
-	GODOT_PROPERTY_USAGE_ANIMATE_AS_TRIGGER = 32768,
-	GODOT_PROPERTY_USAGE_UPDATE_ALL_IF_MODIFIED = 65536,
-
-	GODOT_PROPERTY_USAGE_DEFAULT = GODOT_PROPERTY_USAGE_STORAGE | GODOT_PROPERTY_USAGE_EDITOR | GODOT_PROPERTY_USAGE_NETWORK,
-	GODOT_PROPERTY_USAGE_DEFAULT_INTL = GODOT_PROPERTY_USAGE_STORAGE | GODOT_PROPERTY_USAGE_EDITOR | GODOT_PROPERTY_USAGE_NETWORK | GODOT_PROPERTY_USAGE_INTERNATIONALIZED,
-	GODOT_PROPERTY_USAGE_NOEDITOR = GODOT_PROPERTY_USAGE_STORAGE | GODOT_PROPERTY_USAGE_NETWORK,
-} godot_property_usage_flags;
-
-typedef struct godot_property_attributes {
-	godot_method_rpc_mode rset_type;
-
-	godot_int type;
-	godot_property_hint hint;
-	godot_string hint_string;
-	godot_property_usage_flags usage;
-	godot_variant default_value;
-} godot_property_attributes;
-
-typedef struct godot_instance_create_func {
-	// instance pointer, method_data - return user data
-	GDCALLINGCONV void *(*create_func)(godot_object *, void *);
-	void *method_data;
-	GDCALLINGCONV void (*free_func)(void *);
-} godot_instance_create_func;
-
-typedef struct godot_instance_destroy_func {
-	// instance pointer, method data, user data
-	GDCALLINGCONV void (*destroy_func)(godot_object *, void *, void *);
-	void *method_data;
-	GDCALLINGCONV void (*free_func)(void *);
-} godot_instance_destroy_func;
-
-void GDAPI godot_script_register_class(const char *p_name, const char *p_base, godot_instance_create_func p_create_func, godot_instance_destroy_func p_destroy_func);
-
-void GDAPI godot_script_register_tool_class(const char *p_name, const char *p_base, godot_instance_create_func p_create_func, godot_instance_destroy_func p_destroy_func);
-
-typedef struct godot_instance_method {
-	// instance pointer, method data, user data, num args, args - return result as varaint
-	GDCALLINGCONV godot_variant (*method)(godot_object *, void *, void *, int, godot_variant **);
-	void *method_data;
-	GDCALLINGCONV void (*free_func)(void *);
-} godot_instance_method;
-
-void GDAPI godot_script_register_method(const char *p_name, const char *p_function_name, godot_method_attributes p_attr, godot_instance_method p_method);
-
-typedef struct godot_property_set_func {
-	// instance pointer, method data, user data, value
-	GDCALLINGCONV void (*set_func)(godot_object *, void *, void *, godot_variant);
-	void *method_data;
-	GDCALLINGCONV void (*free_func)(void *);
-} godot_property_set_func;
-
-typedef struct godot_property_get_func {
-	// instance pointer, method data, user data, value
-	GDCALLINGCONV godot_variant (*get_func)(godot_object *, void *, void *);
-	void *method_data;
-	GDCALLINGCONV void (*free_func)(void *);
-} godot_property_get_func;
-
-void GDAPI godot_script_register_property(const char *p_name, const char *p_path, godot_property_attributes *p_attr, godot_property_set_func p_set_func, godot_property_get_func p_get_func);
-
-typedef struct godot_signal_argument {
-	godot_string name;
-	godot_int type;
-	godot_property_hint hint;
-	godot_string hint_string;
-	godot_property_usage_flags usage;
-	godot_variant default_value;
-} godot_signal_argument;
-
-typedef struct godot_signal {
-	godot_string name;
-	int num_args;
-	godot_signal_argument *args;
-	int num_default_args;
-	godot_variant *default_args;
-} godot_signal;
-
-void GDAPI godot_script_register_signal(const char *p_name, const godot_signal *p_signal);
-
-void GDAPI *godot_native_get_userdata(godot_object *p_instance);
+} godot_gdnative_terminate_options;
 
 // Calling convention?
 typedef godot_object *(*godot_class_constructor)();
@@ -420,6 +273,11 @@ typedef godot_object *(*godot_class_constructor)();
 godot_class_constructor GDAPI godot_get_class_constructor(const char *p_classname);
 
 godot_dictionary GDAPI godot_get_global_constants();
+
+////// GDNative procedure types
+typedef void (*godot_gdnative_init_fn)(godot_gdnative_init_options *);
+typedef void (*godot_gdnative_terminate_fn)(godot_gdnative_terminate_options *);
+typedef godot_variant (*godot_gdnative_procedure_fn)(void *, godot_array *);
 
 ////// System Functions
 

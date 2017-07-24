@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_pool_arrays.h                                                  */
+/*  pool_arrays.h                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -38,66 +38,87 @@ extern "C" {
 
 /////// PoolByteArray
 
+#define GODOT_POOL_BYTE_ARRAY_SIZE 8
+
 #ifndef GODOT_CORE_API_GODOT_POOL_BYTE_ARRAY_TYPE_DEFINED
-typedef struct godot_pool_byte_array {
-	uint8_t _dont_touch_that[8];
+#define GODOT_CORE_API_GODOT_POOL_BYTE_ARRAY_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_POOL_BYTE_ARRAY_SIZE];
 } godot_pool_byte_array;
 #endif
 
 /////// PoolIntArray
 
+#define GODOT_POOL_INT_ARRAY_SIZE 8
+
 #ifndef GODOT_CORE_API_GODOT_POOL_INT_ARRAY_TYPE_DEFINED
-typedef struct godot_pool_int_array {
-	uint8_t _dont_touch_that[8];
+#define GODOT_CORE_API_GODOT_POOL_INT_ARRAY_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_POOL_INT_ARRAY_SIZE];
 } godot_pool_int_array;
 #endif
 
 /////// PoolRealArray
 
+#define GODOT_POOL_REAL_ARRAY_SIZE 8
+
 #ifndef GODOT_CORE_API_GODOT_POOL_REAL_ARRAY_TYPE_DEFINED
-typedef struct godot_pool_real_array {
-	uint8_t _dont_touch_that[8];
+#define GODOT_CORE_API_GODOT_POOL_REAL_ARRAY_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_POOL_REAL_ARRAY_SIZE];
 } godot_pool_real_array;
 #endif
 
 /////// PoolStringArray
 
+#define GODOT_POOL_STRING_ARRAY_SIZE 8
+
 #ifndef GODOT_CORE_API_GODOT_POOL_STRING_ARRAY_TYPE_DEFINED
-typedef struct godot_pool_string_array {
-	uint8_t _dont_touch_that[8];
+#define GODOT_CORE_API_GODOT_POOL_STRING_ARRAY_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_POOL_STRING_ARRAY_SIZE];
 } godot_pool_string_array;
 #endif
 
 /////// PoolVector2Array
 
+#define GODOT_POOL_VECTOR2_ARRAY_SIZE 8
+
 #ifndef GODOT_CORE_API_GODOT_POOL_VECTOR2_ARRAY_TYPE_DEFINED
-typedef struct godot_pool_vector2_array {
-	uint8_t _dont_touch_that[8];
+#define GODOT_CORE_API_GODOT_POOL_VECTOR2_ARRAY_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_POOL_VECTOR2_ARRAY_SIZE];
 } godot_pool_vector2_array;
 #endif
 
 /////// PoolVector3Array
 
+#define GODOT_POOL_VECTOR3_ARRAY_SIZE 8
+
 #ifndef GODOT_CORE_API_GODOT_POOL_VECTOR3_ARRAY_TYPE_DEFINED
-typedef struct godot_pool_vector3_array {
-	uint8_t _dont_touch_that[8];
+#define GODOT_CORE_API_GODOT_POOL_VECTOR3_ARRAY_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_POOL_VECTOR3_ARRAY_SIZE];
 } godot_pool_vector3_array;
 #endif
 
 /////// PoolColorArray
 
+#define GODOT_POOL_COLOR_ARRAY_SIZE 8
+
 #ifndef GODOT_CORE_API_GODOT_POOL_COLOR_ARRAY_TYPE_DEFINED
-typedef struct godot_pool_color_array {
-	uint8_t _dont_touch_that[8];
+#define GODOT_CORE_API_GODOT_POOL_COLOR_ARRAY_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_POOL_COLOR_ARRAY_SIZE];
 } godot_pool_color_array;
 #endif
 
-#include "godot_array.h"
-#include "godot_color.h"
-#include "godot_vector2.h"
-#include "godot_vector3.h"
+#include "array.h"
+#include "color.h"
+#include "vector2.h"
+#include "vector3.h"
 
-#include "../godot.h"
+#include "gdnative.h"
 
 // byte
 

@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_array.h                                                        */
+/*  array.h                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -37,16 +37,19 @@ extern "C" {
 
 #include <stdint.h>
 
+#define GODOT_ARRAY_SIZE 8
+
 #ifndef GODOT_CORE_API_GODOT_ARRAY_TYPE_DEFINED
-typedef struct godot_array {
-	uint8_t _dont_touch_that[8];
+#define GODOT_CORE_API_GODOT_ARRAY_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_ARRAY_SIZE];
 } godot_array;
 #endif
 
-#include "godot_pool_arrays.h"
-#include "godot_variant.h"
+#include "pool_arrays.h"
+#include "variant.h"
 
-#include "../godot.h"
+#include "gdnative.h"
 
 void GDAPI godot_array_new(godot_array *r_dest);
 void GDAPI godot_array_new_copy(godot_array *r_dest, const godot_array *p_src);

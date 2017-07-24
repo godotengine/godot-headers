@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_rect3.h                                                        */
+/*  rect3.h                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -36,16 +36,18 @@ extern "C" {
 
 #include <stdint.h>
 
+#define GODOT_RECT3_SIZE 24
+
 #ifndef GODOT_CORE_API_GODOT_RECT3_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_RECT3_TYPE_DEFINED
-typedef struct godot_rect3 {
-	uint8_t _dont_touch_that[24];
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_RECT3_SIZE];
 } godot_rect3;
 #endif
 
-#include "../godot.h"
-#include "godot_plane.h"
-#include "godot_vector3.h"
+#include "gdnative.h"
+#include "plane.h"
+#include "vector3.h"
 
 void GDAPI godot_rect3_new(godot_rect3 *r_dest, const godot_vector3 *p_pos, const godot_vector3 *p_size);
 

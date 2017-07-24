@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_rect2.h                                                        */
+/*  rid.h                                                                */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -27,8 +27,8 @@
 /* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE     */
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
-#ifndef GODOT_RECT2_H
-#define GODOT_RECT2_H
+#ifndef GODOT_RID_H
+#define GODOT_RID_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,51 +36,29 @@ extern "C" {
 
 #include <stdint.h>
 
-#ifndef GODOT_CORE_API_GODOT_RECT2_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_RECT2_TYPE_DEFINED
-typedef struct godot_rect2 {
-	uint8_t _dont_touch_that[16];
-} godot_rect2;
+#define GODOT_RID_SIZE 8
+
+#ifndef GODOT_CORE_API_GODOT_RID_TYPE_DEFINED
+#define GODOT_CORE_API_GODOT_RID_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_RID_SIZE];
+} godot_rid;
 #endif
 
-#include "../godot.h"
-#include "godot_vector2.h"
+#include "gdnative.h"
 
-void GDAPI godot_rect2_new_with_position_and_size(godot_rect2 *r_dest, const godot_vector2 *p_pos, const godot_vector2 *p_size);
-void GDAPI godot_rect2_new(godot_rect2 *r_dest, const godot_real p_x, const godot_real p_y, const godot_real p_width, const godot_real p_height);
+void GDAPI godot_rid_new(godot_rid *r_dest);
 
-godot_string GDAPI godot_rect2_as_string(const godot_rect2 *p_self);
+godot_int GDAPI godot_rid_get_id(const godot_rid *p_self);
 
-godot_real GDAPI godot_rect2_get_area(const godot_rect2 *p_self);
+void GDAPI godot_rid_new_with_resource(godot_rid *r_dest, const godot_object *p_from);
 
-godot_bool GDAPI godot_rect2_intersects(const godot_rect2 *p_self, const godot_rect2 *p_b);
+godot_bool GDAPI godot_rid_operator_equal(const godot_rid *p_self, const godot_rid *p_b);
 
-godot_bool GDAPI godot_rect2_encloses(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_bool GDAPI godot_rect2_has_no_area(const godot_rect2 *p_self);
-
-godot_rect2 GDAPI godot_rect2_clip(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_rect2 GDAPI godot_rect2_merge(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_bool GDAPI godot_rect2_has_point(const godot_rect2 *p_self, const godot_vector2 *p_point);
-
-godot_rect2 GDAPI godot_rect2_grow(const godot_rect2 *p_self, const godot_real p_by);
-
-godot_rect2 GDAPI godot_rect2_expand(const godot_rect2 *p_self, const godot_vector2 *p_to);
-
-godot_bool GDAPI godot_rect2_operator_equal(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_vector2 GDAPI godot_rect2_get_position(const godot_rect2 *p_self);
-
-godot_vector2 GDAPI godot_rect2_get_size(const godot_rect2 *p_self);
-
-void GDAPI godot_rect2_set_position(godot_rect2 *p_self, const godot_vector2 *p_pos);
-
-void GDAPI godot_rect2_set_size(godot_rect2 *p_self, const godot_vector2 *p_size);
+godot_bool GDAPI godot_rid_operator_less(const godot_rid *p_self, const godot_rid *p_b);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_RECT2_H
+#endif // GODOT_RID_H

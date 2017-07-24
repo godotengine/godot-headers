@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_transform2d.h                                                  */
+/*  transform2d.h                                                        */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -36,16 +36,18 @@ extern "C" {
 
 #include <stdint.h>
 
+#define GODOT_TRANSFORM2D_SIZE 24
+
 #ifndef GODOT_CORE_API_GODOT_TRANSFORM2D_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_TRANSFORM2D_TYPE_DEFINED
-typedef struct godot_transform2d {
-	uint8_t _dont_touch_that[24];
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_TRANSFORM2D_SIZE];
 } godot_transform2d;
 #endif
 
-#include "../godot.h"
-#include "godot_variant.h"
-#include "godot_vector2.h"
+#include "gdnative.h"
+#include "variant.h"
+#include "vector2.h"
 
 void GDAPI godot_transform2d_new(godot_transform2d *r_dest, const godot_real p_rot, const godot_vector2 *p_pos);
 void GDAPI godot_transform2d_new_axis_origin(godot_transform2d *r_dest, const godot_vector2 *p_x_axis, const godot_vector2 *p_y_axis, const godot_vector2 *p_origin);

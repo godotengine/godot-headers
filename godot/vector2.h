@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_vector2.h                                                      */
+/*  vector2.h                                                            */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -36,14 +36,16 @@ extern "C" {
 
 #include <stdint.h>
 
+#define GODOT_VECTOR2_SIZE 8
+
 #ifndef GODOT_CORE_API_GODOT_VECTOR2_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_VECTOR2_TYPE_DEFINED
-typedef struct godot_vector2 {
-	uint8_t _dont_touch_that[8];
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_VECTOR2_SIZE];
 } godot_vector2;
 #endif
 
-#include "../godot.h"
+#include "gdnative.h"
 
 void GDAPI godot_vector2_new(godot_vector2 *r_dest, const godot_real p_x, const godot_real p_y);
 

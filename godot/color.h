@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_color.h                                                        */
+/*  color.h                                                              */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -36,15 +36,17 @@ extern "C" {
 
 #include <stdint.h>
 
+#define GODOT_COLOR_SIZE 16
+
 #ifndef GODOT_CORE_API_GODOT_COLOR_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_COLOR_TYPE_DEFINED
-typedef struct godot_color {
-	uint8_t _dont_touch_that[16];
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_COLOR_SIZE];
 } godot_color;
 #endif
 
-#include "../godot.h"
-#include "godot_string.h"
+#include "gdnative.h"
+#include "string.h"
 
 void GDAPI godot_color_new_rgba(godot_color *r_dest, const godot_real p_r, const godot_real p_g, const godot_real p_b, const godot_real p_a);
 void GDAPI godot_color_new_rgb(godot_color *r_dest, const godot_real p_r, const godot_real p_g, const godot_real p_b);

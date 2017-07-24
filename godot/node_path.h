@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_dictionary.h                                                   */
+/*  node_path.h                                                          */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -27,8 +27,8 @@
 /* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE     */
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
-#ifndef GODOT_DICTIONARY_H
-#define GODOT_DICTIONARY_H
+#ifndef GODOT_NODE_PATH_H
+#define GODOT_NODE_PATH_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,50 +36,42 @@ extern "C" {
 
 #include <stdint.h>
 
-#ifndef GODOT_CORE_API_GODOT_DICTIONARY_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_DICTIONARY_TYPE_DEFINED
-typedef struct godot_dictionary {
-	uint8_t _dont_touch_that[8];
-} godot_dictionary;
+#define GODOT_NODE_PATH_SIZE 8
+
+#ifndef GODOT_CORE_API_GODOT_NODE_PATH_TYPE_DEFINED
+#define GODOT_CORE_API_GODOT_NODE_PATH_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_NODE_PATH_SIZE];
+} godot_node_path;
 #endif
 
-#include "../godot.h"
-#include "godot_array.h"
-#include "godot_variant.h"
+#include "gdnative.h"
+#include "string.h"
 
-void GDAPI godot_dictionary_new(godot_dictionary *r_dest);
-void GDAPI godot_dictionary_new_copy(godot_dictionary *r_dest, const godot_dictionary *p_src);
-void GDAPI godot_dictionary_destroy(godot_dictionary *p_self);
+void GDAPI godot_node_path_new(godot_node_path *r_dest, const godot_string *p_from);
+void GDAPI godot_node_path_new_copy(godot_node_path *r_dest, const godot_node_path *p_src);
+void GDAPI godot_node_path_destroy(godot_node_path *p_self);
 
-godot_int GDAPI godot_dictionary_size(const godot_dictionary *p_self);
+godot_string GDAPI godot_node_path_as_string(const godot_node_path *p_self);
 
-godot_bool GDAPI godot_dictionary_empty(const godot_dictionary *p_self);
+godot_bool GDAPI godot_node_path_is_absolute(const godot_node_path *p_self);
 
-void GDAPI godot_dictionary_clear(godot_dictionary *p_self);
+godot_int GDAPI godot_node_path_get_name_count(const godot_node_path *p_self);
 
-godot_bool GDAPI godot_dictionary_has(const godot_dictionary *p_self, const godot_variant *p_key);
+godot_string GDAPI godot_node_path_get_name(const godot_node_path *p_self, const godot_int p_idx);
 
-godot_bool GDAPI godot_dictionary_has_all(const godot_dictionary *p_self, const godot_array *p_keys);
+godot_int GDAPI godot_node_path_get_subname_count(const godot_node_path *p_self);
 
-void GDAPI godot_dictionary_erase(godot_dictionary *p_self, const godot_variant *p_key);
+godot_string GDAPI godot_node_path_get_subname(const godot_node_path *p_self, const godot_int p_idx);
 
-godot_int GDAPI godot_dictionary_hash(const godot_dictionary *p_self);
+godot_string GDAPI godot_node_path_get_property(const godot_node_path *p_self);
 
-godot_array GDAPI godot_dictionary_keys(const godot_dictionary *p_self);
+godot_bool GDAPI godot_node_path_is_empty(const godot_node_path *p_self);
 
-godot_array GDAPI godot_dictionary_values(const godot_dictionary *p_self);
-
-godot_variant GDAPI godot_dictionary_get(const godot_dictionary *p_self, const godot_variant *p_key);
-void GDAPI godot_dictionary_set(godot_dictionary *p_self, const godot_variant *p_key, const godot_variant *p_value);
-
-godot_variant GDAPI *godot_dictionary_operator_index(godot_dictionary *p_self, const godot_variant *p_key);
-
-godot_bool GDAPI godot_dictionary_operator_equal(const godot_dictionary *p_self, const godot_dictionary *p_b);
-
-godot_string GDAPI godot_dictionary_to_json(const godot_dictionary *p_self);
+godot_bool GDAPI godot_node_path_operator_equal(const godot_node_path *p_self, const godot_node_path *p_b);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_DICTIONARY_H
+#endif // GODOT_NODE_PATH_H

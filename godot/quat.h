@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  godot_quat.h                                                         */
+/*  quat.h                                                               */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -36,15 +36,17 @@ extern "C" {
 
 #include <stdint.h>
 
+#define GODOT_QUAT_SIZE 16
+
 #ifndef GODOT_CORE_API_GODOT_QUAT_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_QUAT_TYPE_DEFINED
-typedef struct godot_quat {
-	uint8_t _dont_touch_that[16];
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_QUAT_SIZE];
 } godot_quat;
 #endif
 
-#include "../godot.h"
-#include "godot_vector3.h"
+#include "gdnative.h"
+#include "vector3.h"
 
 void GDAPI godot_quat_new(godot_quat *r_dest, const godot_real p_x, const godot_real p_y, const godot_real p_z, const godot_real p_w);
 void GDAPI godot_quat_new_with_axis_angle(godot_quat *r_dest, const godot_vector3 *p_axis, const godot_real p_angle);
