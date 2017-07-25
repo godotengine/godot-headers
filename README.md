@@ -27,21 +27,116 @@ Linux implementation is tested. OSX and Android *should* work as well. Windows i
 
 [You must build a recent version of Godot.](https://github.com/godotengine/godot)
 
+### Creating a GDNative library
+Getting `godot_headers`
+```
+$ cd SimpleLibrary
+$ git clone https://github.com/GodotNativeTools/godot_headers
+```
+right now our file structure should look like this
+```
+[SimpleLibrary]
+	├── godot_headers/
+	├── lib/
+	└── src/
+```
+
+# Creating our test Library / Script
+
+Create `test.c` under `SimpleLibrary/src/` and add the following code
+```
+#include <godot/gdnative.h>
+#include <godot_nativescript.h>
+
+#include <stdio.h>
+
+void *test_constructor(godot_object *obj, void *method_data) {
+        printf("test.constructor()\n");
+        return 0;
+}
+
+void test_destructor(godot_object *obj, void *method_data, void *user_data) {
+        printf("test.destructor()\n");
+}
+
+/** func _ready() **/
+godot_variant test_ready(godot_object *obj, void *method_data, void *user_data, int num_args, godot_variant **args) {
+        godot_variant ret;
+        godot_variant_new_nil(&ret);
+
+        printf("_ready()\n");
+
+        return ret;
+}
+
+/** Library entry point **/
+void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
+}
+
+/** Library de-initialization **/
+void GDN_EXPORT godot_gdnative_terminate(godot_gdnative_terminate_options *o) {
+}
+
+/** Script entry (Registering all the classes and stuff) **/
+void GDN_EXPORT godot_nativescript_init(void *desc) {
+	printf("nativescript init\n");
+
+	godot_instance_create_func create_func = {
+		.create_func = &test_constructor,
+                .method_data = 0,
+                .free_func   = 0
+        };
+
+        godot_instance_destroy_func destroy_func = {
+                .destroy_func = &test_destructor,
+                .method_data  = 0,
+                .free_func    = 0
+        };
+
+        godot_nativescript_register_class(desc, "SimpleClass", "Node", create_func, destroy_func);
+
+        {
+                godot_instance_method method = {
+                        .method = &test_ready,
+                        .method_data = 0,
+                        .free_func = 0
+                };
+
+                godot_method_attributes attr = {
+                        .rpc_type = GODOT_METHOD_RPC_MODE_DISABLED
+                };
+
+                godot_nativescript_register_method(desc, "SimpleClass", "_ready", attr, method);
+        }
+}
+
+godot_variant GDN_EXPORT some_test_procedure(void *data, godot_array *args) {
+        godot_variant ret;
+        godot_variant_new_int(&ret, 42);
+
+        godot_string s;
+        godot_string_new_unicode_data(&s, L"Hello World", 11);
+        godot_print(&s);
+
+        godot_string_destroy(&s);
+
+        return ret;
+}
+
+```
+
 ### How do I compile my library?
-First, create a function with C linkage ```void godot_native_init(godot_native_init_options*)```, which will be the entry point for Godot.
-You can also export a function ```void godot_native_terminate();``` for library de-initialization.
+To compile your code into a dynamic library:
+```
+$ clang -g -fPIC -std=c99 -c src/test.c -I/path/to/godot/headers/ -o src/test.os
+$ clang -g -shared src/test.os -o lib/test.so
+```
 
-Use ```godot_script_*``` methods **only** in the ```godot_native_init()``` function.
-
-Then, compile your code into a dynamic library. Example for C:
--   ```clang -c -g -std=c11 -fPIC test.c -I/path/to/godot/headers/ -o test.os```
--   ```clang -g -shared test.os -o test.so```
-
-```-g``` is for debugging information
+Note:
+	`-g` is for debugging information
+	Use `godot_nativescript_*` methods **only** in the `nativescript_init()` function.
 
 ### How do I use native scripts from the editor?
-
-*note* the pictures need to be updated to represent the new naming.
 
 Manually create a **GDNativeLibrary** resource.
 ![](images/faq/dllibrary_create_new_resource.png)
@@ -54,14 +149,31 @@ Save it as a **.tres**.
 
 This resource contains links to the libraries for each platform.
 
-Now, **create a new native script on your node.** You may prefer built-in script for native scripts, unless you want to organize many **.gdn** files which only contain a name. **You must specify the name of the class you would like to use.**
+### Using the library in GDScript
+```
+extends Node
+
+func _ready():
+        var gdn = GDNative.new()
+        gdn.library = load("res://lib/libtest.tres")
+
+        gdn.initialize()
+
+        var res = gdn.call_native("standard_varcall", "some_test_procedure", [])
+
+        print("result: ", res)
+
+        gdn.terminate()
+```
+
+### Attaching GDNative library to your `Node`
+
+Now, **create a new native script on your node.** You may prefer built-in script for native scripts, unless you want to organize many **.gdns** files which only contain a name. **You must specify the name of the class you would like to use.**
 
 ![](images/faq/create_dlscript.png?raw=true)
 
-"Native" resources have a field for a GDNativeLibrary. **This field is empty by default.**
+"NativeScript" resources have a field for a GDNativeLibrary. **This field is empty by default.**
 
 ![](images/faq/set_script_dllibrary.png?raw=true)
 
-If you leave it empty, **you can set a default GDNativeLibrary in the project settings** ```dlscript/default_dllibrary```.
 
-![](images/faq/set_project_dllibrary.png?raw=true)
