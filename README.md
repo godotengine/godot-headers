@@ -1,50 +1,39 @@
-# FAQ
+# godot_headers
+#### `GDNative / NativeScript`
 
-### What is GDNative?
-GDNative is a module that enables you to use shared libraries, which are dynamically linked, for scripting. GDNative was originally named "cscript" because it exposes a C API, but people thought it was related to C#, which is sometimes abbreviated as "cs". Then it was named "DLScript" but that brought up some confusion, so we settled with GDNative. You can build these libraries with C++ as well as C, D, Rust, or any other language that supports C linkage and creating dynamic libraries.
+> `GDNative` enables the use of dynamically linked libraries inside of [**Godot**](https://github.com/godotengine/godot).
 
-One of the immediate powers to native scripts is the ability to link other shared libraries or to use critical code without recompiling the engine.
+> `NativeScript` uses GDNative to implement scripts backed by native code.
 
-Currently there are [C++ bindings](https://github.com/GodotNativeTools/cpp_bindings) that make developing for Godot with C++ easier, but **native scripts are not limited to C++.**
+-   [**Getting Started**](#getting-started)
+-   [**FAQ**](#faq)
 
-### Are native scripts on the offical builds?
-**Yes.**
+## Getting Started
 
-### Can you use one library for all scripts?
-**Yes.** You may use one library for all scripts. Remember the name field that is always greyed out for GDScript? You need to set a name for the script here.
+| **Build latest version of Godot** | [**GitHub**](https://github.com/godotengine/godot) | [**Docs**](https://godot.readthedocs.io/en/latest/development/compiling/index.html) |
+| --- | --- | --- |
 
-### Can you debug native scripts?
-**Yes.** You must compile the library with debug symbols, and then you can use your debugger as usual.
+### Clone godot_headers into Library
 
-### Can I use GDScript in the same project?
-**Yes.** You may use native scripts and GDScripts in the same project.
+Clone `godot_headers` under `SimpleLibrary/`
 
-### How can I add my own bindings for native scripts?
-**More details will be available soon.**
-
-### What are the requirements?
-Linux implementation is tested. OSX and Android *should* work as well. Windows is implemented but not tested yet. 
-
-[You must build a recent version of Godot.](https://github.com/godotengine/godot)
-
-### Creating a GDNative library
-Getting `godot_headers`
+```bash
+cd SimpleLibrary
+git clone https://github.com/GodotNativeTools/godot_headers
 ```
-$ cd SimpleLibrary
-$ git clone https://github.com/GodotNativeTools/godot_headers
-```
-right now our file structure should look like this
-```
+```bash
 [SimpleLibrary]
-	├── godot_headers/
-	├── lib/
-	└── src/
+  ├── lib/
+  └── src/
 ```
 
-# Creating our test Library / Script
+### Create Script
 
-Create `test.c` under `SimpleLibrary/src/` and add the following code
-```
+Create `test.c` under `SimpleLibrary/src/`
+
+<details>
+
+```c
 #include <godot/gdnative.h>
 #include <godot_nativescript.h>
 
@@ -122,35 +111,45 @@ godot_variant GDN_EXPORT some_test_procedure(void *data, godot_array *args) {
 
         return ret;
 }
-
 ```
 
-### How do I compile my library?
-To compile your code into a dynamic library:
+</details>
+
+`Expand details for example code.`
+
+### Compile Library
+
+```bash
+clang -g -fPIC -std=c99 -c src/test.c -I/path/to/godot/headers/ -o src/test.os
+clang -g -shared src/test.os -o lib/test.so
 ```
-$ clang -g -fPIC -std=c99 -c src/test.c -I/path/to/godot/headers/ -o src/test.os
-$ clang -g -shared src/test.os -o lib/test.so
-```
 
-Note:
-	`-g` is for debugging information
-	Use `godot_nativescript_*` methods **only** in the `nativescript_init()` function.
+- `-g` is for debugging information.
+- Use `godot_nativescript_*` methods only in the `nativescript_init()` function.
 
-### How do I use native scripts from the editor?
+### Create GDNativeLibrary Resource
+The GDNativeLibrary resource contains links to the libraries for each platform.
 
-Manually create a **GDNativeLibrary** resource.
-![](images/faq/dllibrary_create_new_resource.png)
+1. Create a new resource in memory and edit it.
+1. Select `Resource > GDNativeLibrary`.
+1. Set the library file for your platform inside the inspector.
+1. Save the edited resource as a `.tres`
 
-![](images/faq/dllibrary_create_new_dllibrary.png)
+<details>
 
-Save it as a **.tres**.
+![](images/faq/dllibrary_create_new_resource.png?raw=true)
 
-![](images/faq/dllibrary_save_as_resource.png)
+![](images/faq/dllibrary_create_new_dllibrary.png?raw=true)
 
-This resource contains links to the libraries for each platform.
+![](images/faq/dllibrary_save_as_resource.png?raw=true)
 
-### Using the library in GDScript
-```
+</details>
+
+`Expand details for screenshots.`
+
+### Using GDNativeLibrary in GDScript
+
+```gdscript
 extends Node
 
 func _ready():
@@ -166,14 +165,57 @@ func _ready():
         gdn.terminate()
 ```
 
-### Attaching GDNative library to your `Node`
+### Attaching GDNativeLibrary to a Node
 
-Now, **create a new native script on your node.** You may prefer built-in script for native scripts, unless you want to organize many **.gdns** files which only contain a name. **You must specify the name of the class you would like to use.**
+1. Attach a new script to a node.
+1. In the pop-up dialog, choose NativeScript in the `Language` menu.
+1. Enable built-in script, or create a `.gdn` file, which only contains a name.
+1. Specify the `Class Name`.
+1. Press `Create`.
+
+The GDNativeLibrary field in a NativeScript is empty by default.
+
+
+<details>
 
 ![](images/faq/create_dlscript.png?raw=true)
 
-"NativeScript" resources have a field for a GDNativeLibrary. **This field is empty by default.**
-
 ![](images/faq/set_script_dllibrary.png?raw=true)
 
+</details>
 
+`Expand details for screenshots.`
+
+## FAQ
+
+**What is the difference between `GDNative` and `NativeScript`?**
+
+`GDNative` is a new class that can call native functions in libraries.
+GDScript / VisualScript / C#, etc, are able to use this class.
+
+Godot treats `NativeScript` as a scripting language, enabling the
+use of GDNative to implement scripts backed by native code.
+
+**Which languages are binding as a NativeScript?**
+
+[**C++**](https://github.com/GodotNativeTools/cpp_bindings),
+ [**D**](https://github.com/GodotNativeTools/d_bindings)
+
+**Can you debug NativeScripts?**
+
+You must compile the library with debug
+symbols, and then you can use your debugger as usual.
+
+**Are NativeScripts in Godot 3.0?**
+
+They are! 🎉
+
+**Can you use one GDNativeLibrary for all NativeScripts?**
+
+You can! ✨
+
+**What is the reason behind the name "GDNative"?**
+
+GDNative was originally named "cscript" because it exposes a C API, but people
+mistook a relation to C#, which is sometimes abbreviated as "cs". Then named "DLScript", but that brought up some confusion, so we settled with
+GDNative. 📖
