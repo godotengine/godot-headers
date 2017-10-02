@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                    http://www.godotengine.org                         */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -45,9 +45,9 @@ typedef struct {
 } godot_basis;
 #endif
 
-#include "gdnative.h"
-#include "quat.h"
-#include "vector3.h"
+#include <gdnative/gdnative.h>
+#include <gdnative/quat.h>
+#include <gdnative/vector3.h>
 
 void GDAPI godot_basis_new_with_rows(godot_basis *r_dest, const godot_vector3 *p_x_axis, const godot_vector3 *p_y_axis, const godot_vector3 *p_z_axis);
 void GDAPI godot_basis_new_with_axis_and_angle(godot_basis *r_dest, const godot_vector3 *p_axis, const godot_real p_phi);
@@ -66,12 +66,6 @@ godot_real GDAPI godot_basis_determinant(const godot_basis *p_self);
 godot_basis GDAPI godot_basis_rotated(const godot_basis *p_self, const godot_vector3 *p_axis, const godot_real p_phi);
 
 godot_basis GDAPI godot_basis_scaled(const godot_basis *p_self, const godot_vector3 *p_scale);
-
-void GDAPI godot_basis_set_scale(godot_basis *p_self, const godot_vector3 *p_scale);
-
-void GDAPI godot_basis_set_rotation_euler(godot_basis *p_self, const godot_vector3 *p_euler);
-
-void GDAPI godot_basis_set_rotation_axis_angle(godot_basis *p_self, const godot_vector3 *p_axis, const godot_real p_angle);
 
 godot_vector3 GDAPI godot_basis_get_scale(const godot_basis *p_self);
 

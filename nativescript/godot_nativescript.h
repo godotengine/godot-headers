@@ -1,9 +1,9 @@
 /*************************************************************************/
-/*  godot.h                                                              */
+/*  godot_nativescript.h                                                 */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                    http://www.godotengine.org                         */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -30,7 +30,7 @@
 #ifndef GODOT_NATIVESCRIPT_H
 #define GODOT_NATIVESCRIPT_H
 
-#include <godot/gdnative.h>
+#include <gdnative/gdnative.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -51,14 +51,14 @@ extern "C" {
 #elif defined(__APPLE__)
 #include "TargetConditionals.h"
 #if TARGET_OS_IPHONE
-#define GDCALLINGCONV
-#define GDAPI
+#define GDCALLINGCONV __attribute__((visibility("default")))
+#define GDAPI GDCALLINGCONV
 #elif TARGET_OS_MAC
 #define GDCALLINGCONV __attribute__((sysv_abi))
 #define GDAPI GDCALLINGCONV
 #endif
 #else
-#define GDCALLINGCONV __attribute__((sysv_abi))
+#define GDCALLINGCONV __attribute__((sysv_abi, visibility("default")))
 #define GDAPI GDCALLINGCONV
 #endif
 

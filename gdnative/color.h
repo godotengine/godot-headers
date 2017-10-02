@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                    http://www.godotengine.org                         */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -45,8 +45,8 @@ typedef struct {
 } godot_color;
 #endif
 
-#include "gdnative.h"
-#include "string.h"
+#include <gdnative/gdnative.h>
+#include <gdnative/string.h>
 
 void GDAPI godot_color_new_rgba(godot_color *r_dest, const godot_real p_r, const godot_real p_g, const godot_real p_b, const godot_real p_a);
 void GDAPI godot_color_new_rgb(godot_color *r_dest, const godot_real p_r, const godot_real p_g, const godot_real p_b);
@@ -69,9 +69,9 @@ godot_real godot_color_get_v(const godot_color *p_self);
 
 godot_string GDAPI godot_color_as_string(const godot_color *p_self);
 
-godot_int GDAPI godot_color_to_32(const godot_color *p_self);
+godot_int GDAPI godot_color_to_rgba32(const godot_color *p_self);
 
-godot_int GDAPI godot_color_to_ARGB32(const godot_color *p_self);
+godot_int GDAPI godot_color_to_argb32(const godot_color *p_self);
 
 godot_real GDAPI godot_color_gray(const godot_color *p_self);
 

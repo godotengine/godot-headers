@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                    http://www.godotengine.org                         */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -37,7 +37,7 @@ extern "C" {
 
 #include <stdint.h>
 
-#define GODOT_ARRAY_SIZE 8
+#define GODOT_ARRAY_SIZE sizeof(void *)
 
 #ifndef GODOT_CORE_API_GODOT_ARRAY_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_ARRAY_TYPE_DEFINED
@@ -46,10 +46,10 @@ typedef struct {
 } godot_array;
 #endif
 
-#include "pool_arrays.h"
-#include "variant.h"
+#include <gdnative/pool_arrays.h>
+#include <gdnative/variant.h>
 
-#include "gdnative.h"
+#include <gdnative/gdnative.h>
 
 void GDAPI godot_array_new(godot_array *r_dest);
 void GDAPI godot_array_new_copy(godot_array *r_dest, const godot_array *p_src);

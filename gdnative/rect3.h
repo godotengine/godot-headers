@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                    http://www.godotengine.org                         */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -45,9 +45,9 @@ typedef struct {
 } godot_rect3;
 #endif
 
-#include "gdnative.h"
-#include "plane.h"
-#include "vector3.h"
+#include <gdnative/gdnative.h>
+#include <gdnative/plane.h>
+#include <gdnative/vector3.h>
 
 void GDAPI godot_rect3_new(godot_rect3 *r_dest, const godot_vector3 *p_pos, const godot_vector3 *p_size);
 

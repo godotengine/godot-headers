@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                    http://www.godotengine.org                         */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -36,7 +36,7 @@ extern "C" {
 
 #include <stdint.h>
 
-#define GODOT_VARIANT_SIZE 24
+#define GODOT_VARIANT_SIZE (16 + sizeof(void *))
 
 #ifndef GODOT_CORE_API_GODOT_VARIANT_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_VARIANT_TYPE_DEFINED
@@ -99,25 +99,25 @@ typedef struct godot_variant_call_error {
 	godot_variant_type expected;
 } godot_variant_call_error;
 
-#include "array.h"
-#include "basis.h"
-#include "color.h"
-#include "dictionary.h"
-#include "node_path.h"
-#include "plane.h"
-#include "pool_arrays.h"
-#include "quat.h"
-#include "rect2.h"
-#include "rect3.h"
-#include "rid.h"
-#include "string.h"
-#include "transform.h"
-#include "transform2d.h"
-#include "variant.h"
-#include "vector2.h"
-#include "vector3.h"
+#include <gdnative/array.h>
+#include <gdnative/basis.h>
+#include <gdnative/color.h>
+#include <gdnative/dictionary.h>
+#include <gdnative/node_path.h>
+#include <gdnative/plane.h>
+#include <gdnative/pool_arrays.h>
+#include <gdnative/quat.h>
+#include <gdnative/rect2.h>
+#include <gdnative/rect3.h>
+#include <gdnative/rid.h>
+#include <gdnative/string.h>
+#include <gdnative/transform.h>
+#include <gdnative/transform2d.h>
+#include <gdnative/variant.h>
+#include <gdnative/vector2.h>
+#include <gdnative/vector3.h>
 
-#include "gdnative.h"
+#include <gdnative/gdnative.h>
 
 godot_variant_type GDAPI godot_variant_get_type(const godot_variant *p_v);
 
@@ -190,7 +190,7 @@ godot_bool GDAPI godot_variant_operator_less(const godot_variant *p_self, const 
 
 godot_bool GDAPI godot_variant_hash_compare(const godot_variant *p_self, const godot_variant *p_other);
 
-godot_bool GDAPI godot_variant_booleanize(const godot_variant *p_self, godot_bool *r_valid);
+godot_bool GDAPI godot_variant_booleanize(const godot_variant *p_self);
 
 void GDAPI godot_variant_destroy(godot_variant *p_self);
 

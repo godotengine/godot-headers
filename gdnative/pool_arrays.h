@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                    http://www.godotengine.org                         */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -38,7 +38,7 @@ extern "C" {
 
 /////// PoolByteArray
 
-#define GODOT_POOL_BYTE_ARRAY_SIZE 8
+#define GODOT_POOL_BYTE_ARRAY_SIZE sizeof(void *)
 
 #ifndef GODOT_CORE_API_GODOT_POOL_BYTE_ARRAY_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_POOL_BYTE_ARRAY_TYPE_DEFINED
@@ -49,7 +49,7 @@ typedef struct {
 
 /////// PoolIntArray
 
-#define GODOT_POOL_INT_ARRAY_SIZE 8
+#define GODOT_POOL_INT_ARRAY_SIZE sizeof(void *)
 
 #ifndef GODOT_CORE_API_GODOT_POOL_INT_ARRAY_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_POOL_INT_ARRAY_TYPE_DEFINED
@@ -60,7 +60,7 @@ typedef struct {
 
 /////// PoolRealArray
 
-#define GODOT_POOL_REAL_ARRAY_SIZE 8
+#define GODOT_POOL_REAL_ARRAY_SIZE sizeof(void *)
 
 #ifndef GODOT_CORE_API_GODOT_POOL_REAL_ARRAY_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_POOL_REAL_ARRAY_TYPE_DEFINED
@@ -71,7 +71,7 @@ typedef struct {
 
 /////// PoolStringArray
 
-#define GODOT_POOL_STRING_ARRAY_SIZE 8
+#define GODOT_POOL_STRING_ARRAY_SIZE sizeof(void *)
 
 #ifndef GODOT_CORE_API_GODOT_POOL_STRING_ARRAY_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_POOL_STRING_ARRAY_TYPE_DEFINED
@@ -82,7 +82,7 @@ typedef struct {
 
 /////// PoolVector2Array
 
-#define GODOT_POOL_VECTOR2_ARRAY_SIZE 8
+#define GODOT_POOL_VECTOR2_ARRAY_SIZE sizeof(void *)
 
 #ifndef GODOT_CORE_API_GODOT_POOL_VECTOR2_ARRAY_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_POOL_VECTOR2_ARRAY_TYPE_DEFINED
@@ -93,7 +93,7 @@ typedef struct {
 
 /////// PoolVector3Array
 
-#define GODOT_POOL_VECTOR3_ARRAY_SIZE 8
+#define GODOT_POOL_VECTOR3_ARRAY_SIZE sizeof(void *)
 
 #ifndef GODOT_CORE_API_GODOT_POOL_VECTOR3_ARRAY_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_POOL_VECTOR3_ARRAY_TYPE_DEFINED
@@ -104,7 +104,7 @@ typedef struct {
 
 /////// PoolColorArray
 
-#define GODOT_POOL_COLOR_ARRAY_SIZE 8
+#define GODOT_POOL_COLOR_ARRAY_SIZE sizeof(void *)
 
 #ifndef GODOT_CORE_API_GODOT_POOL_COLOR_ARRAY_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_POOL_COLOR_ARRAY_TYPE_DEFINED
@@ -113,12 +113,12 @@ typedef struct {
 } godot_pool_color_array;
 #endif
 
-#include "array.h"
-#include "color.h"
-#include "vector2.h"
-#include "vector3.h"
+#include <gdnative/array.h>
+#include <gdnative/color.h>
+#include <gdnative/vector2.h>
+#include <gdnative/vector3.h>
 
-#include "gdnative.h"
+#include <gdnative/gdnative.h>
 
 // byte
 

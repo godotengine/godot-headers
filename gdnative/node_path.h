@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                    http://www.godotengine.org                         */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -36,7 +36,7 @@ extern "C" {
 
 #include <stdint.h>
 
-#define GODOT_NODE_PATH_SIZE 8
+#define GODOT_NODE_PATH_SIZE sizeof(void *)
 
 #ifndef GODOT_CORE_API_GODOT_NODE_PATH_TYPE_DEFINED
 #define GODOT_CORE_API_GODOT_NODE_PATH_TYPE_DEFINED
@@ -45,8 +45,8 @@ typedef struct {
 } godot_node_path;
 #endif
 
-#include "gdnative.h"
-#include "string.h"
+#include <gdnative/gdnative.h>
+#include <gdnative/string.h>
 
 void GDAPI godot_node_path_new(godot_node_path *r_dest, const godot_string *p_from);
 void GDAPI godot_node_path_new_copy(godot_node_path *r_dest, const godot_node_path *p_src);

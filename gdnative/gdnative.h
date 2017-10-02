@@ -3,7 +3,7 @@
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                    http://www.godotengine.org                         */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -49,14 +49,14 @@ extern "C" {
 #elif defined(__APPLE__)
 #include "TargetConditionals.h"
 #if TARGET_OS_IPHONE
-#define GDCALLINGCONV
-#define GDAPI
+#define GDCALLINGCONV __attribute__((visibility("default")))
+#define GDAPI GDCALLINGCONV
 #elif TARGET_OS_MAC
 #define GDCALLINGCONV __attribute__((sysv_abi))
 #define GDAPI GDCALLINGCONV
 #endif
 #else
-#define GDCALLINGCONV __attribute__((sysv_abi))
+#define GDCALLINGCONV __attribute__((sysv_abi, visibility("default")))
 #define GDAPI GDCALLINGCONV
 #endif
 
@@ -103,7 +103,7 @@ typedef enum {
 	GODOT_ERR_CANT_CONNECT, // (25)
 	GODOT_ERR_CANT_RESOLVE,
 	GODOT_ERR_CONNECTION_ERROR,
-	GODOT_ERR_CANT_AQUIRE_RESOURCE,
+	GODOT_ERR_CANT_ACQUIRE_RESOURCE,
 	GODOT_ERR_CANT_FORK,
 	GODOT_ERR_INVALID_DATA, ///< Data passed is invalid	(30)
 	GODOT_ERR_INVALID_PARAMETER, ///< Parameter passed is invalid
@@ -146,104 +146,82 @@ typedef float godot_real;
 /////// Object (forward declared)
 typedef void godot_object;
 
-/////// Brute force forward declarations for the rest
-/*
-typedef struct godot_variant godot_variant;
-typedef struct godot_string godot_string;
-typedef struct godot_vector2 godot_vector2;
-typedef struct godot_rect2 godot_rect2;
-typedef struct godot_vector3 godot_vector3;
-typedef struct godot_transform2d godot_transform2d;
-typedef struct godot_plane godot_plane;
-typedef struct godot_quat godot_quat;
-typedef struct godot_rect3 godot_rect3;
-typedef struct godot_basis godot_basis;
-typedef struct godot_transform godot_transform;
-typedef struct godot_color godot_color;
-typedef struct godot_node_path godot_node_path;
-typedef struct godot_rid godot_rid;
-typedef struct godot_dictionary godot_dictionary;
-typedef struct godot_array godot_array;
-typedef struct godot_pool_byte_array godot_pool_byte_array;
-typedef struct godot_pool_int_array godot_pool_int_array;
-typedef struct godot_pool_real_array godot_pool_real_array;
-typedef struct godot_pool_string_array godot_pool_string_array;
-typedef struct godot_pool_vector2_array godot_pool_vector2_array;
-typedef struct godot_pool_vector3_array godot_pool_vector3_array;
-typedef struct godot_pool_color_array godot_pool_color_array;
-*/
 /////// String
 
-#include "string.h"
+#include <gdnative/string.h>
 
 ////// Vector2
 
-#include "vector2.h"
+#include <gdnative/vector2.h>
 
 ////// Rect2
 
-#include "rect2.h"
+#include <gdnative/rect2.h>
 
 ////// Vector3
 
-#include "vector3.h"
+#include <gdnative/vector3.h>
 
 ////// Transform2D
 
-#include "transform2d.h"
+#include <gdnative/transform2d.h>
 
 /////// Plane
 
-#include "plane.h"
+#include <gdnative/plane.h>
 
 /////// Quat
 
-#include "quat.h"
+#include <gdnative/quat.h>
 
 /////// Rect3
 
-#include "rect3.h"
+#include <gdnative/rect3.h>
 
 /////// Basis
 
-#include "basis.h"
+#include <gdnative/basis.h>
 
 /////// Transform
 
-#include "transform.h"
+#include <gdnative/transform.h>
 
 /////// Color
 
-#include "color.h"
+#include <gdnative/color.h>
 
 /////// NodePath
 
-#include "node_path.h"
+#include <gdnative/node_path.h>
 
 /////// RID
 
-#include "rid.h"
+#include <gdnative/rid.h>
 
 /////// Dictionary
 
-#include "dictionary.h"
+#include <gdnative/dictionary.h>
 
 /////// Array
 
-#include "array.h"
+#include <gdnative/array.h>
 
 // single API file for Pool*Array
-#include "pool_arrays.h"
+#include <gdnative/pool_arrays.h>
 
 void GDAPI godot_object_destroy(godot_object *p_o);
 
 ////// Variant
 
-#include "variant.h"
+#include <gdnative/variant.h>
 
 ////// Singleton API
 
 godot_object GDAPI *godot_global_get_singleton(char *p_name); // result shouldn't be freed
+
+////// OS API
+
+void GDAPI *godot_get_stack_bottom(); //  returns stack bottom of the main thread
 
 ////// MethodBind API
 
@@ -256,11 +234,15 @@ void GDAPI godot_method_bind_ptrcall(godot_method_bind *p_method_bind, godot_obj
 godot_variant GDAPI godot_method_bind_call(godot_method_bind *p_method_bind, godot_object *p_instance, const godot_variant **p_args, const int p_arg_count, godot_variant_call_error *p_call_error);
 ////// Script API
 
+struct godot_gdnative_api_struct; // Forward declaration
+
 typedef struct {
 	godot_bool in_editor;
 	uint64_t core_api_hash;
 	uint64_t editor_api_hash;
 	uint64_t no_api_hash;
+	godot_object *gd_native_library; // pointer to GDNativeLibrary that is being initialized
+	const struct godot_gdnative_api_struct *api_struct;
 } godot_gdnative_init_options;
 
 typedef struct {

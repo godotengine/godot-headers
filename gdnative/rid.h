@@ -1,9 +1,9 @@
 /*************************************************************************/
-/*  dictionary.h                                                         */
+/*  rid.h                                                                */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                    http://www.godotengine.org                         */
+/*                      https://godotengine.org                          */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -27,8 +27,8 @@
 /* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE     */
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
-#ifndef GODOT_DICTIONARY_H
-#define GODOT_DICTIONARY_H
+#ifndef GODOT_RID_H
+#define GODOT_RID_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,54 +36,29 @@ extern "C" {
 
 #include <stdint.h>
 
-#define GODOT_DICTIONARY_SIZE 8
+#define GODOT_RID_SIZE sizeof(void *)
 
-#ifndef GODOT_CORE_API_GODOT_DICTIONARY_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_DICTIONARY_TYPE_DEFINED
+#ifndef GODOT_CORE_API_GODOT_RID_TYPE_DEFINED
+#define GODOT_CORE_API_GODOT_RID_TYPE_DEFINED
 typedef struct {
-	uint8_t _dont_touch_that[GODOT_DICTIONARY_SIZE];
-} godot_dictionary;
+	uint8_t _dont_touch_that[GODOT_RID_SIZE];
+} godot_rid;
 #endif
 
-#include "array.h"
-#include "gdnative.h"
-#include "variant.h"
+#include <gdnative/gdnative.h>
 
-void GDAPI godot_dictionary_new(godot_dictionary *r_dest);
-void GDAPI godot_dictionary_new_copy(godot_dictionary *r_dest, const godot_dictionary *p_src);
-void GDAPI godot_dictionary_destroy(godot_dictionary *p_self);
+void GDAPI godot_rid_new(godot_rid *r_dest);
 
-godot_int GDAPI godot_dictionary_size(const godot_dictionary *p_self);
+godot_int GDAPI godot_rid_get_id(const godot_rid *p_self);
 
-godot_bool GDAPI godot_dictionary_empty(const godot_dictionary *p_self);
+void GDAPI godot_rid_new_with_resource(godot_rid *r_dest, const godot_object *p_from);
 
-void GDAPI godot_dictionary_clear(godot_dictionary *p_self);
+godot_bool GDAPI godot_rid_operator_equal(const godot_rid *p_self, const godot_rid *p_b);
 
-godot_bool GDAPI godot_dictionary_has(const godot_dictionary *p_self, const godot_variant *p_key);
-
-godot_bool GDAPI godot_dictionary_has_all(const godot_dictionary *p_self, const godot_array *p_keys);
-
-void GDAPI godot_dictionary_erase(godot_dictionary *p_self, const godot_variant *p_key);
-
-godot_int GDAPI godot_dictionary_hash(const godot_dictionary *p_self);
-
-godot_array GDAPI godot_dictionary_keys(const godot_dictionary *p_self);
-
-godot_array GDAPI godot_dictionary_values(const godot_dictionary *p_self);
-
-godot_variant GDAPI godot_dictionary_get(const godot_dictionary *p_self, const godot_variant *p_key);
-void GDAPI godot_dictionary_set(godot_dictionary *p_self, const godot_variant *p_key, const godot_variant *p_value);
-
-godot_variant GDAPI *godot_dictionary_operator_index(godot_dictionary *p_self, const godot_variant *p_key);
-
-godot_variant GDAPI *godot_dictionary_next(const godot_dictionary *p_self, const godot_variant *p_key);
-
-godot_bool GDAPI godot_dictionary_operator_equal(const godot_dictionary *p_self, const godot_dictionary *p_b);
-
-godot_string GDAPI godot_dictionary_to_json(const godot_dictionary *p_self);
+godot_bool GDAPI godot_rid_operator_less(const godot_rid *p_self, const godot_rid *p_b);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_DICTIONARY_H
+#endif // GODOT_RID_H
