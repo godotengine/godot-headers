@@ -34,8 +34,8 @@ Create `test.c` under `SimpleLibrary/src/`
 <details>
 
 ```c
-#include <godot/gdnative.h>
-#include <godot_nativescript.h>
+#include <gdnative/gdnative.h>
+#include <nativescript/godot_nativescript.h>
 
 #include <stdio.h>
 
@@ -119,9 +119,18 @@ godot_variant GDN_EXPORT some_test_procedure(void *data, godot_array *args) {
 
 ### Compile Library
 
+On Linux:
+
 ```bash
 clang -g -fPIC -std=c99 -c src/test.c -I/path/to/godot/headers/ -o src/test.os
 clang -g -shared src/test.os -o lib/test.so
+```
+
+On MacOS:
+
+```bash
+clang -g -fPIC -std=c99 -c src/test.c -I/path/to/godot/headers/ -o src/test.os
+clang -g -shared -framework Cocoa -Wl,-undefined,dynamic_lookup src/test.os -o lib/test.dylib
 ```
 
 - `-g` is for debugging information.
