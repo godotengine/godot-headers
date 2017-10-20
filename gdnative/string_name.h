@@ -1,9 +1,9 @@
 /*************************************************************************/
-/*  rect2.h                                                              */
+/*  string_name.h                                                             */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
-/*                      https://godotengine.org                          */
+/*                    http://www.godotengine.org                         */
 /*************************************************************************/
 /* Copyright (c) 2007-2017 Juan Linietsky, Ariel Manzur.                 */
 /* Copyright (c) 2014-2017 Godot Engine contributors (cf. AUTHORS.md)    */
@@ -27,20 +27,23 @@
 /* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE     */
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
-#ifndef GODOT_RECT2_H
-#define GODOT_RECT2_H
+#ifndef GODOT_STRING_NAME_H
+#define GODOT_STRING_NAME_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include <stdint.h>
+#include <wchar.h>
 
-#ifndef GODOT_CORE_API_GODOT_RECT2_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_RECT2_TYPE_DEFINED
-typedef struct godot_rect2 {
-	uint8_t _dont_touch_that[16];
-} godot_rect2;
+#define GODOT_STRING_NAME_SIZE sizeof(void *)
+
+#ifndef GODOT_CORE_API_GODOT_STRING_NAME_TYPE_DEFINED
+#define GODOT_CORE_API_GODOT_STRING_NAME_TYPE_DEFINED
+typedef struct {
+	uint8_t _dont_touch_that[GODOT_STRING_NAME_SIZE];
+} godot_string_name;
 #endif
 
 // reduce extern "C" nesting for VS2013
@@ -49,47 +52,26 @@ typedef struct godot_rect2 {
 #endif
 
 #include <gdnative/gdnative.h>
-#include <gdnative/vector2.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_rect2_new_with_position_and_size(godot_rect2 *r_dest, const godot_vector2 *p_pos, const godot_vector2 *p_size);
-void GDAPI godot_rect2_new(godot_rect2 *r_dest, const godot_real p_x, const godot_real p_y, const godot_real p_width, const godot_real p_height);
+void GDAPI godot_string_name_new(godot_string_name *r_dest, const godot_string *p_name);
+void GDAPI godot_string_name_new_data(godot_string_name *r_dest, const char *p_name);
 
-godot_string GDAPI godot_rect2_as_string(const godot_rect2 *p_self);
+godot_string GDAPI godot_string_name_get_name(const godot_string_name *p_self);
 
-godot_real GDAPI godot_rect2_get_area(const godot_rect2 *p_self);
+uint32_t GDAPI godot_string_name_get_hash(const godot_string_name *p_self);
+const void GDAPI *godot_string_name_get_data_unique_pointer(const godot_string_name *p_self);
 
-godot_bool GDAPI godot_rect2_intersects(const godot_rect2 *p_self, const godot_rect2 *p_b);
+godot_bool GDAPI godot_string_name_operator_equal(const godot_string_name *p_self, const godot_string_name *p_other);
+godot_bool GDAPI godot_string_name_operator_less(const godot_string_name *p_self, const godot_string_name *p_other);
 
-godot_bool GDAPI godot_rect2_encloses(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_bool GDAPI godot_rect2_has_no_area(const godot_rect2 *p_self);
-
-godot_rect2 GDAPI godot_rect2_clip(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_rect2 GDAPI godot_rect2_merge(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_bool GDAPI godot_rect2_has_point(const godot_rect2 *p_self, const godot_vector2 *p_point);
-
-godot_rect2 GDAPI godot_rect2_grow(const godot_rect2 *p_self, const godot_real p_by);
-
-godot_rect2 GDAPI godot_rect2_expand(const godot_rect2 *p_self, const godot_vector2 *p_to);
-
-godot_bool GDAPI godot_rect2_operator_equal(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_vector2 GDAPI godot_rect2_get_position(const godot_rect2 *p_self);
-
-godot_vector2 GDAPI godot_rect2_get_size(const godot_rect2 *p_self);
-
-void GDAPI godot_rect2_set_position(godot_rect2 *p_self, const godot_vector2 *p_pos);
-
-void GDAPI godot_rect2_set_size(godot_rect2 *p_self, const godot_vector2 *p_size);
+void GDAPI godot_string_name_destroy(godot_string_name *p_self);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_RECT2_H
+#endif // GODOT_STRING_NAME_H

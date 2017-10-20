@@ -1,5 +1,5 @@
 /*************************************************************************/
-/*  rect2.h                                                              */
+/*  godot_nativearvr.h                                                   */
 /*************************************************************************/
 /*                       This file is part of:                           */
 /*                           GODOT ENGINE                                */
@@ -27,69 +27,52 @@
 /* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE     */
 /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                */
 /*************************************************************************/
-#ifndef GODOT_RECT2_H
-#define GODOT_RECT2_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include <stdint.h>
-
-#ifndef GODOT_CORE_API_GODOT_RECT2_TYPE_DEFINED
-#define GODOT_CORE_API_GODOT_RECT2_TYPE_DEFINED
-typedef struct godot_rect2 {
-	uint8_t _dont_touch_that[16];
-} godot_rect2;
-#endif
-
-// reduce extern "C" nesting for VS2013
-#ifdef __cplusplus
-}
-#endif
+#ifndef GODOT_NATIVEARVR_H
+#define GODOT_NATIVEARVR_H
 
 #include <gdnative/gdnative.h>
-#include <gdnative/vector2.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GDAPI godot_rect2_new_with_position_and_size(godot_rect2 *r_dest, const godot_vector2 *p_pos, const godot_vector2 *p_size);
-void GDAPI godot_rect2_new(godot_rect2 *r_dest, const godot_real p_x, const godot_real p_y, const godot_real p_width, const godot_real p_height);
+typedef struct {
+	void *(*constructor)(godot_object *);
+	void (*destructor)(void *);
+	godot_string (*get_name)(const void *);
+	godot_int (*get_capabilities)(const void *);
+	godot_bool (*get_anchor_detection_is_enabled)(const void *);
+	void (*set_anchor_detection_is_enabled)(void *, godot_bool);
+	godot_bool (*is_stereo)(const void *);
+	godot_bool (*is_initialized)(const void *);
+	godot_bool (*initialize)(void *);
+	void (*uninitialize)(void *);
+	godot_vector2 (*get_recommended_render_targetsize)(const void *);
+	godot_transform (*get_transform_for_eye)(void *, godot_int, godot_transform *);
+	void (*fill_projection_for_eye)(void *, godot_real *, godot_int, godot_real, godot_real, godot_real);
+	void (*commit_for_eye)(void *, godot_int, godot_rid *, godot_rect2 *);
+	void (*process)(void *);
+} godot_arvr_interface_gdnative;
 
-godot_string GDAPI godot_rect2_as_string(const godot_rect2 *p_self);
+void GDAPI godot_arvr_register_interface(const godot_arvr_interface_gdnative *p_interface);
 
-godot_real GDAPI godot_rect2_get_area(const godot_rect2 *p_self);
+// helper functions to access ARVRServer data
+godot_real GDAPI godot_arvr_get_worldscale();
+godot_transform GDAPI godot_arvr_get_reference_frame();
 
-godot_bool GDAPI godot_rect2_intersects(const godot_rect2 *p_self, const godot_rect2 *p_b);
+// helper functions for rendering
+void GDAPI godot_arvr_blit(godot_int p_eye, godot_rid *p_render_target, godot_rect2 *p_rect);
+godot_int GDAPI godot_arvr_get_texid(godot_rid *p_render_target);
 
-godot_bool GDAPI godot_rect2_encloses(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_bool GDAPI godot_rect2_has_no_area(const godot_rect2 *p_self);
-
-godot_rect2 GDAPI godot_rect2_clip(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_rect2 GDAPI godot_rect2_merge(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_bool GDAPI godot_rect2_has_point(const godot_rect2 *p_self, const godot_vector2 *p_point);
-
-godot_rect2 GDAPI godot_rect2_grow(const godot_rect2 *p_self, const godot_real p_by);
-
-godot_rect2 GDAPI godot_rect2_expand(const godot_rect2 *p_self, const godot_vector2 *p_to);
-
-godot_bool GDAPI godot_rect2_operator_equal(const godot_rect2 *p_self, const godot_rect2 *p_b);
-
-godot_vector2 GDAPI godot_rect2_get_position(const godot_rect2 *p_self);
-
-godot_vector2 GDAPI godot_rect2_get_size(const godot_rect2 *p_self);
-
-void GDAPI godot_rect2_set_position(godot_rect2 *p_self, const godot_vector2 *p_pos);
-
-void GDAPI godot_rect2_set_size(godot_rect2 *p_self, const godot_vector2 *p_size);
+// helper functions for updating ARVR controllers
+godot_int GDAPI godot_arvr_add_controller(char *p_device_name, godot_int p_hand, godot_bool p_tracks_orientation, godot_bool p_tracks_position);
+void GDAPI godot_arvr_remove_controller(godot_int p_controller_id);
+void GDAPI godot_arvr_set_controller_transform(godot_int p_controller_id, godot_transform *p_transform, godot_bool p_tracks_orientation, godot_bool p_tracks_position);
+void GDAPI godot_arvr_set_controller_button(godot_int p_controller_id, godot_int p_button, godot_bool p_is_pressed);
+void GDAPI godot_arvr_set_controller_axis(godot_int p_controller_id, godot_int p_axis, godot_real p_value, godot_bool p_can_be_negative);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // GODOT_RECT2_H
+#endif /* !GODOT_NATIVEARVR_H */
