@@ -152,6 +152,9 @@ The GDNativeLibrary resource contains links to the libraries for each platform.
 
 ![](images/faq/dllibrary_save_as_resource.png?raw=true)
 
+#Note
+> Remember to save `GDNativeLibrary` as `.gdnlib`
+
 </details>
 
 `Expand details for screenshots.`
