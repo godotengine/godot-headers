@@ -210,7 +210,8 @@ use of GDNative to implement scripts backed by native code.
 **Which languages are binding as a NativeScript?**
 
 [**C++**](https://github.com/GodotNativeTools/cpp_bindings),
- [**D**](https://github.com/GodotNativeTools/d_bindings)
+[**D**](https://github.com/GodotNativeTools/d_bindings),
+[**Nim**](https://github.com/pragmagic/godot-nim)
 
 **Can you debug NativeScripts?**
 
