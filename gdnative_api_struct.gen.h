@@ -39,6 +39,22 @@ enum GDNATIVE_API_TYPES {
 	GDNATIVE_EXT_ARVR,
 };
 
+typedef struct godot_gdnative_ext_nativescript_1_1_api_struct {
+	unsigned int type;
+	godot_gdnative_api_version version;
+	const godot_gdnative_api_struct *next;
+	void (*godot_nativescript_set_method_argument_information)(void *p_gdnative_handle, const char *p_name, const char *p_function_name, int p_num_args, const godot_method_arg *p_args);
+	void (*godot_nativescript_set_class_documentation)(void *p_gdnative_handle, const char *p_name, godot_string p_documentation);
+	void (*godot_nativescript_set_method_documentation)(void *p_gdnative_handle, const char *p_name, const char *p_function_name, godot_string p_documentation);
+	void (*godot_nativescript_set_property_documentation)(void *p_gdnative_handle, const char *p_name, const char *p_path, godot_string p_documentation);
+	void (*godot_nativescript_set_signal_documentation)(void *p_gdnative_handle, const char *p_name, const char *p_signal_name, godot_string p_documentation);
+	void (*godot_nativescript_set_type_tag)(void *p_gdnative_handle, const char *p_name, const void *p_type_tag);
+	const void *(*godot_nativescript_get_type_tag)(const godot_object *p_object);
+	int (*godot_nativescript_register_instance_binding_data_functions)(godot_instance_binding_functions p_binding_functions);
+	void (*godot_nativescript_unregister_instance_binding_data_functions)(int p_idx);
+	void *(*godot_nativescript_get_instance_binding_data)(int p_idx, godot_object *p_object);
+} godot_gdnative_ext_nativescript_1_1_api_struct;
+
 typedef struct godot_gdnative_ext_nativescript_api_struct {
 	unsigned int type;
 	godot_gdnative_api_version version;
