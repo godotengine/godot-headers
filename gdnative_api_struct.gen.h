@@ -13,7 +13,7 @@
 	extern const godot_gdnative_ext_pluginscript_api_struct *_gdnative_wrapper_pluginscript_api_struct;  \
 	extern const godot_gdnative_ext_arvr_api_struct *_gdnative_wrapper_arvr_api_struct;  \
 	_gdnative_wrapper_api_struct = options->api_struct;  \
-	for (int i = 0; i < _gdnative_wrapper_api_struct->num_extensions; i++) {   \
+	for (unsigned int i = 0; i < _gdnative_wrapper_api_struct->num_extensions; i++) {   \
 		switch (_gdnative_wrapper_api_struct->extensions[i]->type) {  \
 			case GDNATIVE_EXT_NATIVESCRIPT:  \
 				_gdnative_wrapper_nativescript_api_struct = (godot_gdnative_ext_nativescript_api_struct *) _gdnative_wrapper_api_struct->extensions[i];  \
@@ -48,6 +48,8 @@ typedef struct godot_gdnative_ext_nativescript_1_1_api_struct {
 	void (*godot_nativescript_set_method_documentation)(void *p_gdnative_handle, const char *p_name, const char *p_function_name, godot_string p_documentation);
 	void (*godot_nativescript_set_property_documentation)(void *p_gdnative_handle, const char *p_name, const char *p_path, godot_string p_documentation);
 	void (*godot_nativescript_set_signal_documentation)(void *p_gdnative_handle, const char *p_name, const char *p_signal_name, godot_string p_documentation);
+	void (*godot_nativescript_set_global_type_tag)(int p_idx, const char *p_name, const void *p_type_tag);
+	const void *(*godot_nativescript_get_global_type_tag)(int p_idx, const char *p_name);
 	void (*godot_nativescript_set_type_tag)(void *p_gdnative_handle, const char *p_name, const void *p_type_tag);
 	const void *(*godot_nativescript_get_type_tag)(const godot_object *p_object);
 	int (*godot_nativescript_register_instance_binding_data_functions)(godot_instance_binding_functions p_binding_functions);
@@ -607,7 +609,7 @@ typedef struct godot_gdnative_core_api_struct {
 	godot_variant_type (*godot_variant_get_type)(const godot_variant *p_v);
 	void (*godot_variant_new_copy)(godot_variant *r_dest, const godot_variant *p_src);
 	void (*godot_variant_new_nil)(godot_variant *r_dest);
-	void (*godot_variant_new_bool)(godot_variant *p_v, const godot_bool p_b);
+	void (*godot_variant_new_bool)(godot_variant *r_dest, const godot_bool p_b);
 	void (*godot_variant_new_uint)(godot_variant *r_dest, const uint64_t p_i);
 	void (*godot_variant_new_int)(godot_variant *r_dest, const int64_t p_i);
 	void (*godot_variant_new_real)(godot_variant *r_dest, const double p_r);
@@ -803,8 +805,6 @@ typedef struct godot_gdnative_core_api_struct {
 	godot_string (*godot_string_c_escape)(const godot_string *p_self);
 	godot_string (*godot_string_c_escape_multiline)(const godot_string *p_self);
 	godot_string (*godot_string_c_unescape)(const godot_string *p_self);
-	godot_string (*godot_string_http_escape)(const godot_string *p_self);
-	godot_string (*godot_string_http_unescape)(const godot_string *p_self);
 	godot_string (*godot_string_json_escape)(const godot_string *p_self);
 	godot_string (*godot_string_word_wrap)(const godot_string *p_self, godot_int p_chars_per_line);
 	godot_string (*godot_string_xml_escape)(const godot_string *p_self);
