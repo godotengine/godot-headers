@@ -805,6 +805,8 @@ typedef struct godot_gdnative_core_api_struct {
 	godot_string (*godot_string_c_escape)(const godot_string *p_self);
 	godot_string (*godot_string_c_escape_multiline)(const godot_string *p_self);
 	godot_string (*godot_string_c_unescape)(const godot_string *p_self);
+	godot_string (*godot_string_http_escape)(const godot_string *p_self);
+	godot_string (*godot_string_http_unescape)(const godot_string *p_self);
 	godot_string (*godot_string_json_escape)(const godot_string *p_self);
 	godot_string (*godot_string_word_wrap)(const godot_string *p_self, godot_int p_chars_per_line);
 	godot_string (*godot_string_xml_escape)(const godot_string *p_self);
