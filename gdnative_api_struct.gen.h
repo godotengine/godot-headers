@@ -3,6 +3,7 @@
 #define GODOT_GDNATIVE_API_STRUCT_H
 
 #include <gdnative/gdnative.h>
+#include <android/godot_android.h>
 #include <arvr/godot_arvr.h>
 #include <nativescript/godot_nativescript.h>
 #include <pluginscript/godot_pluginscript.h>
@@ -11,6 +12,7 @@
 	extern const godot_gdnative_core_api_struct *_gdnative_wrapper_api_struct;  \
 	extern const godot_gdnative_ext_nativescript_api_struct *_gdnative_wrapper_nativescript_api_struct;  \
 	extern const godot_gdnative_ext_pluginscript_api_struct *_gdnative_wrapper_pluginscript_api_struct;  \
+	extern const godot_gdnative_ext_android_api_struct *_gdnative_wrapper_android_api_struct;  \
 	extern const godot_gdnative_ext_arvr_api_struct *_gdnative_wrapper_arvr_api_struct;  \
 	_gdnative_wrapper_api_struct = options->api_struct;  \
 	for (unsigned int i = 0; i < _gdnative_wrapper_api_struct->num_extensions; i++) {   \
@@ -20,6 +22,9 @@
 				break;  \
 			case GDNATIVE_EXT_PLUGINSCRIPT:  \
 				_gdnative_wrapper_pluginscript_api_struct = (godot_gdnative_ext_pluginscript_api_struct *) _gdnative_wrapper_api_struct->extensions[i];  \
+				break;  \
+			case GDNATIVE_EXT_ANDROID:  \
+				_gdnative_wrapper_android_api_struct = (godot_gdnative_ext_android_api_struct *) _gdnative_wrapper_api_struct->extensions[i];  \
 				break;  \
 			case GDNATIVE_EXT_ARVR:  \
 				_gdnative_wrapper_arvr_api_struct = (godot_gdnative_ext_arvr_api_struct *) _gdnative_wrapper_api_struct->extensions[i];  \
@@ -36,6 +41,7 @@ enum GDNATIVE_API_TYPES {
 	GDNATIVE_CORE,
 	GDNATIVE_EXT_NATIVESCRIPT,
 	GDNATIVE_EXT_PLUGINSCRIPT,
+	GDNATIVE_EXT_ANDROID,
 	GDNATIVE_EXT_ARVR,
 };
 
@@ -75,6 +81,14 @@ typedef struct godot_gdnative_ext_pluginscript_api_struct {
 	const godot_gdnative_api_struct *next;
 	void (*godot_pluginscript_register_language)(const godot_pluginscript_language_desc *language_desc);
 } godot_gdnative_ext_pluginscript_api_struct;
+
+typedef struct godot_gdnative_ext_android_api_struct {
+	unsigned int type;
+	godot_gdnative_api_version version;
+	const godot_gdnative_api_struct *next;
+	JNIEnv*(*godot_android_get_env)();
+	jobject (*godot_android_get_activity)();
+} godot_gdnative_ext_android_api_struct;
 
 typedef struct godot_gdnative_ext_arvr_api_struct {
 	unsigned int type;
