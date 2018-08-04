@@ -21,6 +21,11 @@ Clone `godot_headers` under `SimpleLibrary/`
 cd SimpleLibrary
 git clone https://github.com/GodotNativeTools/godot_headers
 ```
+
+> Note that the master branch of this repository contains the header for the latest Godot master. If you want to build GDNative modules for older versions of Godot add `-b <version>` to the git clone command above. i.e. `git clone https://github.com/GodotNativeTools/godot_headers -b 3.0` will retrieve headers compatible with Godot 3.0.
+
+> With the exception of a breaking change in the ARVR module between 3.0 and 3.1, GDNative plugins written for an older version of Godot will work in newer versions.
+
 ```bash
 [SimpleLibrary]
   ├── lib/
