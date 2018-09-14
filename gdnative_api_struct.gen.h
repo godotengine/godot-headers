@@ -61,6 +61,7 @@ typedef struct godot_gdnative_ext_nativescript_1_1_api_struct {
 	int (*godot_nativescript_register_instance_binding_data_functions)(godot_instance_binding_functions p_binding_functions);
 	void (*godot_nativescript_unregister_instance_binding_data_functions)(int p_idx);
 	void *(*godot_nativescript_get_instance_binding_data)(int p_idx, godot_object *p_object);
+	void (*godot_nativescript_profiling_add_data)(const char *p_signature, uint64_t p_line);
 } godot_gdnative_ext_nativescript_1_1_api_struct;
 
 typedef struct godot_gdnative_ext_nativescript_api_struct {
@@ -106,6 +107,24 @@ typedef struct godot_gdnative_ext_arvr_api_struct {
 	void (*godot_arvr_set_controller_axis)(godot_int p_controller_id, godot_int p_exis, godot_real p_value, godot_bool p_can_be_negative);
 	godot_real (*godot_arvr_get_controller_rumble)(godot_int p_controller_id);
 } godot_gdnative_ext_arvr_api_struct;
+
+typedef struct godot_gdnative_core_1_1_api_struct {
+	unsigned int type;
+	godot_gdnative_api_version version;
+	const godot_gdnative_api_struct *next;
+	godot_quat (*godot_basis_get_quat)(const godot_basis *p_self);
+	void (*godot_basis_set_quat)(godot_basis *p_self, const godot_quat *p_quat);
+	void (*godot_basis_set_axis_angle_scale)(godot_basis *p_self, const godot_vector3 *p_axis, godot_real p_phi, const godot_vector3 *p_scale);
+	void (*godot_basis_set_euler_scale)(godot_basis *p_self, const godot_vector3 *p_euler, const godot_vector3 *p_scale);
+	void (*godot_basis_set_quat_scale)(godot_basis *p_self, const godot_quat *p_quat, const godot_vector3 *p_scale);
+	bool (*godot_dictionary_erase_with_return)(godot_dictionary *p_self, const godot_variant *p_key);
+	bool (*godot_is_instance_valid)(const godot_object *p_object);
+	void (*godot_quat_new_with_basis)(godot_quat *r_dest, const godot_basis *p_basis);
+	void (*godot_quat_new_with_euler)(godot_quat *r_dest, const godot_vector3 *p_euler);
+	void (*godot_transform_new_with_quat)(godot_transform *r_dest, const godot_quat *p_quat);
+	godot_string (*godot_variant_get_operator_name)(godot_variant_operator p_op);
+	void (*godot_variant_evaluate)(godot_variant_operator p_op, const godot_variant *p_a, const godot_variant *p_b, godot_variant *r_ret, godot_bool *r_valid);
+} godot_gdnative_core_1_1_api_struct;
 
 typedef struct godot_gdnative_core_api_struct {
 	unsigned int type;
