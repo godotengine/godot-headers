@@ -107,6 +107,23 @@
           ]
         },
         {
+          "name": "godot_dictionary_get_with_default",
+          "return_type": "godot_variant",
+          "arguments": [
+            ["const godot_dictionary *", "p_self"],
+            ["const godot_variant *", "p_key"],
+            ["const godot_variant *", "p_default"]
+          ]
+        },
+        {
+          "name": "godot_dictionary_erase_with_return",
+          "return_type": "bool",
+          "arguments": [
+            ["godot_dictionary *", "p_self"],
+            ["const godot_variant *", "p_key"]
+          ]
+        },
+        {
           "name": "godot_node_path_get_as_property_path",
           "return_type": "godot_node_path",
           "arguments": [
@@ -231,14 +248,6 @@
             ["godot_basis *", "p_self"],
             ["const godot_quat *", "p_quat"],
             ["const godot_vector3 *", "p_scale"]
-          ]
-        },
-        {
-          "name": "godot_dictionary_erase_with_return",
-          "return_type": "bool",
-          "arguments": [
-            ["godot_dictionary *", "p_self"],
-            ["const godot_variant *", "p_key"]
           ]
         },
         {
@@ -4755,7 +4764,7 @@
       },
       {
         "name": "godot_string_operator_index",
-        "return_type": "wchar_t *",
+        "return_type": "const wchar_t *",
         "arguments": [
           ["godot_string *", "p_self"],
           ["const godot_int", "p_idx"]
@@ -6371,6 +6380,77 @@
           "return_type": "godot_real",
           "arguments": [
             ["godot_int", "p_controller_id"]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "videodecoder",
+      "type": "VIDEODECODER",
+      "version": {
+        "major": 0,
+        "minor": 1
+      },
+      "next": null,
+      "api": [
+        {
+          "name": "godot_videodecoder_file_read",
+          "return_type": "godot_int",
+          "arguments": [
+            ["void *", "file_ptr"],
+            ["uint8_t *", "buf"],
+            ["int", "buf_size"]
+          ]
+        },
+        {
+          "name": "godot_videodecoder_file_seek",
+          "return_type": "int64_t",
+          "arguments": [
+            [ "void *", "file_ptr"],
+            ["int64_t", "pos"],
+            ["int", "whence"]
+          ]
+        },
+        {
+          "name": "godot_videodecoder_register_decoder",
+          "return_type": "void",
+          "arguments": [
+            ["const godot_videodecoder_interface_gdnative *", "p_interface"]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "net",
+      "type": "NET",
+      "version": {
+        "major": 3,
+        "minor": 1
+      },
+      "next": null,
+      "api": [
+        {
+          "name": "godot_net_bind_stream_peer",
+          "return_type": "void",
+          "arguments": [
+		  ["godot_object *", "p_obj"],
+		  ["const godot_net_stream_peer *", "p_interface"]
+          ]
+        },
+        {
+          "name": "godot_net_bind_packet_peer",
+          "return_type": "void",
+          "arguments": [
+		  ["godot_object *", "p_obj"],
+		  ["const godot_net_packet_peer *", "p_interface"]
+          ]
+        },
+        {
+          "name": "godot_net_bind_multiplayer_peer",
+          "return_type": "void",
+          "arguments": [
+		  ["godot_object *", "p_obj"],
+		  ["const godot_net_multiplayer_peer *", "p_interface"]
           ]
         }
       ]
