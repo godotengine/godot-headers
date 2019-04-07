@@ -6,7 +6,9 @@
 #include <android/godot_android.h>
 #include <arvr/godot_arvr.h>
 #include <nativescript/godot_nativescript.h>
+#include <net/godot_net.h>
 #include <pluginscript/godot_pluginscript.h>
+#include <videodecoder/godot_videodecoder.h>
 
 #define GDNATIVE_API_INIT(options) do {  \
 	extern const godot_gdnative_core_api_struct *_gdnative_wrapper_api_struct;  \
@@ -14,6 +16,8 @@
 	extern const godot_gdnative_ext_pluginscript_api_struct *_gdnative_wrapper_pluginscript_api_struct;  \
 	extern const godot_gdnative_ext_android_api_struct *_gdnative_wrapper_android_api_struct;  \
 	extern const godot_gdnative_ext_arvr_api_struct *_gdnative_wrapper_arvr_api_struct;  \
+	extern const godot_gdnative_ext_videodecoder_api_struct *_gdnative_wrapper_videodecoder_api_struct;  \
+	extern const godot_gdnative_ext_net_api_struct *_gdnative_wrapper_net_api_struct;  \
 	_gdnative_wrapper_api_struct = options->api_struct;  \
 	for (unsigned int i = 0; i < _gdnative_wrapper_api_struct->num_extensions; i++) {   \
 		switch (_gdnative_wrapper_api_struct->extensions[i]->type) {  \
@@ -29,6 +33,12 @@
 			case GDNATIVE_EXT_ARVR:  \
 				_gdnative_wrapper_arvr_api_struct = (godot_gdnative_ext_arvr_api_struct *) _gdnative_wrapper_api_struct->extensions[i];  \
 				break;  \
+			case GDNATIVE_EXT_VIDEODECODER:  \
+				_gdnative_wrapper_videodecoder_api_struct = (godot_gdnative_ext_videodecoder_api_struct *) _gdnative_wrapper_api_struct->extensions[i];  \
+				break;  \
+			case GDNATIVE_EXT_NET:  \
+				_gdnative_wrapper_net_api_struct = (godot_gdnative_ext_net_api_struct *) _gdnative_wrapper_api_struct->extensions[i];  \
+				break;  \
 		}  \
 	}  \
  } while (0)
@@ -43,6 +53,8 @@ enum GDNATIVE_API_TYPES {
 	GDNATIVE_EXT_PLUGINSCRIPT,
 	GDNATIVE_EXT_ANDROID,
 	GDNATIVE_EXT_ARVR,
+	GDNATIVE_EXT_VIDEODECODER,
+	GDNATIVE_EXT_NET,
 };
 
 typedef struct godot_gdnative_ext_nativescript_1_1_api_struct {
@@ -108,6 +120,24 @@ typedef struct godot_gdnative_ext_arvr_api_struct {
 	godot_real (*godot_arvr_get_controller_rumble)(godot_int p_controller_id);
 } godot_gdnative_ext_arvr_api_struct;
 
+typedef struct godot_gdnative_ext_videodecoder_api_struct {
+	unsigned int type;
+	godot_gdnative_api_version version;
+	const godot_gdnative_api_struct *next;
+	godot_int (*godot_videodecoder_file_read)(void *file_ptr, uint8_t *buf, int buf_size);
+	int64_t (*godot_videodecoder_file_seek)(void *file_ptr, int64_t pos, int whence);
+	void (*godot_videodecoder_register_decoder)(const godot_videodecoder_interface_gdnative *p_interface);
+} godot_gdnative_ext_videodecoder_api_struct;
+
+typedef struct godot_gdnative_ext_net_api_struct {
+	unsigned int type;
+	godot_gdnative_api_version version;
+	const godot_gdnative_api_struct *next;
+	void (*godot_net_bind_stream_peer)(godot_object *p_obj, const godot_net_stream_peer *p_interface);
+	void (*godot_net_bind_packet_peer)(godot_object *p_obj, const godot_net_packet_peer *p_interface);
+	void (*godot_net_bind_multiplayer_peer)(godot_object *p_obj, const godot_net_multiplayer_peer *p_interface);
+} godot_gdnative_ext_net_api_struct;
+
 typedef struct godot_gdnative_core_1_1_api_struct {
 	unsigned int type;
 	godot_gdnative_api_version version;
@@ -124,6 +154,8 @@ typedef struct godot_gdnative_core_1_1_api_struct {
 	godot_variant (*godot_array_min)(const godot_array *p_self);
 	void (*godot_array_shuffle)(godot_array *p_self);
 	godot_basis (*godot_basis_slerp)(const godot_basis *p_self, const godot_basis *p_b, const godot_real p_t);
+	godot_variant (*godot_dictionary_get_with_default)(const godot_dictionary *p_self, const godot_variant *p_key, const godot_variant *p_default);
+	bool (*godot_dictionary_erase_with_return)(godot_dictionary *p_self, const godot_variant *p_key);
 	godot_node_path (*godot_node_path_get_as_property_path)(const godot_node_path *p_self);
 	void (*godot_quat_set_axis_angle)(godot_quat *p_self, const godot_vector3 *p_axis, const godot_real p_angle);
 	godot_rect2 (*godot_rect2_grow_individual)(const godot_rect2 *p_self, const godot_real p_left, const godot_real p_top, const godot_real p_right, const godot_real p_bottom);
@@ -139,7 +171,6 @@ typedef struct godot_gdnative_core_1_1_api_struct {
 	void (*godot_basis_set_axis_angle_scale)(godot_basis *p_self, const godot_vector3 *p_axis, godot_real p_phi, const godot_vector3 *p_scale);
 	void (*godot_basis_set_euler_scale)(godot_basis *p_self, const godot_vector3 *p_euler, const godot_vector3 *p_scale);
 	void (*godot_basis_set_quat_scale)(godot_basis *p_self, const godot_quat *p_quat, const godot_vector3 *p_scale);
-	bool (*godot_dictionary_erase_with_return)(godot_dictionary *p_self, const godot_variant *p_key);
 	bool (*godot_is_instance_valid)(const godot_object *p_object);
 	void (*godot_quat_new_with_basis)(godot_quat *r_dest, const godot_basis *p_basis);
 	void (*godot_quat_new_with_euler)(godot_quat *r_dest, const godot_vector3 *p_euler);
@@ -731,7 +762,7 @@ typedef struct godot_gdnative_core_api_struct {
 	void (*godot_string_new)(godot_string *r_dest);
 	void (*godot_string_new_copy)(godot_string *r_dest, const godot_string *p_src);
 	void (*godot_string_new_with_wide_string)(godot_string *r_dest, const wchar_t *p_contents, const int p_size);
-	wchar_t *(*godot_string_operator_index)(godot_string *p_self, const godot_int p_idx);
+	const wchar_t *(*godot_string_operator_index)(godot_string *p_self, const godot_int p_idx);
 	wchar_t (*godot_string_operator_index_const)(const godot_string *p_self, const godot_int p_idx);
 	const wchar_t *(*godot_string_wide_str)(const godot_string *p_self);
 	godot_bool (*godot_string_operator_equal)(const godot_string *p_self, const godot_string *p_b);
