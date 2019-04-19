@@ -129,6 +129,13 @@ typedef struct godot_gdnative_ext_videodecoder_api_struct {
 	void (*godot_videodecoder_register_decoder)(const godot_videodecoder_interface_gdnative *p_interface);
 } godot_gdnative_ext_videodecoder_api_struct;
 
+typedef struct godot_gdnative_ext_net_3_2_api_struct {
+	unsigned int type;
+	godot_gdnative_api_version version;
+	const godot_gdnative_api_struct *next;
+	void (*godot_net_bind_webrtc_peer)(godot_object *p_obj, const godot_net_webrtc_peer *p_interface);
+} godot_gdnative_ext_net_3_2_api_struct;
+
 typedef struct godot_gdnative_ext_net_api_struct {
 	unsigned int type;
 	godot_gdnative_api_version version;
