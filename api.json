@@ -98324,6 +98324,12 @@
 					{
 						"name": "transform",
 						"type": "Transform2D",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "arg3",
+						"type": "bool",
 						"has_default_value": true,
 						"default_value": "((1, 0), (0, 1), (0, 0))"
 					}
@@ -99068,6 +99074,12 @@
 					{
 						"name": "transform",
 						"type": "Transform2D",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "arg3",
+						"type": "bool",
 						"has_default_value": true,
 						"default_value": "((1, 0), (0, 1), (0, 0))"
 					}
@@ -103287,6 +103299,12 @@
 					{
 						"name": "transform",
 						"type": "Transform",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "arg3",
+						"type": "bool",
 						"has_default_value": true,
 						"default_value": "1, 0, 0, 0, 1, 0, 0, 0, 1 - 0, 0, 0"
 					}
@@ -104000,6 +104018,12 @@
 					{
 						"name": "transform",
 						"type": "Transform",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "arg3",
+						"type": "bool",
 						"has_default_value": true,
 						"default_value": "1, 0, 0, 0, 1, 0, 0, 0, 1 - 0, 0, 0"
 					}
