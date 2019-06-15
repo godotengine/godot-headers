@@ -114,6 +114,12 @@
 			"JOY_L": 4,
 			"JOY_L2": 6,
 			"JOY_L3": 8,
+			"JOY_OCULUS_AX": 7,
+			"JOY_OCULUS_BY": 1,
+			"JOY_OCULUS_MENU": 3,
+			"JOY_OPENVR_MENU": 1,
+			"JOY_OPENVR_TOUCHPADX": 0,
+			"JOY_OPENVR_TOUCHPADY": 1,
 			"JOY_R": 5,
 			"JOY_R2": 7,
 			"JOY_R3": 9,
@@ -123,6 +129,11 @@
 			"JOY_SONY_TRIANGLE": 3,
 			"JOY_SONY_X": 0,
 			"JOY_START": 11,
+			"JOY_VR_ANALOG_GRIP": 4,
+			"JOY_VR_ANALOG_TRIGGER": 2,
+			"JOY_VR_GRIP": 2,
+			"JOY_VR_PAD": 14,
+			"JOY_VR_TRIGGER": 15,
 			"JOY_XBOX_A": 0,
 			"JOY_XBOX_B": 1,
 			"JOY_XBOX_X": 2,
@@ -8302,6 +8313,31 @@
 				]
 			},
 			{
+				"name": "track_move_to",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "idx",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "to_idx",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "track_move_up",
 				"return_type": "void",
 				"is_editor": false,
@@ -8465,6 +8501,37 @@
 					{
 						"name": "interpolation",
 						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "track_set_key_time",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "idx",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "key_idx",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "time",
+						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -19881,31 +19948,6 @@
 				]
 			},
 			{
-				"name": "surface_set_material",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "surf_idx",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					},
-					{
-						"name": "material",
-						"type": "Material",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
 				"name": "surface_set_name",
 				"return_type": "void",
 				"is_editor": false,
@@ -30099,20 +30141,22 @@
 			"EMISSION_SHAPE_POINTS": 3,
 			"EMISSION_SHAPE_SPHERE": 1,
 			"FLAG_ALIGN_Y_TO_VELOCITY": 0,
+			"FLAG_DISABLE_Z": 2,
 			"FLAG_MAX": 3,
 			"FLAG_ROTATE_Y": 1,
-			"PARAM_ANGLE": 6,
+			"PARAM_ANGLE": 7,
 			"PARAM_ANGULAR_VELOCITY": 1,
-			"PARAM_ANIM_OFFSET": 10,
-			"PARAM_ANIM_SPEED": 9,
-			"PARAM_DAMPING": 5,
-			"PARAM_HUE_VARIATION": 8,
+			"PARAM_ANIM_OFFSET": 11,
+			"PARAM_ANIM_SPEED": 10,
+			"PARAM_DAMPING": 6,
+			"PARAM_HUE_VARIATION": 9,
 			"PARAM_INITIAL_LINEAR_VELOCITY": 0,
-			"PARAM_LINEAR_ACCEL": 2,
-			"PARAM_MAX": 11,
-			"PARAM_RADIAL_ACCEL": 3,
-			"PARAM_SCALE": 7,
-			"PARAM_TANGENTIAL_ACCEL": 4
+			"PARAM_LINEAR_ACCEL": 3,
+			"PARAM_MAX": 12,
+			"PARAM_ORBIT_VELOCITY": 2,
+			"PARAM_RADIAL_ACCEL": 4,
+			"PARAM_SCALE": 8,
+			"PARAM_TANGENTIAL_ACCEL": 5
 		},
 		"properties": [
 			{
@@ -30127,21 +30171,21 @@
 				"type": "float",
 				"getter": "get_param",
 				"setter": "set_param",
-				"index": 6
+				"index": 7
 			},
 			{
 				"name": "angle_curve",
 				"type": "Curve",
 				"getter": "get_param_curve",
 				"setter": "set_param_curve",
-				"index": 6
+				"index": 7
 			},
 			{
 				"name": "angle_random",
 				"type": "float",
 				"getter": "get_param_randomness",
 				"setter": "set_param_randomness",
-				"index": 6
+				"index": 7
 			},
 			{
 				"name": "angular_velocity",
@@ -30169,42 +30213,42 @@
 				"type": "float",
 				"getter": "get_param",
 				"setter": "set_param",
-				"index": 10
+				"index": 11
 			},
 			{
 				"name": "anim_offset_curve",
 				"type": "Curve",
 				"getter": "get_param_curve",
 				"setter": "set_param_curve",
-				"index": 10
+				"index": 11
 			},
 			{
 				"name": "anim_offset_random",
 				"type": "float",
 				"getter": "get_param_randomness",
 				"setter": "set_param_randomness",
-				"index": 10
+				"index": 11
 			},
 			{
 				"name": "anim_speed",
 				"type": "float",
 				"getter": "get_param",
 				"setter": "set_param",
-				"index": 9
+				"index": 10
 			},
 			{
 				"name": "anim_speed_curve",
 				"type": "Curve",
 				"getter": "get_param_curve",
 				"setter": "set_param_curve",
-				"index": 9
+				"index": 10
 			},
 			{
 				"name": "anim_speed_random",
 				"type": "float",
 				"getter": "get_param_randomness",
 				"setter": "set_param_randomness",
-				"index": 9
+				"index": 10
 			},
 			{
 				"name": "color",
@@ -30225,21 +30269,21 @@
 				"type": "float",
 				"getter": "get_param",
 				"setter": "set_param",
-				"index": 5
+				"index": 6
 			},
 			{
 				"name": "damping_curve",
 				"type": "Curve",
 				"getter": "get_param_curve",
 				"setter": "set_param_curve",
-				"index": 5
+				"index": 6
 			},
 			{
 				"name": "damping_random",
 				"type": "float",
 				"getter": "get_param_randomness",
 				"setter": "set_param_randomness",
-				"index": 5
+				"index": 6
 			},
 			{
 				"name": "draw_order",
@@ -30358,21 +30402,21 @@
 				"type": "float",
 				"getter": "get_param",
 				"setter": "set_param",
-				"index": 8
+				"index": 9
 			},
 			{
 				"name": "hue_variation_curve",
 				"type": "Curve",
 				"getter": "get_param_curve",
 				"setter": "set_param_curve",
-				"index": 8
+				"index": 9
 			},
 			{
 				"name": "hue_variation_random",
 				"type": "float",
 				"getter": "get_param_randomness",
 				"setter": "set_param_randomness",
-				"index": 8
+				"index": 9
 			},
 			{
 				"name": "initial_velocity",
@@ -30400,21 +30444,21 @@
 				"type": "float",
 				"getter": "get_param",
 				"setter": "set_param",
-				"index": 2
+				"index": 3
 			},
 			{
 				"name": "linear_accel_curve",
 				"type": "Curve",
 				"getter": "get_param_curve",
 				"setter": "set_param_curve",
-				"index": 2
+				"index": 3
 			},
 			{
 				"name": "linear_accel_random",
 				"type": "float",
 				"getter": "get_param_randomness",
 				"setter": "set_param_randomness",
-				"index": 2
+				"index": 3
 			},
 			{
 				"name": "local_coords",
@@ -30438,6 +30482,27 @@
 				"index": -1
 			},
 			{
+				"name": "orbit_velocity",
+				"type": "float",
+				"getter": "get_param",
+				"setter": "set_param",
+				"index": 2
+			},
+			{
+				"name": "orbit_velocity_curve",
+				"type": "Curve",
+				"getter": "get_param_curve",
+				"setter": "set_param_curve",
+				"index": 2
+			},
+			{
+				"name": "orbit_velocity_random",
+				"type": "float",
+				"getter": "get_param_randomness",
+				"setter": "set_param_randomness",
+				"index": 2
+			},
+			{
 				"name": "preprocess",
 				"type": "float",
 				"getter": "get_pre_process_time",
@@ -30449,21 +30514,21 @@
 				"type": "float",
 				"getter": "get_param",
 				"setter": "set_param",
-				"index": 3
+				"index": 4
 			},
 			{
 				"name": "radial_accel_curve",
 				"type": "Curve",
 				"getter": "get_param_curve",
 				"setter": "set_param_curve",
-				"index": 3
+				"index": 4
 			},
 			{
 				"name": "radial_accel_random",
 				"type": "float",
 				"getter": "get_param_randomness",
 				"setter": "set_param_randomness",
-				"index": 3
+				"index": 4
 			},
 			{
 				"name": "randomness",
@@ -30477,21 +30542,21 @@
 				"type": "float",
 				"getter": "get_param",
 				"setter": "set_param",
-				"index": 7
+				"index": 8
 			},
 			{
 				"name": "scale_amount_curve",
 				"type": "Curve",
 				"getter": "get_param_curve",
 				"setter": "set_param_curve",
-				"index": 7
+				"index": 8
 			},
 			{
 				"name": "scale_amount_random",
 				"type": "float",
 				"getter": "get_param_randomness",
 				"setter": "set_param_randomness",
-				"index": 7
+				"index": 8
 			},
 			{
 				"name": "speed_scale",
@@ -30512,21 +30577,21 @@
 				"type": "float",
 				"getter": "get_param",
 				"setter": "set_param",
-				"index": 4
+				"index": 5
 			},
 			{
 				"name": "tangential_accel_curve",
 				"type": "Curve",
 				"getter": "get_param_curve",
 				"setter": "set_param_curve",
-				"index": 4
+				"index": 5
 			},
 			{
 				"name": "tangential_accel_random",
 				"type": "float",
 				"getter": "get_param_randomness",
 				"setter": "set_param_randomness",
-				"index": 4
+				"index": 5
 			}
 		],
 		"signals": [
@@ -31528,6 +31593,7 @@
 				"values": {
 					"FLAG_ALIGN_Y_TO_VELOCITY": 0,
 					"FLAG_ROTATE_Y": 1,
+					"FLAG_DISABLE_Z": 2,
 					"FLAG_MAX": 3
 				}
 			},
@@ -31546,16 +31612,17 @@
 				"values": {
 					"PARAM_INITIAL_LINEAR_VELOCITY": 0,
 					"PARAM_ANGULAR_VELOCITY": 1,
-					"PARAM_LINEAR_ACCEL": 2,
-					"PARAM_RADIAL_ACCEL": 3,
-					"PARAM_TANGENTIAL_ACCEL": 4,
-					"PARAM_DAMPING": 5,
-					"PARAM_ANGLE": 6,
-					"PARAM_SCALE": 7,
-					"PARAM_HUE_VARIATION": 8,
-					"PARAM_ANIM_SPEED": 9,
-					"PARAM_ANIM_OFFSET": 10,
-					"PARAM_MAX": 11
+					"PARAM_ORBIT_VELOCITY": 2,
+					"PARAM_LINEAR_ACCEL": 3,
+					"PARAM_RADIAL_ACCEL": 4,
+					"PARAM_TANGENTIAL_ACCEL": 5,
+					"PARAM_DAMPING": 6,
+					"PARAM_ANGLE": 7,
+					"PARAM_SCALE": 8,
+					"PARAM_HUE_VARIATION": 9,
+					"PARAM_ANIM_SPEED": 10,
+					"PARAM_ANIM_OFFSET": 11,
+					"PARAM_MAX": 12
 				}
 			},
 			{
@@ -31584,7 +31651,9 @@
 			"EMISSION_SHAPE_POINTS": 3,
 			"EMISSION_SHAPE_RECTANGLE": 2,
 			"FLAG_ALIGN_Y_TO_VELOCITY": 0,
-			"FLAG_MAX": 1,
+			"FLAG_DISABLE_Z": 2,
+			"FLAG_MAX": 3,
+			"FLAG_ROTATE_Y": 1,
 			"PARAM_ANGLE": 7,
 			"PARAM_ANGULAR_VELOCITY": 1,
 			"PARAM_ANIM_OFFSET": 11,
@@ -31907,6 +31976,27 @@
 				"getter": "get_one_shot",
 				"setter": "set_one_shot",
 				"index": -1
+			},
+			{
+				"name": "orbit_velocity",
+				"type": "float",
+				"getter": "get_param",
+				"setter": "set_param",
+				"index": 2
+			},
+			{
+				"name": "orbit_velocity_curve",
+				"type": "Curve",
+				"getter": "get_param_curve",
+				"setter": "set_param_curve",
+				"index": 2
+			},
+			{
+				"name": "orbit_velocity_random",
+				"type": "float",
+				"getter": "get_param_randomness",
+				"setter": "set_param_randomness",
+				"index": 2
 			},
 			{
 				"name": "preprocess",
@@ -33037,7 +33127,9 @@
 				"name": "Flags",
 				"values": {
 					"FLAG_ALIGN_Y_TO_VELOCITY": 0,
-					"FLAG_MAX": 1
+					"FLAG_ROTATE_Y": 1,
+					"FLAG_DISABLE_Z": 2,
+					"FLAG_MAX": 3
 				}
 			},
 			{
@@ -35274,6 +35366,19 @@
 				]
 			},
 			{
+				"name": "get_camera_rid",
+				"return_type": "RID",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_camera_transform",
 				"return_type": "Transform",
 				"is_editor": false,
@@ -35554,6 +35659,12 @@
 						"type": "Vector2",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "z_depth",
+						"type": "float",
+						"has_default_value": true,
+						"default_value": "0"
 					}
 				]
 			},
@@ -40093,6 +40204,19 @@
 				]
 			},
 			{
+				"name": "get_clip_offset",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_collision_mask",
 				"return_type": "int",
 				"is_editor": false,
@@ -43746,7 +43870,7 @@
 				"name": "rect_global_position",
 				"type": "Vector2",
 				"getter": "get_global_position",
-				"setter": "set_global_position",
+				"setter": "_set_global_position",
 				"index": -1
 			},
 			{
@@ -43767,7 +43891,7 @@
 				"name": "rect_position",
 				"type": "Vector2",
 				"getter": "get_position",
-				"setter": "set_position",
+				"setter": "_set_position",
 				"index": -1
 			},
 			{
@@ -43788,7 +43912,7 @@
 				"name": "rect_size",
 				"type": "Vector2",
 				"getter": "get_size",
-				"setter": "set_size",
+				"setter": "_set_size",
 				"index": -1
 			},
 			{
@@ -43983,6 +44107,63 @@
 					{
 						"name": "anchor",
 						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_set_global_position",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "position",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_set_position",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "margin",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_set_size",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "size",
+						"type": "Vector2",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -45327,7 +45508,7 @@
 						"default_value": ""
 					},
 					{
-						"name": "keep_margin",
+						"name": "keep_margins",
 						"type": "bool",
 						"has_default_value": true,
 						"default_value": "False"
@@ -45565,6 +45746,12 @@
 						"type": "Vector2",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "keep_margins",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -45716,6 +45903,12 @@
 						"type": "Vector2",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "keep_margins",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -45792,6 +45985,12 @@
 						"type": "Vector2",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "keep_margins",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -49641,6 +49840,19 @@
 				]
 			},
 			{
+				"name": "_export_end",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "_export_file",
 				"return_type": "void",
 				"is_editor": false,
@@ -50305,6 +50517,19 @@
 				]
 			},
 			{
+				"name": "_favorite_pressed",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "_favorite_selected",
 				"return_type": "void",
 				"is_editor": false,
@@ -50318,25 +50543,6 @@
 					{
 						"name": "arg0",
 						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "_favorite_toggled",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": true,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "arg0",
-						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -52811,6 +53017,68 @@
 		]
 	},
 	{
+		"name": "EditorNavigationMeshGenerator",
+		"base_class": "Object",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": false,
+		"constants": {
+		},
+		"properties": [
+		],
+		"signals": [
+		],
+		"methods": [
+			{
+				"name": "bake",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "nav_mesh",
+						"type": "NavigationMesh",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "root_node",
+						"type": "Node",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "clear",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "nav_mesh",
+						"type": "NavigationMesh",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"enums": [
+		]
+	},
+	{
 		"name": "EditorPlugin",
 		"base_class": "Node",
 		"api_type": "tools",
@@ -52822,6 +53090,8 @@
 			"CONTAINER_CANVAS_EDITOR_MENU": 5,
 			"CONTAINER_CANVAS_EDITOR_SIDE_LEFT": 6,
 			"CONTAINER_CANVAS_EDITOR_SIDE_RIGHT": 7,
+			"CONTAINER_PROJECT_SETTING_TAB_LEFT": 10,
+			"CONTAINER_PROJECT_SETTING_TAB_RIGHT": 11,
 			"CONTAINER_PROPERTY_EDITOR_BOTTOM": 9,
 			"CONTAINER_SPATIAL_EDITOR_BOTTOM": 4,
 			"CONTAINER_SPATIAL_EDITOR_MENU": 1,
@@ -53882,7 +54152,9 @@
 					"CONTAINER_CANVAS_EDITOR_SIDE_LEFT": 6,
 					"CONTAINER_CANVAS_EDITOR_SIDE_RIGHT": 7,
 					"CONTAINER_CANVAS_EDITOR_BOTTOM": 8,
-					"CONTAINER_PROPERTY_EDITOR_BOTTOM": 9
+					"CONTAINER_PROPERTY_EDITOR_BOTTOM": 9,
+					"CONTAINER_PROJECT_SETTING_TAB_LEFT": 10,
+					"CONTAINER_PROJECT_SETTING_TAB_RIGHT": 11
 				}
 			}
 		]
@@ -54692,6 +54964,19 @@
 		],
 		"methods": [
 			{
+				"name": "can_generate_small_preview",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "generate",
 				"return_type": "Texture",
 				"is_editor": false,
@@ -54739,6 +55024,19 @@
 						"has_default_value": false,
 						"default_value": ""
 					}
+				]
+			},
+			{
+				"name": "generate_small_preview_automatically",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
 				]
 			},
 			{
@@ -60699,6 +60997,19 @@
 				]
 			},
 			{
+				"name": "is_valid",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "set_function",
 				"return_type": "void",
 				"is_editor": false,
@@ -63519,6 +63830,25 @@
 					{
 						"name": "shadow_casting_setting",
 						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_custom_aabb",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "aabb",
+						"type": "AABB",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -68329,6 +68659,7 @@
 			"FORMAT_RH": 12,
 			"INTERPOLATE_BILINEAR": 1,
 			"INTERPOLATE_CUBIC": 2,
+			"INTERPOLATE_LANCZOS": 4,
 			"INTERPOLATE_NEAREST": 0,
 			"INTERPOLATE_TRILINEAR": 3,
 			"MAX_HEIGHT": 16384,
@@ -69364,7 +69695,8 @@
 					"INTERPOLATE_NEAREST": 0,
 					"INTERPOLATE_BILINEAR": 1,
 					"INTERPOLATE_CUBIC": 2,
-					"INTERPOLATE_TRILINEAR": 3
+					"INTERPOLATE_TRILINEAR": 3,
+					"INTERPOLATE_LANCZOS": 4
 				}
 			},
 			{
@@ -71033,6 +71365,13 @@
 				"getter": "is_pressed",
 				"setter": "set_pressed",
 				"index": -1
+			},
+			{
+				"name": "strength",
+				"type": "float",
+				"getter": "get_strength",
+				"setter": "set_strength",
+				"index": -1
 			}
 		],
 		"signals": [
@@ -71041,6 +71380,19 @@
 			{
 				"name": "get_action",
 				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_strength",
+				"return_type": "float",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -71084,6 +71436,25 @@
 					{
 						"name": "pressed",
 						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_strength",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "strength",
+						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -81182,6 +81553,31 @@
 						"default_value": ""
 					}
 				]
+			},
+			{
+				"name": "surface_set_material",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "surf_idx",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "material",
+						"type": "Material",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
 			}
 		],
 		"enums": [
@@ -82280,6 +82676,11 @@
 			}
 		],
 		"signals": [
+			{
+				"name": "texture_changed",
+				"arguments": [
+				]
+			}
 		],
 		"methods": [
 			{
@@ -83247,6 +83648,13 @@
 				"index": -1
 			},
 			{
+				"name": "transform_2d_array",
+				"type": "PoolVector2Array",
+				"getter": "_get_transform_2d_array",
+				"setter": "_set_transform_2d_array",
+				"index": -1
+			},
+			{
 				"name": "transform_array",
 				"type": "PoolVector3Array",
 				"getter": "_get_transform_array",
@@ -83287,6 +83695,19 @@
 			{
 				"name": "_get_custom_data_array",
 				"return_type": "PoolColorArray",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "_get_transform_2d_array",
+				"return_type": "PoolVector2Array",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -83343,6 +83764,25 @@
 					{
 						"name": "arg0",
 						"type": "PoolColorArray",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_set_transform_2d_array",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "arg0",
+						"type": "PoolVector2Array",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -83532,6 +83972,25 @@
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
+				]
+			},
+			{
+				"name": "set_as_bulk_array",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "array",
+						"type": "PoolRealArray",
+						"has_default_value": false,
+						"default_value": ""
+					}
 				]
 			},
 			{
@@ -83823,6 +84282,146 @@
 					{
 						"name": "multimesh",
 						"type": "MultiMesh",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"enums": [
+		]
+	},
+	{
+		"name": "MultiMeshInstance2D",
+		"base_class": "Node2D",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": false,
+		"constants": {
+		},
+		"properties": [
+			{
+				"name": "multimesh",
+				"type": "MultiMesh",
+				"getter": "get_multimesh",
+				"setter": "set_multimesh",
+				"index": -1
+			},
+			{
+				"name": "normal_map",
+				"type": "Texture",
+				"getter": "get_normal_map",
+				"setter": "set_normal_map",
+				"index": -1
+			},
+			{
+				"name": "texture",
+				"type": "Texture",
+				"getter": "get_texture",
+				"setter": "set_texture",
+				"index": -1
+			}
+		],
+		"signals": [
+			{
+				"name": "texture_changed",
+				"arguments": [
+				]
+			}
+		],
+		"methods": [
+			{
+				"name": "get_multimesh",
+				"return_type": "MultiMesh",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_normal_map",
+				"return_type": "Texture",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_texture",
+				"return_type": "Texture",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "set_multimesh",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "multimesh",
+						"type": "MultiMesh",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_normal_map",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "normal_map",
+						"type": "Texture",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_texture",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "texture",
+						"type": "Texture",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -84954,6 +85553,9 @@
 		"instanciable": true,
 		"is_reference": true,
 		"constants": {
+			"PARSED_GEOMETRY_BOTH": 2,
+			"PARSED_GEOMETRY_MESH_INSTANCES": 0,
+			"PARSED_GEOMETRY_STATIC_COLLIDERS": 1,
 			"SAMPLE_PARTITION_LAYERS": 2,
 			"SAMPLE_PARTITION_MONOTONE": 1,
 			"SAMPLE_PARTITION_WATERSHED": 0
@@ -85048,6 +85650,20 @@
 				"type": "bool",
 				"getter": "get_filter_low_hanging_obstacles",
 				"setter": "set_filter_low_hanging_obstacles",
+				"index": -1
+			},
+			{
+				"name": "geometry/collision_mask",
+				"type": "int",
+				"getter": "get_collision_mask",
+				"setter": "set_collision_mask",
+				"index": -1
+			},
+			{
+				"name": "geometry/parsed_geometry_type",
+				"type": "int",
+				"getter": "get_parsed_geometry_type",
+				"setter": "set_parsed_geometry_type",
 				"index": -1
 			},
 			{
@@ -85258,6 +85874,38 @@
 				]
 			},
 			{
+				"name": "get_collision_mask",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_collision_mask_bit",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "bit",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "get_detail_sample_distance",
 				"return_type": "float",
 				"is_editor": false,
@@ -85338,6 +85986,19 @@
 			{
 				"name": "get_filter_walkable_low_height_spans",
 				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_parsed_geometry_type",
+				"return_type": "int",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -85560,6 +86221,50 @@
 				]
 			},
 			{
+				"name": "set_collision_mask",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "mask",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_collision_mask_bit",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "bit",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "value",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "set_detail_sample_distance",
 				"return_type": "void",
 				"is_editor": false,
@@ -85687,6 +86392,25 @@
 					{
 						"name": "filter_walkable_low_height_spans",
 						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_parsed_geometry_type",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "geometry_type",
+						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -85913,7 +86637,7 @@
 			},
 			{
 				"name": "vertices",
-				"type": "PoolVector3Array",
+				"type": "PoolVector2Array",
 				"getter": "get_vertices",
 				"setter": "set_vertices",
 				"index": -1
@@ -90173,6 +90897,19 @@
 				]
 			},
 			{
+				"name": "_to_string",
+				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "add_user_signal",
 				"return_type": "void",
 				"is_editor": false,
@@ -90904,6 +91641,19 @@
 						"has_default_value": false,
 						"default_value": ""
 					}
+				]
+			},
+			{
+				"name": "to_string",
+				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
 				]
 			},
 			{
@@ -91649,7 +92399,7 @@
 				"name": "item_focused",
 				"arguments": [
 					{
-						"name": "ID",
+						"name": "id",
 						"type": "int",
 						"default_value": ""
 					}
@@ -91659,7 +92409,7 @@
 				"name": "item_selected",
 				"arguments": [
 					{
-						"name": "ID",
+						"name": "id",
 						"type": "int",
 						"default_value": ""
 					}
@@ -95047,6 +95797,7 @@
 			"EMISSION_SHAPE_POINTS": 3,
 			"EMISSION_SHAPE_SPHERE": 1,
 			"FLAG_ALIGN_Y_TO_VELOCITY": 0,
+			"FLAG_DISABLE_Z": 2,
 			"FLAG_MAX": 3,
 			"FLAG_ROTATE_Y": 1,
 			"PARAM_ANGLE": 7,
@@ -96102,6 +96853,7 @@
 				"values": {
 					"FLAG_ALIGN_Y_TO_VELOCITY": 0,
 					"FLAG_ROTATE_Y": 1,
+					"FLAG_DISABLE_Z": 2,
 					"FLAG_MAX": 3
 				}
 			},
@@ -108450,6 +109202,31 @@
 				]
 			},
 			{
+				"name": "popup_centered_clamped",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "size",
+						"type": "Vector2",
+						"has_default_value": true,
+						"default_value": "(0, 0)"
+					},
+					{
+						"name": "fallback_ratio",
+						"type": "float",
+						"has_default_value": true,
+						"default_value": "0.75"
+					}
+				]
+			},
+			{
 				"name": "popup_centered_minsize",
 				"return_type": "void",
 				"is_editor": false,
@@ -108539,6 +109316,13 @@
 		},
 		"properties": [
 			{
+				"name": "allow_search",
+				"type": "bool",
+				"getter": "get_allow_search",
+				"setter": "set_allow_search",
+				"index": -1
+			},
+			{
 				"name": "hide_on_checkable_item_selection",
 				"type": "bool",
 				"getter": "is_hide_on_checkable_item_selection",
@@ -108579,7 +109363,7 @@
 				"name": "id_focused",
 				"arguments": [
 					{
-						"name": "ID",
+						"name": "id",
 						"type": "int",
 						"default_value": ""
 					}
@@ -108589,7 +109373,7 @@
 				"name": "id_pressed",
 				"arguments": [
 					{
-						"name": "ID",
+						"name": "id",
 						"type": "int",
 						"default_value": ""
 					}
@@ -109069,6 +109853,19 @@
 				]
 			},
 			{
+				"name": "get_allow_search",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_item_accelerator",
 				"return_type": "int",
 				"is_editor": false,
@@ -109445,6 +110242,25 @@
 					{
 						"name": "idx",
 						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_allow_search",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "allow",
+						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -109996,10 +110812,49 @@
 		"constants": {
 		},
 		"properties": [
+			{
+				"name": "gizmo_extents",
+				"type": "float",
+				"getter": "_get_gizmo_extents",
+				"setter": "_set_gizmo_extents",
+				"index": -1
+			}
 		],
 		"signals": [
 		],
 		"methods": [
+			{
+				"name": "_get_gizmo_extents",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "_set_gizmo_extents",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "extents",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
 		],
 		"enums": [
 		]
@@ -120068,6 +120923,16 @@
 				]
 			},
 			{
+				"name": "node_renamed",
+				"arguments": [
+					{
+						"name": "node",
+						"type": "Node",
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "physics_frame",
 				"arguments": [
 				]
@@ -127367,12 +128232,13 @@
 			"FLAG_EMISSION_ON_UV2": 12,
 			"FLAG_ENSURE_CORRECT_NORMALS": 16,
 			"FLAG_FIXED_SIZE": 6,
-			"FLAG_MAX": 18,
+			"FLAG_MAX": 19,
 			"FLAG_SRGB_VERTEX_COLOR": 4,
 			"FLAG_TRIPLANAR_USE_WORLD": 10,
 			"FLAG_UNSHADED": 0,
 			"FLAG_USE_ALPHA_SCISSOR": 13,
 			"FLAG_USE_POINT_SIZE": 5,
+			"FLAG_USE_SHADOW_TO_OPACITY": 18,
 			"FLAG_USE_VERTEX_LIGHTING": 1,
 			"FLAG_UV1_USE_TRIPLANAR": 8,
 			"FLAG_UV2_USE_TRIPLANAR": 9,
@@ -127726,6 +128592,13 @@
 				"getter": "get_flag",
 				"setter": "set_flag",
 				"index": 5
+			},
+			{
+				"name": "flags_use_shadow_to_opacity",
+				"type": "bool",
+				"getter": "get_flag",
+				"setter": "set_flag",
+				"index": 18
 			},
 			{
 				"name": "flags_vertex_lighting",
@@ -130037,7 +130910,8 @@
 					"FLAG_DONT_RECEIVE_SHADOWS": 15,
 					"FLAG_ENSURE_CORRECT_NORMALS": 16,
 					"FLAG_DISABLE_AMBIENT_LIGHT": 17,
-					"FLAG_MAX": 18
+					"FLAG_USE_SHADOW_TO_OPACITY": 18,
+					"FLAG_MAX": 19
 				}
 			},
 			{
@@ -136602,6 +137476,19 @@
 				]
 			},
 			{
+				"name": "commit_to_arrays",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "create_from",
 				"return_type": "void",
 				"is_editor": false,
@@ -136621,6 +137508,37 @@
 					{
 						"name": "surface",
 						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "create_from_blend_shape",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "existing",
+						"type": "Mesh",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "surface",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "blend_shape",
+						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -138048,6 +138966,13 @@
 				"index": -1
 			},
 			{
+				"name": "draw_spaces",
+				"type": "bool",
+				"getter": "is_drawing_spaces",
+				"setter": "set_draw_spaces",
+				"index": -1
+			},
+			{
 				"name": "draw_tabs",
 				"type": "bool",
 				"getter": "is_drawing_tabs",
@@ -138952,6 +139877,19 @@
 				]
 			},
 			{
+				"name": "is_drawing_spaces",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "is_drawing_tabs",
 				"return_type": "bool",
 				"is_editor": false,
@@ -138985,7 +139923,7 @@
 			},
 			{
 				"name": "is_hiding_enabled",
-				"return_type": "int",
+				"return_type": "bool",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -139348,6 +140286,25 @@
 				]
 			},
 			{
+				"name": "set_draw_spaces",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "arg0",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "set_draw_tabs",
 				"return_type": "void",
 				"is_editor": false,
@@ -139379,7 +140336,7 @@
 				"arguments": [
 					{
 						"name": "enable",
-						"type": "int",
+						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -143532,6 +144489,37 @@
 		],
 		"methods": [
 			{
+				"name": "_forward_atlas_subtile_selection",
+				"return_type": "Vector2",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "atlastile_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "tilemap",
+						"type": "Object",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "tile_location",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "_forward_subtile_selection",
 				"return_type": "Vector2",
 				"is_editor": false,
@@ -146353,6 +147341,16 @@
 				]
 			},
 			{
+				"name": "empty_rmb",
+				"arguments": [
+					{
+						"name": "position",
+						"type": "Vector2",
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "empty_tree_rmb_selected",
 				"arguments": [
 					{
@@ -147600,6 +148598,12 @@
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
+					{
+						"name": "wrap",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
+					}
 				]
 			},
 			{
@@ -147639,6 +148643,12 @@
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
+					{
+						"name": "wrap",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
+					}
 				]
 			},
 			{
@@ -151056,6 +152066,19 @@
 				]
 			},
 			{
+				"name": "get_rpm",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_skidinfo",
 				"return_type": "float",
 				"is_editor": false,
@@ -152190,6 +153213,13 @@
 				"index": -1
 			},
 			{
+				"name": "render_direct_to_screen",
+				"type": "bool",
+				"getter": "is_using_render_direct_to_screen",
+				"setter": "set_use_render_direct_to_screen",
+				"index": -1
+			},
+			{
 				"name": "render_target_clear_mode",
 				"type": "int",
 				"getter": "get_clear_mode",
@@ -152963,6 +153993,19 @@
 				]
 			},
 			{
+				"name": "is_using_render_direct_to_screen",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "set_as_audio_listener",
 				"return_type": "void",
 				"is_editor": false,
@@ -153451,6 +154494,25 @@
 			},
 			{
 				"name": "set_use_own_world",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "enable",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_use_render_direct_to_screen",
 				"return_type": "void",
 				"is_editor": false,
 				"is_noscript": false,
@@ -155786,27 +156848,27 @@
 		"instanciable": true,
 		"is_reference": true,
 		"constants": {
-			"BYTES_TO_VAR": 61,
-			"COLORN": 62,
-			"FUNC_FUNCREF": 49,
-			"FUNC_MAX": 64,
-			"LOGIC_CLAMP": 46,
-			"LOGIC_MAX": 44,
-			"LOGIC_MIN": 45,
-			"LOGIC_NEAREST_PO2": 47,
+			"BYTES_TO_VAR": 62,
+			"COLORN": 63,
+			"FUNC_FUNCREF": 50,
+			"FUNC_MAX": 65,
+			"LOGIC_CLAMP": 47,
+			"LOGIC_MAX": 45,
+			"LOGIC_MIN": 46,
+			"LOGIC_NEAREST_PO2": 48,
 			"MATH_ABS": 16,
 			"MATH_ACOS": 7,
 			"MATH_ASIN": 6,
 			"MATH_ATAN": 8,
 			"MATH_ATAN2": 9,
-			"MATH_CARTESIAN2POLAR": 41,
+			"MATH_CARTESIAN2POLAR": 42,
 			"MATH_CEIL": 14,
 			"MATH_COS": 1,
 			"MATH_COSH": 4,
-			"MATH_DB2LINEAR": 39,
+			"MATH_DB2LINEAR": 40,
 			"MATH_DECIMALS": 24,
-			"MATH_DECTIME": 29,
-			"MATH_DEG2RAD": 36,
+			"MATH_DECTIME": 30,
+			"MATH_DEG2RAD": 37,
 			"MATH_EASE": 23,
 			"MATH_EXP": 20,
 			"MATH_FLOOR": 13,
@@ -155816,41 +156878,42 @@
 			"MATH_ISINF": 22,
 			"MATH_ISNAN": 21,
 			"MATH_LERP": 26,
-			"MATH_LINEAR2DB": 38,
+			"MATH_LINEAR2DB": 39,
 			"MATH_LOG": 19,
-			"MATH_POLAR2CARTESIAN": 40,
+			"MATH_MOVE_TOWARD": 29,
+			"MATH_POLAR2CARTESIAN": 41,
 			"MATH_POW": 18,
-			"MATH_RAD2DEG": 37,
-			"MATH_RAND": 31,
-			"MATH_RANDF": 32,
-			"MATH_RANDOM": 33,
-			"MATH_RANDOMIZE": 30,
-			"MATH_RANDSEED": 35,
+			"MATH_RAD2DEG": 38,
+			"MATH_RAND": 32,
+			"MATH_RANDF": 33,
+			"MATH_RANDOM": 34,
+			"MATH_RANDOMIZE": 31,
+			"MATH_RANDSEED": 36,
 			"MATH_RANGE_LERP": 28,
 			"MATH_ROUND": 15,
-			"MATH_SEED": 34,
+			"MATH_SEED": 35,
 			"MATH_SIGN": 17,
 			"MATH_SIN": 0,
 			"MATH_SINH": 3,
-			"MATH_SMOOTHSTEP": 63,
+			"MATH_SMOOTHSTEP": 64,
 			"MATH_SQRT": 10,
 			"MATH_STEPIFY": 25,
 			"MATH_TAN": 2,
 			"MATH_TANH": 5,
-			"MATH_WRAP": 42,
-			"MATH_WRAPF": 43,
-			"OBJ_WEAKREF": 48,
-			"STR_TO_VAR": 59,
-			"TEXT_CHAR": 53,
-			"TEXT_PRINT": 55,
-			"TEXT_PRINTERR": 56,
-			"TEXT_PRINTRAW": 57,
-			"TEXT_STR": 54,
-			"TYPE_CONVERT": 50,
-			"TYPE_EXISTS": 52,
-			"TYPE_OF": 51,
-			"VAR_TO_BYTES": 60,
-			"VAR_TO_STR": 58
+			"MATH_WRAP": 43,
+			"MATH_WRAPF": 44,
+			"OBJ_WEAKREF": 49,
+			"STR_TO_VAR": 60,
+			"TEXT_CHAR": 54,
+			"TEXT_PRINT": 56,
+			"TEXT_PRINTERR": 57,
+			"TEXT_PRINTRAW": 58,
+			"TEXT_STR": 55,
+			"TYPE_CONVERT": 51,
+			"TYPE_EXISTS": 53,
+			"TYPE_OF": 52,
+			"VAR_TO_BYTES": 61,
+			"VAR_TO_STR": 59
 		},
 		"properties": [
 			{
@@ -155930,42 +156993,43 @@
 					"MATH_LERP": 26,
 					"MATH_INVERSE_LERP": 27,
 					"MATH_RANGE_LERP": 28,
-					"MATH_DECTIME": 29,
-					"MATH_RANDOMIZE": 30,
-					"MATH_RAND": 31,
-					"MATH_RANDF": 32,
-					"MATH_RANDOM": 33,
-					"MATH_SEED": 34,
-					"MATH_RANDSEED": 35,
-					"MATH_DEG2RAD": 36,
-					"MATH_RAD2DEG": 37,
-					"MATH_LINEAR2DB": 38,
-					"MATH_DB2LINEAR": 39,
-					"MATH_POLAR2CARTESIAN": 40,
-					"MATH_CARTESIAN2POLAR": 41,
-					"MATH_WRAP": 42,
-					"MATH_WRAPF": 43,
-					"LOGIC_MAX": 44,
-					"LOGIC_MIN": 45,
-					"LOGIC_CLAMP": 46,
-					"LOGIC_NEAREST_PO2": 47,
-					"OBJ_WEAKREF": 48,
-					"FUNC_FUNCREF": 49,
-					"TYPE_CONVERT": 50,
-					"TYPE_OF": 51,
-					"TYPE_EXISTS": 52,
-					"TEXT_CHAR": 53,
-					"TEXT_STR": 54,
-					"TEXT_PRINT": 55,
-					"TEXT_PRINTERR": 56,
-					"TEXT_PRINTRAW": 57,
-					"VAR_TO_STR": 58,
-					"STR_TO_VAR": 59,
-					"VAR_TO_BYTES": 60,
-					"BYTES_TO_VAR": 61,
-					"COLORN": 62,
-					"MATH_SMOOTHSTEP": 63,
-					"FUNC_MAX": 64
+					"MATH_MOVE_TOWARD": 29,
+					"MATH_DECTIME": 30,
+					"MATH_RANDOMIZE": 31,
+					"MATH_RAND": 32,
+					"MATH_RANDF": 33,
+					"MATH_RANDOM": 34,
+					"MATH_SEED": 35,
+					"MATH_RANDSEED": 36,
+					"MATH_DEG2RAD": 37,
+					"MATH_RAD2DEG": 38,
+					"MATH_LINEAR2DB": 39,
+					"MATH_DB2LINEAR": 40,
+					"MATH_POLAR2CARTESIAN": 41,
+					"MATH_CARTESIAN2POLAR": 42,
+					"MATH_WRAP": 43,
+					"MATH_WRAPF": 44,
+					"LOGIC_MAX": 45,
+					"LOGIC_MIN": 46,
+					"LOGIC_CLAMP": 47,
+					"LOGIC_NEAREST_PO2": 48,
+					"OBJ_WEAKREF": 49,
+					"FUNC_FUNCREF": 50,
+					"TYPE_CONVERT": 51,
+					"TYPE_OF": 52,
+					"TYPE_EXISTS": 53,
+					"TEXT_CHAR": 54,
+					"TEXT_STR": 55,
+					"TEXT_PRINT": 56,
+					"TEXT_PRINTERR": 57,
+					"TEXT_PRINTRAW": 58,
+					"VAR_TO_STR": 59,
+					"STR_TO_VAR": 60,
+					"VAR_TO_BYTES": 61,
+					"BYTES_TO_VAR": 62,
+					"COLORN": 63,
+					"MATH_SMOOTHSTEP": 64,
+					"FUNC_MAX": 65
 				}
 			}
 		]
@@ -169338,6 +170402,31 @@
 				]
 			},
 			{
+				"name": "viewport_set_render_direct_to_screen",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "viewport",
+						"type": "RID",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "enabled",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "viewport_set_scenario",
 				"return_type": "void",
 				"is_editor": false,
@@ -170190,6 +171279,49 @@
 				]
 			},
 			{
+				"name": "connect_nodes_forced",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "type",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "from_node",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "from_port",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "to_node",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "to_port",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "disconnect_nodes",
 				"return_type": "void",
 				"is_editor": false,
@@ -170393,6 +171525,19 @@
 						"has_default_value": false,
 						"default_value": ""
 					}
+				]
+			},
+			{
+				"name": "rebuild",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
 				]
 			},
 			{
@@ -171105,6 +172250,76 @@
 		]
 	},
 	{
+		"name": "VisualShaderNodeExpression",
+		"base_class": "VisualShaderNodeGroupBase",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+		},
+		"properties": [
+			{
+				"name": "expression",
+				"type": "String",
+				"getter": "get_expression",
+				"setter": "set_expression",
+				"index": -1
+			}
+		],
+		"signals": [
+		],
+		"methods": [
+			{
+				"name": "build",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_expression",
+				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "set_expression",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "expression",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"enums": [
+		]
+	},
+	{
 		"name": "VisualShaderNodeFaceForward",
 		"base_class": "VisualShaderNode",
 		"api_type": "core",
@@ -171118,6 +172333,498 @@
 		"signals": [
 		],
 		"methods": [
+		],
+		"enums": [
+		]
+	},
+	{
+		"name": "VisualShaderNodeFresnel",
+		"base_class": "VisualShaderNode",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+		},
+		"properties": [
+		],
+		"signals": [
+		],
+		"methods": [
+		],
+		"enums": [
+		]
+	},
+	{
+		"name": "VisualShaderNodeGroupBase",
+		"base_class": "VisualShaderNode",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+		},
+		"properties": [
+		],
+		"signals": [
+		],
+		"methods": [
+			{
+				"name": "add_input_port",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "type",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "name",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "add_output_port",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "type",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "name",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "clear_input_ports",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "clear_output_ports",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_control",
+				"return_type": "Control",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_free_input_port_id",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_free_output_port_id",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_input_port_count",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_inputs",
+				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_output_port_count",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_outputs",
+				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_size",
+				"return_type": "Vector2",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "has_input_port",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "has_output_port",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "remove_input_port",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "remove_output_port",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_control",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "control",
+						"type": "Control",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_input_port_name",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "arg0",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "arg1",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_input_port_type",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "arg0",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "arg1",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_inputs",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "inputs",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_output_port_name",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "arg0",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "arg1",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_output_port_type",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "arg0",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "arg1",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_outputs",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "outputs",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_size",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "size",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
 		],
 		"enums": [
 		]
@@ -171408,6 +173115,7 @@
 			"FUNC_LOG": 9,
 			"FUNC_LOG2": 26,
 			"FUNC_NEGATE": 19,
+			"FUNC_ONEMINUS": 31,
 			"FUNC_RADIANS": 27,
 			"FUNC_RECIPROCAL": 28,
 			"FUNC_ROUND": 15,
@@ -171500,7 +173208,8 @@
 					"FUNC_RADIANS": 27,
 					"FUNC_RECIPROCAL": 28,
 					"FUNC_ROUNDEVEN": 29,
-					"FUNC_TRUNC": 30
+					"FUNC_TRUNC": 30,
+					"FUNC_ONEMINUS": 31
 				}
 			}
 		]
@@ -172554,6 +174263,7 @@
 			"FUNC_LOG2": 23,
 			"FUNC_NEGATE": 2,
 			"FUNC_NORMALIZE": 0,
+			"FUNC_ONEMINUS": 34,
 			"FUNC_RADIANS": 24,
 			"FUNC_RECIPROCAL": 3,
 			"FUNC_RGB2HSV": 4,
@@ -172650,7 +174360,8 @@
 					"FUNC_SQRT": 30,
 					"FUNC_TAN": 31,
 					"FUNC_TANH": 32,
-					"FUNC_TRUNC": 33
+					"FUNC_TRUNC": 33,
+					"FUNC_ONEMINUS": 34
 				}
 			}
 		]
@@ -172881,19 +174592,17 @@
 		]
 	},
 	{
-		"name": "WebRTCPeer",
+		"name": "WebRTCDataChannel",
 		"base_class": "PacketPeer",
 		"api_type": "core",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
-			"STATE_CLOSED": 5,
-			"STATE_CONNECTED": 2,
-			"STATE_CONNECTING": 1,
-			"STATE_DISCONNECTED": 3,
-			"STATE_FAILED": 4,
-			"STATE_NEW": 0,
+			"STATE_CLOSED": 3,
+			"STATE_CLOSING": 2,
+			"STATE_CONNECTING": 0,
+			"STATE_OPEN": 1,
 			"WRITE_MODE_BINARY": 1,
 			"WRITE_MODE_TEXT": 0
 		},
@@ -172907,8 +174616,408 @@
 			}
 		],
 		"signals": [
+		],
+		"methods": [
 			{
-				"name": "new_ice_candidate",
+				"name": "close",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_id",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_label",
+				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_max_packet_life_time",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_max_retransmits",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_protocol",
+				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_ready_state",
+				"return_type": "enum.WebRTCDataChannel::ChannelState",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_write_mode",
+				"return_type": "enum.WebRTCDataChannel::WriteMode",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "is_negotiated",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "is_ordered",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "poll",
+				"return_type": "enum.Error",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "set_write_mode",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "write_mode",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "was_string_packet",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			}
+		],
+		"enums": [
+			{
+				"name": "WriteMode",
+				"values": {
+					"WRITE_MODE_TEXT": 0,
+					"WRITE_MODE_BINARY": 1
+				}
+			},
+			{
+				"name": "ChannelState",
+				"values": {
+					"STATE_CONNECTING": 0,
+					"STATE_OPEN": 1,
+					"STATE_CLOSING": 2,
+					"STATE_CLOSED": 3
+				}
+			}
+		]
+	},
+	{
+		"name": "WebRTCDataChannelGDNative",
+		"base_class": "WebRTCDataChannel",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+		},
+		"properties": [
+		],
+		"signals": [
+		],
+		"methods": [
+		],
+		"enums": [
+		]
+	},
+	{
+		"name": "WebRTCMultiplayer",
+		"base_class": "NetworkedMultiplayerPeer",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+		},
+		"properties": [
+		],
+		"signals": [
+		],
+		"methods": [
+			{
+				"name": "add_peer",
+				"return_type": "enum.Error",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "peer",
+						"type": "WebRTCPeerConnection",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "peer_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "unreliable_lifetime",
+						"type": "int",
+						"has_default_value": true,
+						"default_value": "1"
+					}
+				]
+			},
+			{
+				"name": "close",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_peer",
+				"return_type": "Dictionary",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "peer_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_peers",
+				"return_type": "Dictionary",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "has_peer",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "peer_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "initialize",
+				"return_type": "enum.Error",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "peer_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "server_compatibility",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
+					}
+				]
+			},
+			{
+				"name": "remove_peer",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "peer_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"enums": [
+		]
+	},
+	{
+		"name": "WebRTCPeerConnection",
+		"base_class": "Reference",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+			"STATE_CLOSED": 5,
+			"STATE_CONNECTED": 2,
+			"STATE_CONNECTING": 1,
+			"STATE_DISCONNECTED": 3,
+			"STATE_FAILED": 4,
+			"STATE_NEW": 0
+		},
+		"properties": [
+		],
+		"signals": [
+			{
+				"name": "data_channel_received",
+				"arguments": [
+					{
+						"name": "channel",
+						"type": "Object",
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "ice_candidate_created",
 				"arguments": [
 					{
 						"name": "media",
@@ -172928,7 +175037,7 @@
 				]
 			},
 			{
-				"name": "offer_created",
+				"name": "session_description_created",
 				"arguments": [
 					{
 						"name": "type",
@@ -172976,6 +175085,44 @@
 				]
 			},
 			{
+				"name": "close",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "create_data_channel",
+				"return_type": "WebRTCDataChannel",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "label",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "options",
+						"type": "Dictionary",
+						"has_default_value": true,
+						"default_value": "{}"
+					}
+				]
+			},
+			{
 				"name": "create_offer",
 				"return_type": "enum.Error",
 				"is_editor": false,
@@ -172990,7 +175137,7 @@
 			},
 			{
 				"name": "get_connection_state",
-				"return_type": "enum.WebRTCPeer::ConnectionState",
+				"return_type": "enum.WebRTCPeerConnection::ConnectionState",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -173002,16 +175149,22 @@
 				]
 			},
 			{
-				"name": "get_write_mode",
-				"return_type": "enum.WebRTCPeer::WriteMode",
+				"name": "initialize",
+				"return_type": "enum.Error",
 				"is_editor": false,
 				"is_noscript": false,
-				"is_const": true,
+				"is_const": false,
 				"is_reverse": false,
 				"is_virtual": false,
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
+					{
+						"name": "configuration",
+						"type": "Dictionary",
+						"has_default_value": true,
+						"default_value": "{}"
+					}
 				]
 			},
 			{
@@ -173076,48 +175229,9 @@
 						"default_value": ""
 					}
 				]
-			},
-			{
-				"name": "set_write_mode",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "write_mode",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "was_string_packet",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
 			}
 		],
 		"enums": [
-			{
-				"name": "WriteMode",
-				"values": {
-					"WRITE_MODE_TEXT": 0,
-					"WRITE_MODE_BINARY": 1
-				}
-			},
 			{
 				"name": "ConnectionState",
 				"values": {
@@ -173132,8 +175246,8 @@
 		]
 	},
 	{
-		"name": "WebRTCPeerGDNative",
-		"base_class": "WebRTCPeer",
+		"name": "WebRTCPeerConnectionGDNative",
+		"base_class": "WebRTCPeerConnection",
 		"api_type": "core",
 		"singleton": false,
 		"instanciable": true,
@@ -176574,6 +178688,18 @@
 		"instanciable": false,
 		"is_reference": false,
 		"constants": {
+			"END_BUTT": 2,
+			"END_JOINED": 1,
+			"END_POLYGON": 0,
+			"END_ROUND": 4,
+			"END_SQUARE": 3,
+			"JOIN_MITER": 2,
+			"JOIN_ROUND": 1,
+			"JOIN_SQUARE": 0,
+			"OPERATION_DIFFERENCE": 1,
+			"OPERATION_INTERSECTION": 2,
+			"OPERATION_UNION": 0,
+			"OPERATION_XOR": 3
 		},
 		"properties": [
 		],
@@ -176705,6 +178831,56 @@
 				]
 			},
 			{
+				"name": "clip_polygons_2d",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "polygon_a",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "polygon_b",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "clip_polyline_with_polygon_2d",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "polyline",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "polygon",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "convex_hull_2d",
 				"return_type": "PoolVector2Array",
 				"is_editor": false,
@@ -176717,6 +178893,31 @@
 				"arguments": [
 					{
 						"name": "points",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "exclude_polygons_2d",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "polygon_a",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "polygon_b",
 						"type": "PoolVector2Array",
 						"has_default_value": false,
 						"default_value": ""
@@ -176941,6 +179142,75 @@
 				]
 			},
 			{
+				"name": "intersect_polygons_2d",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "polygon_a",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "polygon_b",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "intersect_polyline_with_polygon_2d",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "polyline",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "polygon",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "is_polygon_clockwise",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "polygon",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "line_intersects_line_2d",
 				"return_type": "Variant",
 				"is_editor": false,
@@ -176993,6 +179263,99 @@
 						"type": "PoolVector2Array",
 						"has_default_value": false,
 						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "merge_polygons_2d",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "polygon_a",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "polygon_b",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "offset_polygon_2d",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "polygon",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "delta",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "join_type",
+						"type": "int",
+						"has_default_value": true,
+						"default_value": "0"
+					}
+				]
+			},
+			{
+				"name": "offset_polyline_2d",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "polyline",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "delta",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "join_type",
+						"type": "int",
+						"has_default_value": true,
+						"default_value": "0"
+					},
+					{
+						"name": "end_type",
+						"type": "int",
+						"has_default_value": true,
+						"default_value": "3"
 					}
 				]
 			},
@@ -177299,6 +179662,50 @@
 				]
 			},
 			{
+				"name": "transform_points_2d",
+				"return_type": "PoolVector2Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "points",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "transform",
+						"type": "Transform2D",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "triangulate_delaunay_2d",
+				"return_type": "PoolIntArray",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "points",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "triangulate_polygon",
 				"return_type": "PoolIntArray",
 				"is_editor": false,
@@ -177319,6 +179726,33 @@
 			}
 		],
 		"enums": [
+			{
+				"name": "PolyEndType",
+				"values": {
+					"END_POLYGON": 0,
+					"END_JOINED": 1,
+					"END_BUTT": 2,
+					"END_SQUARE": 3,
+					"END_ROUND": 4
+				}
+			},
+			{
+				"name": "PolyBooleanOperation",
+				"values": {
+					"OPERATION_UNION": 0,
+					"OPERATION_DIFFERENCE": 1,
+					"OPERATION_INTERSECTION": 2,
+					"OPERATION_XOR": 3
+				}
+			},
+			{
+				"name": "PolyJoinType",
+				"values": {
+					"JOIN_SQUARE": 0,
+					"JOIN_ROUND": 1,
+					"JOIN_MITER": 2
+				}
+			}
 		]
 	},
 	{
@@ -177937,6 +180371,12 @@
 						"type": "Array",
 						"has_default_value": true,
 						"default_value": "[]"
+					},
+					{
+						"name": "read_stderr",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -179393,6 +181833,25 @@
 					{
 						"name": "enable",
 						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_native_icon",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "filename",
+						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
 					}

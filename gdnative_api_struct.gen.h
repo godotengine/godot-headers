@@ -133,7 +133,9 @@ typedef struct godot_gdnative_ext_net_3_2_api_struct {
 	unsigned int type;
 	godot_gdnative_api_version version;
 	const godot_gdnative_api_struct *next;
-	void (*godot_net_bind_webrtc_peer)(godot_object *p_obj, const godot_net_webrtc_peer *p_interface);
+	godot_error (*godot_net_set_webrtc_library)(const godot_net_webrtc_library *p_library);
+	void (*godot_net_bind_webrtc_peer_connection)(godot_object *p_obj, const godot_net_webrtc_peer_connection *p_interface);
+	void (*godot_net_bind_webrtc_data_channel)(godot_object *p_obj, const godot_net_webrtc_data_channel *p_interface);
 } godot_gdnative_ext_net_3_2_api_struct;
 
 typedef struct godot_gdnative_ext_net_api_struct {
@@ -144,6 +146,15 @@ typedef struct godot_gdnative_ext_net_api_struct {
 	void (*godot_net_bind_packet_peer)(godot_object *p_obj, const godot_net_packet_peer *p_interface);
 	void (*godot_net_bind_multiplayer_peer)(godot_object *p_obj, const godot_net_multiplayer_peer *p_interface);
 } godot_gdnative_ext_net_api_struct;
+
+typedef struct godot_gdnative_core_1_2_api_struct {
+	unsigned int type;
+	godot_gdnative_api_version version;
+	const godot_gdnative_api_struct *next;
+	godot_dictionary (*godot_dictionary_duplicate)(const godot_dictionary *p_self, const godot_bool p_deep);
+	godot_vector3 (*godot_vector3_move_toward)(const godot_vector3 *p_self, const godot_vector3 *p_to, const godot_real p_delta);
+	godot_vector2 (*godot_vector2_move_toward)(const godot_vector2 *p_self, const godot_vector2 *p_to, const godot_real p_delta);
+} godot_gdnative_core_1_2_api_struct;
 
 typedef struct godot_gdnative_core_1_1_api_struct {
 	unsigned int type;
