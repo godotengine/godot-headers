@@ -956,6 +956,19 @@
 				]
 			},
 			{
+				"name": "get_camera_feed_id",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_capabilities",
 				"return_type": "int",
 				"is_editor": false,
@@ -37109,6 +37122,578 @@
 		]
 	},
 	{
+		"name": "CameraFeed",
+		"base_class": "Reference",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+			"FEED_BACK": 2,
+			"FEED_FRONT": 1,
+			"FEED_NOIMAGE": 0,
+			"FEED_RGB": 1,
+			"FEED_UNSPECIFIED": 0,
+			"FEED_YCbCr": 2,
+			"FEED_YCbCr_Sep": 3
+		},
+		"properties": [
+			{
+				"name": "feed_is_active",
+				"type": "bool",
+				"getter": "is_active",
+				"setter": "set_active",
+				"index": -1
+			},
+			{
+				"name": "feed_transform",
+				"type": "Transform2D",
+				"getter": "get_transform",
+				"setter": "set_transform",
+				"index": -1
+			}
+		],
+		"signals": [
+		],
+		"methods": [
+			{
+				"name": "_allocate_texture",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "width",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "height",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "format",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "texture_type",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "data_type",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_set_RGB_img",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "rgb_img",
+						"type": "Image",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_set_YCbCr_img",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "ycbcr_img",
+						"type": "Image",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_set_YCbCr_imgs",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "y_img",
+						"type": "Image",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "cbcr_img",
+						"type": "Image",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_set_name",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "name",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_set_position",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "position",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_id",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_name",
+				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_position",
+				"return_type": "enum.CameraFeed::FeedPosition",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_transform",
+				"return_type": "Transform2D",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "is_active",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "set_active",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "active",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_transform",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "transform",
+						"type": "Transform2D",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"enums": [
+			{
+				"name": "FeedDataType",
+				"values": {
+					"FEED_NOIMAGE": 0,
+					"FEED_RGB": 1,
+					"FEED_YCbCr": 2,
+					"FEED_YCbCr_Sep": 3
+				}
+			},
+			{
+				"name": "FeedPosition",
+				"values": {
+					"FEED_UNSPECIFIED": 0,
+					"FEED_FRONT": 1,
+					"FEED_BACK": 2
+				}
+			}
+		]
+	},
+	{
+		"name": "CameraServer",
+		"base_class": "Object",
+		"api_type": "core",
+		"singleton": true,
+		"instanciable": false,
+		"is_reference": false,
+		"constants": {
+			"FEED_CbCr_IMAGE": 1,
+			"FEED_RGBA_IMAGE": 0,
+			"FEED_YCbCr_IMAGE": 0,
+			"FEED_Y_IMAGE": 0
+		},
+		"properties": [
+		],
+		"signals": [
+			{
+				"name": "camera_feed_added",
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "camera_feed_removed",
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"methods": [
+			{
+				"name": "add_feed",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "feed",
+						"type": "CameraFeed",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "feeds",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_feed",
+				"return_type": "CameraFeed",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_feed_count",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "remove_feed",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "feed",
+						"type": "CameraFeed",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"enums": [
+			{
+				"name": "FeedImage",
+				"values": {
+					"FEED_RGBA_IMAGE": 0,
+					"FEED_YCbCr_IMAGE": 0,
+					"FEED_Y_IMAGE": 0,
+					"FEED_CbCr_IMAGE": 1
+				}
+			}
+		]
+	},
+	{
+		"name": "CameraTexture",
+		"base_class": "Texture",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+		},
+		"properties": [
+			{
+				"name": "camera_feed_id",
+				"type": "int",
+				"getter": "get_camera_feed_id",
+				"setter": "set_camera_feed_id",
+				"index": -1
+			},
+			{
+				"name": "camera_is_active",
+				"type": "bool",
+				"getter": "get_camera_active",
+				"setter": "set_camera_active",
+				"index": -1
+			},
+			{
+				"name": "which_feed",
+				"type": "int",
+				"getter": "get_which_feed",
+				"setter": "set_which_feed",
+				"index": -1
+			}
+		],
+		"signals": [
+		],
+		"methods": [
+			{
+				"name": "get_camera_active",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_camera_feed_id",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_which_feed",
+				"return_type": "enum.CameraServer::FeedImage",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "set_camera_active",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "active",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_camera_feed_id",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "feed_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_which_feed",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "which_feed",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"enums": [
+		]
+	},
+	{
 		"name": "CanvasItem",
 		"base_class": "Node",
 		"api_type": "core",
@@ -56758,12 +57343,13 @@
 		"instanciable": true,
 		"is_reference": true,
 		"constants": {
+			"BG_CAMERA_FEED": 6,
 			"BG_CANVAS": 4,
 			"BG_CLEAR_COLOR": 0,
 			"BG_COLOR": 1,
 			"BG_COLOR_SKY": 3,
 			"BG_KEEP": 5,
-			"BG_MAX": 6,
+			"BG_MAX": 7,
 			"BG_SKY": 2,
 			"DOF_BLUR_QUALITY_HIGH": 2,
 			"DOF_BLUR_QUALITY_LOW": 0,
@@ -56874,6 +57460,13 @@
 				"type": "float",
 				"getter": "get_tonemap_auto_exposure_speed",
 				"setter": "set_tonemap_auto_exposure_speed",
+				"index": -1
+			},
+			{
+				"name": "background_camera_feed_id",
+				"type": "int",
+				"getter": "get_camera_feed_id",
+				"setter": "set_camera_feed_id",
 				"index": -1
 			},
 			{
@@ -57490,6 +58083,19 @@
 			{
 				"name": "get_bg_energy",
 				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_camera_feed_id",
+				"return_type": "int",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -58581,6 +59187,25 @@
 					{
 						"name": "energy",
 						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_camera_feed_id",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "camera_feed_id",
+						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -59884,7 +60509,8 @@
 					"BG_COLOR_SKY": 3,
 					"BG_CANVAS": 4,
 					"BG_KEEP": 5,
-					"BG_MAX": 6
+					"BG_CAMERA_FEED": 6,
+					"BG_MAX": 7
 				}
 			},
 			{
@@ -161105,7 +161731,7 @@
 			"ENV_BG_COLOR": 1,
 			"ENV_BG_COLOR_SKY": 3,
 			"ENV_BG_KEEP": 5,
-			"ENV_BG_MAX": 6,
+			"ENV_BG_MAX": 7,
 			"ENV_BG_SKY": 2,
 			"ENV_DOF_BLUR_QUALITY_HIGH": 2,
 			"ENV_DOF_BLUR_QUALITY_LOW": 0,
@@ -168946,6 +169572,12 @@
 						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "use_filter",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "True"
 					}
 				]
 			},
@@ -169416,6 +170048,31 @@
 						"type": "int",
 						"has_default_value": true,
 						"default_value": "7"
+					}
+				]
+			},
+			{
+				"name": "texture_bind",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "texture",
+						"type": "RID",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "number",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
 					}
 				]
 			},
@@ -170826,7 +171483,7 @@
 					"ENV_BG_COLOR_SKY": 3,
 					"ENV_BG_CANVAS": 4,
 					"ENV_BG_KEEP": 5,
-					"ENV_BG_MAX": 6
+					"ENV_BG_MAX": 7
 				}
 			},
 			{

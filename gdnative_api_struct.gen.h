@@ -101,6 +101,8 @@ typedef struct godot_gdnative_ext_android_api_struct {
 	const godot_gdnative_api_struct *next;
 	JNIEnv*(*godot_android_get_env)();
 	jobject (*godot_android_get_activity)();
+	jobject (*godot_android_get_surface)();
+	bool (*godot_android_is_activity_resumed)();
 } godot_gdnative_ext_android_api_struct;
 
 typedef struct godot_gdnative_ext_arvr_api_struct {
