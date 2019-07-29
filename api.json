@@ -30,13 +30,18 @@
 			"ERR_BUG": 47,
 			"ERR_BUSY": 44,
 			"ERR_CANT_ACQUIRE_RESOURCE": 28,
+			"ERR_CANT_CONNECT": 25,
 			"ERR_CANT_CREATE": 20,
+			"ERR_CANT_FORK": 29,
 			"ERR_CANT_OPEN": 19,
+			"ERR_CANT_RESOLVE": 26,
 			"ERR_COMPILATION_FAILED": 36,
+			"ERR_CONNECTION_ERROR": 27,
 			"ERR_CYCLIC_LINK": 40,
 			"ERR_DATABASE_CANT_READ": 34,
 			"ERR_DATABASE_CANT_WRITE": 35,
 			"ERR_DOES_NOT_EXIST": 33,
+			"ERR_DUPLICATE_SYMBOL": 42,
 			"ERR_FILE_ALREADY_IN_USE": 11,
 			"ERR_FILE_BAD_DRIVE": 8,
 			"ERR_FILE_BAD_PATH": 9,
@@ -51,6 +56,7 @@
 			"ERR_FILE_UNRECOGNIZED": 15,
 			"ERR_HELP": 46,
 			"ERR_INVALID_DATA": 30,
+			"ERR_INVALID_DECLARATION": 41,
 			"ERR_INVALID_PARAMETER": 31,
 			"ERR_LINK_FAILED": 38,
 			"ERR_LOCKED": 23,
@@ -58,8 +64,10 @@
 			"ERR_OUT_OF_MEMORY": 6,
 			"ERR_PARAMETER_RANGE_ERROR": 5,
 			"ERR_PARSE_ERROR": 43,
+			"ERR_PRINTER_ON_FIRE": 48,
 			"ERR_QUERY_FAILED": 21,
 			"ERR_SCRIPT_FAILED": 39,
+			"ERR_SKIP": 45,
 			"ERR_TIMEOUT": 24,
 			"ERR_UNAUTHORIZED": 4,
 			"ERR_UNAVAILABLE": 2,
@@ -55590,6 +55598,13 @@
 		"constants": {
 		},
 		"properties": [
+			{
+				"name": "object_id",
+				"type": "int",
+				"getter": "get_object_id",
+				"setter": "set_object_id",
+				"index": -1
+			}
 		],
 		"signals": [
 		],
@@ -79599,7 +79614,7 @@
 						"default_value": ""
 					},
 					{
-						"name": "screen",
+						"name": "from_screen",
 						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
@@ -79621,7 +79636,7 @@
 			},
 			{
 				"name": "_idle",
-				"return_type": "void",
+				"return_type": "bool",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": false,
@@ -79691,7 +79706,7 @@
 			},
 			{
 				"name": "_iteration",
-				"return_type": "void",
+				"return_type": "bool",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": false,
@@ -89592,7 +89607,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "type",
+						"name": "class",
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
