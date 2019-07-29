@@ -8987,13 +8987,13 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "transform",
 						"type": "Transform",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "arg1",
+						"name": "texel_size",
 						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
@@ -13337,7 +13337,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "device",
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
@@ -28191,7 +28191,7 @@
 		"properties": [
 			{
 				"name": "size",
-				"type": "Vector2",
+				"type": "Vector3",
 				"getter": "get_size",
 				"setter": "set_size",
 				"index": -1
@@ -46301,7 +46301,9 @@
 			"FORMAT_RH": 12,
 			"INTERPOLATE_BILINEAR": 1,
 			"INTERPOLATE_CUBIC": 2,
-			"INTERPOLATE_NEAREST": 0
+			"INTERPOLATE_NEAREST": 0,
+			"MAX_HEIGHT": 16384,
+			"MAX_WIDTH": 16384
 		},
 		"properties": [
 			{
@@ -64370,7 +64372,7 @@
 		"properties": [
 			{
 				"name": "global_position",
-				"type": "float",
+				"type": "Vector2",
 				"getter": "get_global_position",
 				"setter": "set_global_position",
 				"index": -1
@@ -64391,7 +64393,7 @@
 			},
 			{
 				"name": "global_scale",
-				"type": "float",
+				"type": "Vector2",
 				"getter": "get_global_scale",
 				"setter": "set_global_scale",
 				"index": -1
@@ -82654,7 +82656,7 @@
 			},
 			{
 				"name": "size",
-				"type": "Vector2",
+				"type": "Vector3",
 				"getter": "get_size",
 				"setter": "set_size",
 				"index": -1
@@ -85662,7 +85664,7 @@
 			},
 			{
 				"name": "extents",
-				"type": "Vector2",
+				"type": "Vector3",
 				"getter": "get_extents",
 				"setter": "set_extents",
 				"index": -1
@@ -85711,7 +85713,7 @@
 			},
 			{
 				"name": "origin_offset",
-				"type": "Vector2",
+				"type": "Vector3",
 				"getter": "get_origin_offset",
 				"setter": "set_origin_offset",
 				"index": -1
@@ -87153,42 +87155,6 @@
 	},
 	{
 		"name": "ResourceImporterOGGVorbis",
-		"base_class": "ResourceImporter",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceImporterTheora",
-		"base_class": "ResourceImporter",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceImporterWebm",
 		"base_class": "ResourceImporter",
 		"api_type": "core",
 		"singleton": false,
@@ -128554,7 +128520,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
@@ -128611,7 +128577,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
@@ -128630,7 +128596,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
@@ -128649,7 +128615,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
@@ -128668,7 +128634,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
@@ -128687,7 +128653,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
@@ -128706,7 +128672,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
@@ -128725,7 +128691,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
@@ -128744,7 +128710,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "arg0",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
@@ -128763,13 +128729,13 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "bias",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "arg1",
+						"name": "bias",
 						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
@@ -128838,13 +128804,13 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "enable",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "arg1",
+						"name": "enable",
 						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
@@ -128863,13 +128829,13 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "data",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "arg1",
+						"name": "data",
 						"type": "PoolIntArray",
 						"has_default_value": false,
 						"default_value": ""
@@ -128888,13 +128854,13 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "range",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "arg1",
+						"name": "range",
 						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
@@ -128913,13 +128879,13 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "energy",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "arg1",
+						"name": "energy",
 						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
@@ -128938,13 +128904,13 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "enable",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "arg1",
+						"name": "enable",
 						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
@@ -128963,13 +128929,13 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "bias",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "arg1",
+						"name": "bias",
 						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
@@ -128988,13 +128954,13 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "propagation",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "arg1",
+						"name": "propagation",
 						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
@@ -129013,13 +128979,13 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "xform",
+						"name": "probe",
 						"type": "RID",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "arg1",
+						"name": "xform",
 						"type": "Transform",
 						"has_default_value": false,
 						"default_value": ""
