@@ -156,6 +156,10 @@ typedef struct godot_gdnative_core_1_2_api_struct {
 	godot_dictionary (*godot_dictionary_duplicate)(const godot_dictionary *p_self, const godot_bool p_deep);
 	godot_vector3 (*godot_vector3_move_toward)(const godot_vector3 *p_self, const godot_vector3 *p_to, const godot_real p_delta);
 	godot_vector2 (*godot_vector2_move_toward)(const godot_vector2 *p_self, const godot_vector2 *p_to, const godot_real p_delta);
+	godot_int (*godot_string_count)(const godot_string *p_self, godot_string p_what, godot_int p_from, godot_int p_to);
+	godot_int (*godot_string_countn)(const godot_string *p_self, godot_string p_what, godot_int p_from, godot_int p_to);
+	godot_vector3 (*godot_vector3_direction_to)(const godot_vector3 *p_self, const godot_vector3 *p_to);
+	godot_vector2 (*godot_vector2_direction_to)(const godot_vector2 *p_self, const godot_vector2 *p_to);
 } godot_gdnative_core_1_2_api_struct;
 
 typedef struct godot_gdnative_core_1_1_api_struct {

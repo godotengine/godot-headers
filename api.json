@@ -30,13 +30,18 @@
 			"ERR_BUG": 47,
 			"ERR_BUSY": 44,
 			"ERR_CANT_ACQUIRE_RESOURCE": 28,
+			"ERR_CANT_CONNECT": 25,
 			"ERR_CANT_CREATE": 20,
+			"ERR_CANT_FORK": 29,
 			"ERR_CANT_OPEN": 19,
+			"ERR_CANT_RESOLVE": 26,
 			"ERR_COMPILATION_FAILED": 36,
+			"ERR_CONNECTION_ERROR": 27,
 			"ERR_CYCLIC_LINK": 40,
 			"ERR_DATABASE_CANT_READ": 34,
 			"ERR_DATABASE_CANT_WRITE": 35,
 			"ERR_DOES_NOT_EXIST": 33,
+			"ERR_DUPLICATE_SYMBOL": 42,
 			"ERR_FILE_ALREADY_IN_USE": 11,
 			"ERR_FILE_BAD_DRIVE": 8,
 			"ERR_FILE_BAD_PATH": 9,
@@ -51,6 +56,7 @@
 			"ERR_FILE_UNRECOGNIZED": 15,
 			"ERR_HELP": 46,
 			"ERR_INVALID_DATA": 30,
+			"ERR_INVALID_DECLARATION": 41,
 			"ERR_INVALID_PARAMETER": 31,
 			"ERR_LINK_FAILED": 38,
 			"ERR_LOCKED": 23,
@@ -58,8 +64,10 @@
 			"ERR_OUT_OF_MEMORY": 6,
 			"ERR_PARAMETER_RANGE_ERROR": 5,
 			"ERR_PARSE_ERROR": 43,
+			"ERR_PRINTER_ON_FIRE": 48,
 			"ERR_QUERY_FAILED": 21,
 			"ERR_SCRIPT_FAILED": 39,
+			"ERR_SKIP": 45,
 			"ERR_TIMEOUT": 24,
 			"ERR_UNAUTHORIZED": 4,
 			"ERR_UNAVAILABLE": 2,
@@ -2434,6 +2442,452 @@
 		]
 	},
 	{
+		"name": "AStar2D",
+		"base_class": "Reference",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+		},
+		"properties": [
+		],
+		"signals": [
+		],
+		"methods": [
+			{
+				"name": "add_point",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "position",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "weight_scale",
+						"type": "float",
+						"has_default_value": true,
+						"default_value": "1"
+					}
+				]
+			},
+			{
+				"name": "are_points_connected",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "to_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "clear",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "connect_points",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "to_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "bidirectional",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "True"
+					}
+				]
+			},
+			{
+				"name": "disconnect_points",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "to_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_available_point_id",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_closest_point",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "to_position",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_closest_position_in_segment",
+				"return_type": "Vector2",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "to_position",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_id_path",
+				"return_type": "PoolIntArray",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "from_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "to_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_point_connections",
+				"return_type": "PoolIntArray",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_point_path",
+				"return_type": "PoolVector2Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "from_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "to_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_point_position",
+				"return_type": "Vector2",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_point_weight_scale",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "get_points",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "has_point",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "is_point_disabled",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "remove_point",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_point_disabled",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "disabled",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "True"
+					}
+				]
+			},
+			{
+				"name": "set_point_position",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "position",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_point_weight_scale",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "weight_scale",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"enums": [
+		]
+	},
+	{
 		"name": "AcceptDialog",
 		"base_class": "WindowDialog",
 		"api_type": "core",
@@ -2443,6 +2897,13 @@
 		"constants": {
 		},
 		"properties": [
+			{
+				"name": "dialog_autowrap",
+				"type": "bool",
+				"getter": "has_autowrap",
+				"setter": "set_autowrap",
+				"index": -1
+			},
 			{
 				"name": "dialog_hide_on_ok",
 				"type": "bool",
@@ -2630,6 +3091,19 @@
 				]
 			},
 			{
+				"name": "has_autowrap",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "register_text_enter",
 				"return_type": "void",
 				"is_editor": false,
@@ -2643,6 +3117,25 @@
 					{
 						"name": "line_edit",
 						"type": "Node",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_autowrap",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "autowrap",
+						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -14602,6 +15095,8 @@
 		"instanciable": true,
 		"is_reference": false,
 		"constants": {
+			"ANIMATION_METHOD_CALL_DEFERRED": 0,
+			"ANIMATION_METHOD_CALL_IMMEDIATE": 1,
 			"ANIMATION_PROCESS_IDLE": 1,
 			"ANIMATION_PROCESS_MANUAL": 2,
 			"ANIMATION_PROCESS_PHYSICS": 0
@@ -14640,6 +15135,13 @@
 				"type": "float",
 				"getter": "get_current_animation_position",
 				"setter": "",
+				"index": -1
+			},
+			{
+				"name": "method_call_mode",
+				"type": "int",
+				"getter": "get_method_call_mode",
+				"setter": "set_method_call_mode",
 				"index": -1
 			},
 			{
@@ -15024,6 +15526,19 @@
 			{
 				"name": "get_default_blend_time",
 				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_method_call_mode",
+				"return_type": "enum.AnimationPlayer::AnimationMethodCallMode",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -15427,6 +15942,25 @@
 				]
 			},
 			{
+				"name": "set_method_call_mode",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "mode",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "set_root",
 				"return_type": "void",
 				"is_editor": false,
@@ -15492,6 +16026,13 @@
 					"ANIMATION_PROCESS_IDLE": 1,
 					"ANIMATION_PROCESS_MANUAL": 2
 				}
+			},
+			{
+				"name": "AnimationMethodCallMode",
+				"values": {
+					"ANIMATION_METHOD_CALL_DEFERRED": 0,
+					"ANIMATION_METHOD_CALL_IMMEDIATE": 1
+				}
 			}
 		]
 	},
@@ -15518,7 +16059,7 @@
 		"base_class": "Reference",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -18732,7 +19273,7 @@
 				"arguments": [
 					{
 						"name": "body",
-						"type": "PhysicsBody2D",
+						"type": "Node",
 						"default_value": ""
 					}
 				]
@@ -18742,7 +19283,7 @@
 				"arguments": [
 					{
 						"name": "body",
-						"type": "PhysicsBody2D",
+						"type": "Node",
 						"default_value": ""
 					}
 				]
@@ -18757,7 +19298,7 @@
 					},
 					{
 						"name": "body",
-						"type": "PhysicsBody2D",
+						"type": "Node",
 						"default_value": ""
 					},
 					{
@@ -18782,7 +19323,7 @@
 					},
 					{
 						"name": "body",
-						"type": "PhysicsBody2D",
+						"type": "Node",
 						"default_value": ""
 					},
 					{
@@ -22839,8 +23380,28 @@
 		"instanciable": true,
 		"is_reference": true,
 		"constants": {
+			"FFT_SIZE_1024": 2,
+			"FFT_SIZE_2048": 3,
+			"FFT_SIZE_256": 0,
+			"FFT_SIZE_4096": 4,
+			"FFT_SIZE_512": 1,
+			"FFT_SIZE_MAX": 5
 		},
 		"properties": [
+			{
+				"name": "fft_size",
+				"type": "int",
+				"getter": "get_fft_size",
+				"setter": "set_fft_size",
+				"index": -1
+			},
+			{
+				"name": "oversampling",
+				"type": "float",
+				"getter": "get_oversampling",
+				"setter": "set_oversampling",
+				"index": -1
+			},
 			{
 				"name": "pitch_scale",
 				"type": "float",
@@ -22853,6 +23414,32 @@
 		],
 		"methods": [
 			{
+				"name": "get_fft_size",
+				"return_type": "enum.AudioEffectPitchShift::FFT_Size",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_oversampling",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_pitch_scale",
 				"return_type": "float",
 				"is_editor": false,
@@ -22863,6 +23450,44 @@
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
+				]
+			},
+			{
+				"name": "set_fft_size",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "size",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_oversampling",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "amount",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
 				]
 			},
 			{
@@ -22886,6 +23511,17 @@
 			}
 		],
 		"enums": [
+			{
+				"name": "FFT_Size",
+				"values": {
+					"FFT_SIZE_256": 0,
+					"FFT_SIZE_512": 1,
+					"FFT_SIZE_1024": 2,
+					"FFT_SIZE_2048": 3,
+					"FFT_SIZE_4096": 4,
+					"FFT_SIZE_MAX": 5
+				}
+			}
 		]
 	},
 	{
@@ -23679,6 +24315,27 @@
 			"SPEAKER_SURROUND_71": 3
 		},
 		"properties": [
+			{
+				"name": "bus_count",
+				"type": "int",
+				"getter": "get_bus_count",
+				"setter": "set_bus_count",
+				"index": -1
+			},
+			{
+				"name": "device",
+				"type": "String",
+				"getter": "get_device",
+				"setter": "set_device",
+				"index": -1
+			},
+			{
+				"name": "global_rate_scale",
+				"type": "float",
+				"getter": "get_global_rate_scale",
+				"setter": "set_global_rate_scale",
+				"index": -1
+			}
 		],
 		"signals": [
 			{
@@ -24048,6 +24705,19 @@
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_global_rate_scale",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
 				"is_reverse": false,
 				"is_virtual": false,
 				"has_varargs": false,
@@ -24517,6 +25187,25 @@
 					{
 						"name": "device",
 						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_global_rate_scale",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "scale",
+						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -27439,6 +28128,13 @@
 				"index": -1
 			},
 			{
+				"name": "bake_default_texels_per_unit",
+				"type": "float",
+				"getter": "get_bake_default_texels_per_unit",
+				"setter": "set_bake_default_texels_per_unit",
+				"index": -1
+			},
+			{
 				"name": "bake_energy",
 				"type": "float",
 				"getter": "get_energy",
@@ -27545,6 +28241,19 @@
 			},
 			{
 				"name": "get_bake_cell_size",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_bake_default_texels_per_unit",
 				"return_type": "float",
 				"is_editor": false,
 				"is_noscript": false,
@@ -27686,6 +28395,25 @@
 				"arguments": [
 					{
 						"name": "bake_cell_size",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_bake_default_texels_per_unit",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "texels",
 						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
@@ -30299,6 +31027,13 @@
 				"index": 6
 			},
 			{
+				"name": "direction",
+				"type": "Vector3",
+				"getter": "get_direction",
+				"setter": "set_direction",
+				"index": -1
+			},
+			{
 				"name": "draw_order",
 				"type": "int",
 				"getter": "get_draw_order",
@@ -30450,6 +31185,13 @@
 				"type": "float",
 				"getter": "get_lifetime",
 				"setter": "set_lifetime",
+				"index": -1
+			},
+			{
+				"name": "lifetime_randomness",
+				"type": "float",
+				"getter": "get_lifetime_randomness",
+				"setter": "set_lifetime_randomness",
 				"index": -1
 			},
 			{
@@ -30682,6 +31424,19 @@
 				]
 			},
 			{
+				"name": "get_direction",
+				"return_type": "Vector3",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_draw_order",
 				"return_type": "enum.CPUParticles::DrawOrder",
 				"is_editor": false,
@@ -30839,6 +31594,19 @@
 			},
 			{
 				"name": "get_lifetime",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_lifetime_randomness",
 				"return_type": "float",
 				"is_editor": false,
 				"is_noscript": false,
@@ -31095,6 +31863,25 @@
 					{
 						"name": "ramp",
 						"type": "Gradient",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_direction",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "direction",
+						"type": "Vector3",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -31360,6 +32147,25 @@
 				"arguments": [
 					{
 						"name": "secs",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_lifetime_randomness",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "random",
 						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
@@ -31658,11 +32464,11 @@
 		"constants": {
 			"DRAW_ORDER_INDEX": 0,
 			"DRAW_ORDER_LIFETIME": 1,
-			"EMISSION_SHAPE_CIRCLE": 1,
 			"EMISSION_SHAPE_DIRECTED_POINTS": 4,
 			"EMISSION_SHAPE_POINT": 0,
 			"EMISSION_SHAPE_POINTS": 3,
 			"EMISSION_SHAPE_RECTANGLE": 2,
+			"EMISSION_SHAPE_SPHERE": 1,
 			"FLAG_ALIGN_Y_TO_VELOCITY": 0,
 			"FLAG_DISABLE_Z": 2,
 			"FLAG_MAX": 3,
@@ -31809,6 +32615,13 @@
 				"index": 6
 			},
 			{
+				"name": "direction",
+				"type": "Vector2",
+				"getter": "get_direction",
+				"setter": "set_direction",
+				"index": -1
+			},
+			{
 				"name": "draw_order",
 				"type": "int",
 				"getter": "get_draw_order",
@@ -31946,6 +32759,13 @@
 				"type": "float",
 				"getter": "get_lifetime",
 				"setter": "set_lifetime",
+				"index": -1
+			},
+			{
+				"name": "lifetime_randomness",
+				"type": "float",
+				"getter": "get_lifetime_randomness",
+				"setter": "set_lifetime_randomness",
 				"index": -1
 			},
 			{
@@ -32185,6 +33005,19 @@
 				]
 			},
 			{
+				"name": "get_direction",
+				"return_type": "Vector2",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_draw_order",
 				"return_type": "enum.CPUParticles2D::DrawOrder",
 				"is_editor": false,
@@ -32342,6 +33175,19 @@
 			},
 			{
 				"name": "get_lifetime",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_lifetime_randomness",
 				"return_type": "float",
 				"is_editor": false,
 				"is_noscript": false,
@@ -32617,6 +33463,25 @@
 				]
 			},
 			{
+				"name": "set_direction",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "direction",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "set_draw_order",
 				"return_type": "void",
 				"is_editor": false,
@@ -32876,6 +33741,25 @@
 				"arguments": [
 					{
 						"name": "secs",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_lifetime_randomness",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "random",
 						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
@@ -33149,7 +34033,7 @@
 				"name": "EmissionShape",
 				"values": {
 					"EMISSION_SHAPE_POINT": 0,
-					"EMISSION_SHAPE_CIRCLE": 1,
+					"EMISSION_SHAPE_SPHERE": 1,
 					"EMISSION_SHAPE_RECTANGLE": 2,
 					"EMISSION_SHAPE_POINTS": 3,
 					"EMISSION_SHAPE_DIRECTED_POINTS": 4
@@ -37134,8 +38018,8 @@
 			"FEED_NOIMAGE": 0,
 			"FEED_RGB": 1,
 			"FEED_UNSPECIFIED": 0,
-			"FEED_YCbCr": 2,
-			"FEED_YCbCr_Sep": 3
+			"FEED_YCBCR": 2,
+			"FEED_YCBCR_SEP": 3
 		},
 		"properties": [
 			{
@@ -37410,8 +38294,8 @@
 				"values": {
 					"FEED_NOIMAGE": 0,
 					"FEED_RGB": 1,
-					"FEED_YCbCr": 2,
-					"FEED_YCbCr_Sep": 3
+					"FEED_YCBCR": 2,
+					"FEED_YCBCR_SEP": 3
 				}
 			},
 			{
@@ -37432,9 +38316,9 @@
 		"instanciable": false,
 		"is_reference": false,
 		"constants": {
-			"FEED_CbCr_IMAGE": 1,
+			"FEED_CBCR_IMAGE": 1,
 			"FEED_RGBA_IMAGE": 0,
-			"FEED_YCbCr_IMAGE": 0,
+			"FEED_YCBCR_IMAGE": 0,
 			"FEED_Y_IMAGE": 0
 		},
 		"properties": [
@@ -37551,9 +38435,9 @@
 				"name": "FeedImage",
 				"values": {
 					"FEED_RGBA_IMAGE": 0,
-					"FEED_YCbCr_IMAGE": 0,
+					"FEED_YCBCR_IMAGE": 0,
 					"FEED_Y_IMAGE": 0,
-					"FEED_CbCr_IMAGE": 1
+					"FEED_CBCR_IMAGE": 1
 				}
 			}
 		]
@@ -38610,6 +39494,18 @@
 						"type": "bool",
 						"has_default_value": true,
 						"default_value": "True"
+					},
+					{
+						"name": "width",
+						"type": "float",
+						"has_default_value": true,
+						"default_value": "1"
+					},
+					{
+						"name": "antialiased",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -42838,6 +43734,13 @@
 				"index": -1
 			},
 			{
+				"name": "hsv_mode",
+				"type": "bool",
+				"getter": "is_hsv_mode",
+				"setter": "set_hsv_mode",
+				"index": -1
+			},
+			{
 				"name": "presets_enabled",
 				"type": "bool",
 				"getter": "are_presets_enabled",
@@ -43252,6 +44155,19 @@
 				]
 			},
 			{
+				"name": "is_hsv_mode",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "is_raw_mode",
 				"return_type": "bool",
 				"is_editor": false,
@@ -43296,6 +44212,25 @@
 				"arguments": [
 					{
 						"name": "show",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_hsv_mode",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "mode",
 						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
@@ -44060,6 +44995,56 @@
 				]
 			},
 			{
+				"name": "load_encrypted",
+				"return_type": "enum.Error",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "path",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "key",
+						"type": "PoolByteArray",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "load_encrypted_pass",
+				"return_type": "enum.Error",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "path",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "pass",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "save",
 				"return_type": "enum.Error",
 				"is_editor": false,
@@ -44072,6 +45057,56 @@
 				"arguments": [
 					{
 						"name": "path",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "save_encrypted",
+				"return_type": "enum.Error",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "path",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "key",
+						"type": "PoolByteArray",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "save_encrypted_pass",
+				"return_type": "enum.Error",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "path",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "pass",
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
@@ -50378,7 +51413,7 @@
 		"base_class": "Reference",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -50641,7 +51676,7 @@
 		"base_class": "Reference",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 			"FEATURE_3D": 0,
@@ -50925,7 +51960,7 @@
 		"base_class": "ConfirmationDialog",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": false,
 		"constants": {
 			"ACCESS_FILESYSTEM": 2,
@@ -51546,6 +52581,19 @@
 				]
 			},
 			{
+				"name": "_update_file_name",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "add_filter",
 				"return_type": "void",
 				"is_editor": false,
@@ -52081,7 +53129,7 @@
 		"base_class": "Object",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": false,
 		"constants": {
 		},
@@ -52332,10 +53380,10 @@
 	},
 	{
 		"name": "EditorImportPlugin",
-		"base_class": "Reference",
+		"base_class": "ResourceImporter",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -52563,7 +53611,7 @@
 		"base_class": "ScrollContainer",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": false,
 		"constants": {
 		},
@@ -53019,7 +54067,7 @@
 		"base_class": "Reference",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -53668,7 +54716,7 @@
 		"base_class": "Node",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": false,
 		"constants": {
 			"CONTAINER_CANVAS_EDITOR_BOTTOM": 8,
@@ -54749,7 +55797,7 @@
 		"base_class": "Container",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": false,
 		"constants": {
 		},
@@ -55281,7 +56329,7 @@
 		"base_class": "Reference",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -55539,7 +56587,7 @@
 		"base_class": "Reference",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -55652,7 +56700,7 @@
 		"base_class": "Reference",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 			"IMPORT_ANIMATION": 2,
@@ -55830,7 +56878,7 @@
 		"base_class": "EditorSceneImporter",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -55848,7 +56896,7 @@
 		"base_class": "Reference",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -55911,7 +56959,7 @@
 		"base_class": "Reference",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -55987,7 +57035,7 @@
 		"base_class": "Object",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": false,
 		"constants": {
 		},
@@ -56122,6 +57170,7 @@
 		"instanciable": false,
 		"is_reference": true,
 		"constants": {
+			"NOTIFICATION_EDITOR_SETTINGS_CHANGED": 10000
 		},
 		"properties": [
 		],
@@ -56464,7 +57513,7 @@
 		"base_class": "SpatialGizmo",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -56859,7 +57908,7 @@
 		"base_class": "Resource",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": true,
 		"constants": {
 		},
@@ -57295,6 +58344,13 @@
 		"constants": {
 		},
 		"properties": [
+			{
+				"name": "object_id",
+				"type": "int",
+				"getter": "get_object_id",
+				"setter": "set_object_id",
+				"index": -1
+			}
 		],
 		"signals": [
 		],
@@ -60996,6 +62052,19 @@
 				]
 			},
 			{
+				"name": "_update_file_name",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "add_filter",
 				"return_type": "void",
 				"is_editor": false,
@@ -62026,42 +63095,6 @@
 				"arguments": [
 				]
 			}
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "GDNativeLibraryResourceLoader",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "GDNativeLibraryResourceSaver",
-		"base_class": "ResourceFormatSaver",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
 		],
 		"enums": [
 		]
@@ -64264,6 +65297,7 @@
 		"instanciable": false,
 		"is_reference": false,
 		"constants": {
+			"FLAG_DRAW_NEXT_FRAME_IF_VISIBLE": 1,
 			"FLAG_MAX": 2,
 			"FLAG_USE_BAKED_LIGHT": 0,
 			"SHADOW_CASTING_SETTING_DOUBLE_SIDED": 2,
@@ -64625,6 +65659,7 @@
 				"name": "Flags",
 				"values": {
 					"FLAG_USE_BAKED_LIGHT": 0,
+					"FLAG_DRAW_NEXT_FRAME_IF_VISIBLE": 1,
 					"FLAG_MAX": 2
 				}
 			},
@@ -65050,6 +66085,26 @@
 			{
 				"name": "_end_node_move",
 				"arguments": [
+				]
+			},
+			{
+				"name": "connection_from_empty",
+				"arguments": [
+					{
+						"name": "to",
+						"type": "String",
+						"default_value": ""
+					},
+					{
+						"name": "to_slot",
+						"type": "int",
+						"default_value": ""
+					},
+					{
+						"name": "release_position",
+						"type": "Vector2",
+						"default_value": ""
+					}
 				]
 			},
 			{
@@ -68254,7 +69309,8 @@
 			"RESULT_REDIRECT_LIMIT_REACHED": 11,
 			"RESULT_REQUEST_FAILED": 8,
 			"RESULT_SSL_HANDSHAKE_ERROR": 5,
-			"RESULT_SUCCESS": 0
+			"RESULT_SUCCESS": 0,
+			"RESULT_TIMEOUT": 12
 		},
 		"properties": [
 			{
@@ -68276,6 +69332,13 @@
 				"type": "int",
 				"getter": "get_max_redirects",
 				"setter": "set_max_redirects",
+				"index": -1
+			},
+			{
+				"name": "timeout",
+				"type": "int",
+				"getter": "get_timeout",
+				"setter": "set_timeout",
 				"index": -1
 			},
 			{
@@ -68371,6 +69434,19 @@
 				]
 			},
 			{
+				"name": "_timeout",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "cancel_request",
 				"return_type": "void",
 				"is_editor": false,
@@ -68454,6 +69530,19 @@
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_timeout",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
 				"is_reverse": false,
 				"is_virtual": false,
 				"has_varargs": false,
@@ -68575,6 +69664,25 @@
 				]
 			},
 			{
+				"name": "set_timeout",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "timeout",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "set_use_threads",
 				"return_type": "void",
 				"is_editor": false,
@@ -68609,7 +69717,8 @@
 					"RESULT_REQUEST_FAILED": 8,
 					"RESULT_DOWNLOAD_FILE_CANT_OPEN": 9,
 					"RESULT_DOWNLOAD_FILE_WRITE_ERROR": 10,
-					"RESULT_REDIRECT_LIMIT_REACHED": 11
+					"RESULT_REDIRECT_LIMIT_REACHED": 11,
+					"RESULT_TIMEOUT": 12
 				}
 			}
 		]
@@ -69087,6 +70196,19 @@
 			},
 			{
 				"name": "get_local_addresses",
+				"return_type": "Array",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_local_interfaces",
 				"return_type": "Array",
 				"is_editor": false,
 				"is_noscript": false,
@@ -79835,11 +80957,31 @@
 				"getter": "get_width",
 				"setter": "set_width",
 				"index": -1
+			},
+			{
+				"name": "width_curve",
+				"type": "Curve",
+				"getter": "get_curve",
+				"setter": "set_curve",
+				"index": -1
 			}
 		],
 		"signals": [
 		],
 		"methods": [
+			{
+				"name": "_curve_changed",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
 			{
 				"name": "_gradient_changed",
 				"return_type": "void",
@@ -79894,6 +81036,19 @@
 			{
 				"name": "get_begin_cap_mode",
 				"return_type": "enum.Line2D::LineCapMode",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_curve",
+				"return_type": "Curve",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -80099,6 +81254,25 @@
 					{
 						"name": "mode",
 						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_curve",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "curve",
+						"type": "Curve",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -81462,7 +82636,7 @@
 						"default_value": ""
 					},
 					{
-						"name": "screen",
+						"name": "from_screen",
 						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
@@ -81484,7 +82658,7 @@
 			},
 			{
 				"name": "_idle",
-				"return_type": "void",
+				"return_type": "bool",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": false,
@@ -81554,7 +82728,7 @@
 			},
 			{
 				"name": "_iteration",
-				"return_type": "void",
+				"return_type": "bool",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": false,
@@ -92004,7 +93178,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "type",
+						"name": "class",
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
@@ -94442,6 +95616,56 @@
 				]
 			},
 			{
+				"name": "join_multicast_group",
+				"return_type": "enum.Error",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "multicast_address",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "interface_name",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "leave_multicast_group",
+				"return_type": "enum.Error",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "multicast_address",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "interface_name",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "listen",
 				"return_type": "enum.Error",
 				"is_editor": false,
@@ -96561,6 +97785,13 @@
 				"index": 6
 			},
 			{
+				"name": "direction",
+				"type": "Vector3",
+				"getter": "get_direction",
+				"setter": "set_direction",
+				"index": -1
+			},
+			{
 				"name": "emission_box_extents",
 				"type": "Vector3",
 				"getter": "get_emission_box_extents",
@@ -96678,6 +97909,13 @@
 				"getter": "get_param_randomness",
 				"setter": "set_param_randomness",
 				"index": 0
+			},
+			{
+				"name": "lifetime_randomness",
+				"type": "float",
+				"getter": "get_lifetime_randomness",
+				"setter": "set_lifetime_randomness",
+				"index": -1
 			},
 			{
 				"name": "linear_accel",
@@ -96843,6 +98081,19 @@
 				]
 			},
 			{
+				"name": "get_direction",
+				"return_type": "Vector3",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_emission_box_extents",
 				"return_type": "Vector3",
 				"is_editor": false,
@@ -96968,6 +98219,19 @@
 			{
 				"name": "get_gravity",
 				"return_type": "Vector3",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_lifetime_randomness",
+				"return_type": "float",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -97120,6 +98384,25 @@
 					{
 						"name": "ramp",
 						"type": "Texture",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_direction",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "degrees",
+						"type": "Vector3",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -97316,6 +98599,25 @@
 					{
 						"name": "accel_vec",
 						"type": "Vector3",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_lifetime_randomness",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "randomness",
+						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -108665,6 +109967,24 @@
 		]
 	},
 	{
+		"name": "PointMesh",
+		"base_class": "PrimitiveMesh",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+		},
+		"properties": [
+		],
+		"signals": [
+		],
+		"methods": [
+		],
+		"enums": [
+		]
+	},
+	{
 		"name": "Polygon2D",
 		"base_class": "Node2D",
 		"api_type": "core",
@@ -115137,6 +116457,13 @@
 				"getter": "get_border_color",
 				"setter": "set_border_color",
 				"index": -1
+			},
+			{
+				"name": "editor_only",
+				"type": "bool",
+				"getter": "get_editor_only",
+				"setter": "set_editor_only",
+				"index": -1
 			}
 		],
 		"signals": [
@@ -115145,6 +116472,19 @@
 			{
 				"name": "get_border_color",
 				"return_type": "Color",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_editor_only",
+				"return_type": "bool",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -115169,6 +116509,25 @@
 					{
 						"name": "color",
 						"type": "Color",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_editor_only",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "enabled",
+						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -116078,6 +117437,19 @@
 		],
 		"methods": [
 			{
+				"name": "force_update_cache",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_remote_node",
 				"return_type": "NodePath",
 				"is_editor": false,
@@ -116290,6 +117662,19 @@
 		"signals": [
 		],
 		"methods": [
+			{
+				"name": "force_update_cache",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
 			{
 				"name": "get_remote_node",
 				"return_type": "NodePath",
@@ -116685,42 +118070,6 @@
 		]
 	},
 	{
-		"name": "ResourceFormatDDS",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatImporter",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
 		"name": "ResourceFormatLoader",
 		"base_class": "Reference",
 		"api_type": "core",
@@ -116865,276 +118214,6 @@
 		]
 	},
 	{
-		"name": "ResourceFormatLoaderBMFont",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderBinary",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderDynamicFont",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderGDScript",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderImage",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderNativeScript",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderShader",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderStreamTexture",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderText",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderTextureLayered",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderTheora",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderVideoStreamGDNative",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatLoaderWebm",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatPKM",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatPVR",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
 		"name": "ResourceFormatSaver",
 		"base_class": "Reference",
 		"api_type": "core",
@@ -117222,116 +118301,8 @@
 		]
 	},
 	{
-		"name": "ResourceFormatSaverBinary",
-		"base_class": "ResourceFormatSaver",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatSaverGDScript",
-		"base_class": "ResourceFormatSaver",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatSaverNativeScript",
-		"base_class": "ResourceFormatSaver",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatSaverShader",
-		"base_class": "ResourceFormatSaver",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceFormatSaverText",
-		"base_class": "ResourceFormatSaver",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
 		"name": "ResourceImporter",
 		"base_class": "Reference",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceImporterOGGVorbis",
-		"base_class": "ResourceImporter",
 		"api_type": "core",
 		"singleton": false,
 		"instanciable": false,
@@ -117603,24 +118574,6 @@
 					}
 				]
 			}
-		],
-		"enums": [
-		]
-	},
-	{
-		"name": "ResourceSaverPNG",
-		"base_class": "ResourceFormatSaver",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
 		],
 		"enums": [
 		]
@@ -122804,7 +123757,7 @@
 		"base_class": "ConfirmationDialog",
 		"api_type": "tools",
 		"singleton": false,
-		"instanciable": true,
+		"instanciable": false,
 		"is_reference": false,
 		"constants": {
 		},
@@ -123328,6 +124281,44 @@
 			},
 			{
 				"name": "_file_dialog_action",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "arg0",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_filter_methods_text_changed",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "arg0",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "_filter_scripts_text_changed",
 				"return_type": "void",
 				"is_editor": false,
 				"is_noscript": false,
@@ -132784,6 +133775,13 @@
 				"index": -1
 			},
 			{
+				"name": "frame_coords",
+				"type": "Vector2",
+				"getter": "get_frame_coords",
+				"setter": "set_frame_coords",
+				"index": -1
+			},
+			{
 				"name": "hframes",
 				"type": "int",
 				"getter": "get_hframes",
@@ -132856,6 +133854,19 @@
 			{
 				"name": "get_frame",
 				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_frame_coords",
+				"return_type": "Vector2",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -133118,6 +134129,25 @@
 				]
 			},
 			{
+				"name": "set_frame_coords",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "coords",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "set_hframes",
 				"return_type": "void",
 				"is_editor": false,
@@ -133291,6 +134321,13 @@
 				"index": -1
 			},
 			{
+				"name": "frame_coords",
+				"type": "Vector2",
+				"getter": "get_frame_coords",
+				"setter": "set_frame_coords",
+				"index": -1
+			},
+			{
 				"name": "hframes",
 				"type": "int",
 				"getter": "get_hframes",
@@ -133337,6 +134374,19 @@
 			{
 				"name": "get_frame",
 				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_frame_coords",
+				"return_type": "Vector2",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -133426,6 +134476,25 @@
 					{
 						"name": "frame",
 						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_frame_coords",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "coords",
+						"type": "Vector2",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -138279,6 +139348,19 @@
 				]
 			},
 			{
+				"name": "is_listening",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "listen",
 				"return_type": "enum.Error",
 				"is_editor": false,
@@ -139961,6 +141043,19 @@
 						"has_default_value": false,
 						"default_value": ""
 					}
+				]
+			},
+			{
+				"name": "center_viewport_to_cursor",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
 				]
 			},
 			{
@@ -143895,6 +144990,13 @@
 				"index": -1
 			},
 			{
+				"name": "centered_textures",
+				"type": "bool",
+				"getter": "is_centered_textures_enabled",
+				"setter": "set_centered_textures",
+				"index": -1
+			},
+			{
 				"name": "collision_bounce",
 				"type": "float",
 				"getter": "get_collision_bounce",
@@ -143927,6 +145029,20 @@
 				"type": "bool",
 				"getter": "get_collision_use_kinematic",
 				"setter": "set_collision_use_kinematic",
+				"index": -1
+			},
+			{
+				"name": "collision_use_parent",
+				"type": "bool",
+				"getter": "get_collision_use_parent",
+				"setter": "set_collision_use_parent",
+				"index": -1
+			},
+			{
+				"name": "compatibility_mode",
+				"type": "bool",
+				"getter": "is_compatibility_mode_enabled",
+				"setter": "set_compatibility_mode",
 				"index": -1
 			},
 			{
@@ -144299,6 +145415,19 @@
 				]
 			},
 			{
+				"name": "get_collision_use_parent",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_custom_transform",
 				"return_type": "Transform2D",
 				"is_editor": false,
@@ -144510,6 +145639,32 @@
 				]
 			},
 			{
+				"name": "is_centered_textures_enabled",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "is_compatibility_mode_enabled",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "is_y_sort_mode_enabled",
 				"return_type": "bool",
 				"is_editor": false,
@@ -144661,6 +145816,25 @@
 						"type": "bool",
 						"has_default_value": true,
 						"default_value": "False"
+					}
+				]
+			},
+			{
+				"name": "set_centered_textures",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "enable",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
 					}
 				]
 			},
@@ -144822,6 +145996,44 @@
 				"arguments": [
 					{
 						"name": "use_kinematic",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_collision_use_parent",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "use_parent",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_compatibility_mode",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "enable",
 						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
@@ -147685,24 +148897,6 @@
 		]
 	},
 	{
-		"name": "TranslationLoaderPO",
-		"base_class": "ResourceFormatLoader",
-		"api_type": "core",
-		"singleton": false,
-		"instanciable": false,
-		"is_reference": true,
-		"constants": {
-		},
-		"properties": [
-		],
-		"signals": [
-		],
-		"methods": [
-		],
-		"enums": [
-		]
-	},
-	{
 		"name": "TranslationServer",
 		"base_class": "Object",
 		"api_type": "core",
@@ -149608,6 +150802,37 @@
 					{
 						"name": "button",
 						"type": "Texture",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_button_disabled",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "column",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "button_idx",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "disabled",
+						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -152024,6 +153249,11 @@
 		"properties": [
 		],
 		"signals": [
+			{
+				"name": "version_changed",
+				"arguments": [
+				]
+			}
 		],
 		"methods": [
 			{
@@ -152252,6 +153482,32 @@
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "has_redo",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "has_undo",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
 				"is_reverse": false,
 				"is_virtual": false,
 				"has_varargs": false,
@@ -152546,6 +153802,13 @@
 		},
 		"properties": [
 			{
+				"name": "brake",
+				"type": "float",
+				"getter": "get_brake",
+				"setter": "set_brake",
+				"index": -1
+			},
+			{
 				"name": "damping_compression",
 				"type": "float",
 				"getter": "get_damping_compression",
@@ -152557,6 +153820,20 @@
 				"type": "float",
 				"getter": "get_damping_relaxation",
 				"setter": "set_damping_relaxation",
+				"index": -1
+			},
+			{
+				"name": "engine_force",
+				"type": "float",
+				"getter": "get_engine_force",
+				"setter": "set_engine_force",
+				"index": -1
+			},
+			{
+				"name": "steering",
+				"type": "float",
+				"getter": "get_steering",
+				"setter": "set_steering",
 				"index": -1
 			},
 			{
@@ -152627,6 +153904,19 @@
 		],
 		"methods": [
 			{
+				"name": "get_brake",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_damping_compression",
 				"return_type": "float",
 				"is_editor": false,
@@ -152641,6 +153931,19 @@
 			},
 			{
 				"name": "get_damping_relaxation",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_engine_force",
 				"return_type": "float",
 				"is_editor": false,
 				"is_noscript": false,
@@ -152706,6 +154009,19 @@
 			},
 			{
 				"name": "get_skidinfo",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_steering",
 				"return_type": "float",
 				"is_editor": false,
 				"is_noscript": false,
@@ -152809,6 +154125,25 @@
 				]
 			},
 			{
+				"name": "set_brake",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "brake",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "set_damping_compression",
 				"return_type": "void",
 				"is_editor": false,
@@ -152840,6 +154175,25 @@
 				"arguments": [
 					{
 						"name": "length",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_engine_force",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "engine_force",
 						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
@@ -152897,6 +154251,25 @@
 				"arguments": [
 					{
 						"name": "roll_influence",
+						"type": "float",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_steering",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "steering",
 						"type": "float",
 						"has_default_value": false,
 						"default_value": ""
@@ -153906,6 +155279,13 @@
 				"type": "Vector2",
 				"getter": "get_size",
 				"setter": "set_size",
+				"index": -1
+			},
+			{
+				"name": "size_override_stretch",
+				"type": "bool",
+				"getter": "is_size_override_stretch_enabled",
+				"setter": "set_size_override_stretch",
 				"index": -1
 			},
 			{
@@ -157477,7 +158857,7 @@
 			"BYTES_TO_VAR": 62,
 			"COLORN": 63,
 			"FUNC_FUNCREF": 50,
-			"FUNC_MAX": 65,
+			"FUNC_MAX": 67,
 			"LOGIC_CLAMP": 47,
 			"LOGIC_MAX": 45,
 			"LOGIC_MIN": 46,
@@ -157504,10 +158884,12 @@
 			"MATH_ISINF": 22,
 			"MATH_ISNAN": 21,
 			"MATH_LERP": 26,
+			"MATH_LERP_ANGLE": 66,
 			"MATH_LINEAR2DB": 39,
 			"MATH_LOG": 19,
 			"MATH_MOVE_TOWARD": 29,
 			"MATH_POLAR2CARTESIAN": 41,
+			"MATH_POSMOD": 65,
 			"MATH_POW": 18,
 			"MATH_RAD2DEG": 38,
 			"MATH_RAND": 32,
@@ -157655,7 +159037,9 @@
 					"BYTES_TO_VAR": 62,
 					"COLORN": 63,
 					"MATH_SMOOTHSTEP": 64,
-					"FUNC_MAX": 65
+					"MATH_POSMOD": 65,
+					"MATH_LERP_ANGLE": 66,
+					"FUNC_MAX": 67
 				}
 			}
 		]
@@ -172746,6 +174130,180 @@
 		]
 	},
 	{
+		"name": "VisualShaderNodeCompare",
+		"base_class": "VisualShaderNode",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+			"COND_ALL": 0,
+			"COND_ANY": 1,
+			"CTYPE_BOOLEAN": 2,
+			"CTYPE_SCALAR": 0,
+			"CTYPE_TRANSFORM": 3,
+			"CTYPE_VECTOR": 1,
+			"FUNC_EQUAL": 0,
+			"FUNC_GREATER_THAN": 2,
+			"FUNC_GREATER_THAN_EQUAL": 3,
+			"FUNC_LESS_THAN": 4,
+			"FUNC_LESS_THAN_EQUAL": 5,
+			"FUNC_NOT_EQUAL": 1
+		},
+		"properties": [
+			{
+				"name": "condition",
+				"type": "int",
+				"getter": "get_condition",
+				"setter": "set_condition",
+				"index": -1
+			},
+			{
+				"name": "function",
+				"type": "int",
+				"getter": "get_function",
+				"setter": "set_function",
+				"index": -1
+			},
+			{
+				"name": "type",
+				"type": "int",
+				"getter": "get_comparsion_type",
+				"setter": "set_comparsion_type",
+				"index": -1
+			}
+		],
+		"signals": [
+		],
+		"methods": [
+			{
+				"name": "get_comparsion_type",
+				"return_type": "enum.VisualShaderNodeCompare::ComparsionType",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_condition",
+				"return_type": "enum.VisualShaderNodeCompare::Condition",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_function",
+				"return_type": "enum.VisualShaderNodeCompare::Function",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "set_comparsion_type",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "type",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_condition",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "condition",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_function",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "func",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"enums": [
+			{
+				"name": "ComparsionType",
+				"values": {
+					"CTYPE_SCALAR": 0,
+					"CTYPE_VECTOR": 1,
+					"CTYPE_BOOLEAN": 2,
+					"CTYPE_TRANSFORM": 3
+				}
+			},
+			{
+				"name": "Function",
+				"values": {
+					"FUNC_EQUAL": 0,
+					"FUNC_NOT_EQUAL": 1,
+					"FUNC_GREATER_THAN": 2,
+					"FUNC_GREATER_THAN_EQUAL": 3,
+					"FUNC_LESS_THAN": 4,
+					"FUNC_LESS_THAN_EQUAL": 5
+				}
+			},
+			{
+				"name": "Condition",
+				"values": {
+					"COND_ALL": 0,
+					"COND_ANY": 1
+				}
+			}
+		]
+	},
+	{
 		"name": "VisualShaderNodeCubeMap",
 		"base_class": "VisualShaderNode",
 		"api_type": "core",
@@ -173263,6 +174821,25 @@
 				]
 			},
 			{
+				"name": "is_valid_port_name",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "name",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "remove_input_port",
 				"return_type": "void",
 				"is_editor": false,
@@ -173564,6 +175141,72 @@
 			}
 		],
 		"enums": [
+		]
+	},
+	{
+		"name": "VisualShaderNodeIs",
+		"base_class": "VisualShaderNode",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+			"FUNC_IS_INF": 0,
+			"FUNC_IS_NAN": 1
+		},
+		"properties": [
+			{
+				"name": "function",
+				"type": "int",
+				"getter": "get_function",
+				"setter": "set_function",
+				"index": -1
+			}
+		],
+		"signals": [
+		],
+		"methods": [
+			{
+				"name": "get_function",
+				"return_type": "enum.VisualShaderNodeIs::Function",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "set_function",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "func",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			}
+		],
+		"enums": [
+			{
+				"name": "Function",
+				"values": {
+					"FUNC_IS_INF": 0,
+					"FUNC_IS_NAN": 1
+				}
+			}
 		]
 	},
 	{
@@ -174035,6 +175678,7 @@
 		"constants": {
 			"SOURCE_2D_NORMAL": 3,
 			"SOURCE_2D_TEXTURE": 2,
+			"SOURCE_DEPTH": 4,
 			"SOURCE_SCREEN": 1,
 			"SOURCE_TEXTURE": 0,
 			"TYPE_COLOR": 1,
@@ -174179,7 +175823,8 @@
 					"SOURCE_TEXTURE": 0,
 					"SOURCE_SCREEN": 1,
 					"SOURCE_2D_TEXTURE": 2,
-					"SOURCE_2D_NORMAL": 3
+					"SOURCE_2D_NORMAL": 3,
+					"SOURCE_DEPTH": 4
 				}
 			}
 		]
@@ -174300,6 +175945,24 @@
 					"COLOR_DEFAULT_BLACK": 1
 				}
 			}
+		]
+	},
+	{
+		"name": "VisualShaderNodeTextureUniformTriplanar",
+		"base_class": "VisualShaderNodeTextureUniform",
+		"api_type": "core",
+		"singleton": false,
+		"instanciable": true,
+		"is_reference": true,
+		"constants": {
+		},
+		"properties": [
+		],
+		"signals": [
+		],
+		"methods": [
+		],
+		"enums": [
 		]
 	},
 	{
@@ -176115,6 +177778,43 @@
 				"arguments": [
 					{
 						"name": "peer_id",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_buffers",
+				"return_type": "enum.Error",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "input_buffer_size_kb",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "input_max_packets",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "output_buffer_size_kb",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "output_max_packets",
 						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
@@ -178258,6 +179958,19 @@
 				]
 			},
 			{
+				"name": "get_physics_interpolation_fraction",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_physics_jitter_fix",
 				"return_type": "float",
 				"is_editor": false,
@@ -179849,6 +181562,31 @@
 				]
 			},
 			{
+				"name": "is_point_in_polygon",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "point",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "polygon",
+						"type": "PoolVector2Array",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "is_polygon_clockwise",
 				"return_type": "bool",
 				"is_editor": false,
@@ -180768,6 +182506,20 @@
 				"index": -1
 			},
 			{
+				"name": "max_window_size",
+				"type": "Vector2",
+				"getter": "get_max_window_size",
+				"setter": "set_max_window_size",
+				"index": -1
+			},
+			{
+				"name": "min_window_size",
+				"type": "Vector2",
+				"getter": "get_min_window_size",
+				"setter": "set_min_window_size",
+				"index": -1
+			},
+			{
 				"name": "screen_orientation",
 				"type": "int",
 				"getter": "get_screen_orientation",
@@ -181323,6 +183075,32 @@
 			{
 				"name": "get_locale",
 				"return_type": "String",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_max_window_size",
+				"return_type": "Vector2",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
+				"name": "get_min_window_size",
+				"return_type": "Vector2",
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": true,
@@ -182490,6 +184268,44 @@
 					{
 						"name": "enable",
 						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_max_window_size",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "size",
+						"type": "Vector2",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "set_min_window_size",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "size",
+						"type": "Vector2",
 						"has_default_value": false,
 						"default_value": ""
 					}
