@@ -223,10 +223,6 @@ use of GDNative to implement scripts backed by native code.
 You must compile the library with debug
 symbols, and then you can use your debugger as usual.
 
-**Are NativeScripts in Godot 3.0?**
-
-They are! 🎉
-
 **Can you use one GDNativeLibrary for all NativeScripts?**
 
 You can! ✨
