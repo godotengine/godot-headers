@@ -115105,6 +115105,19 @@
 				]
 			},
 			{
+				"name": "reset_ref",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "unreference",
 				"return_type": "bool",
 				"is_editor": false,
