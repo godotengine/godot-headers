@@ -5,8 +5,8 @@
 /*                           GODOT ENGINE                                */
 /*                      https://godotengine.org                          */
 /*************************************************************************/
-/* Copyright (c) 2007-2019 Juan Linietsky, Ariel Manzur.                 */
-/* Copyright (c) 2014-2019 Godot Engine contributors (cf. AUTHORS.md)    */
+/* Copyright (c) 2007-2020 Juan Linietsky, Ariel Manzur.                 */
+/* Copyright (c) 2014-2020 Godot Engine contributors (cf. AUTHORS.md).   */
 /*                                                                       */
 /* Permission is hereby granted, free of charge, to any person obtaining */
 /* a copy of this software and associated documentation files (the       */
@@ -105,6 +105,8 @@ godot_vector3 GDAPI godot_vector3_abs(const godot_vector3 *p_self);
 godot_vector3 GDAPI godot_vector3_floor(const godot_vector3 *p_self);
 
 godot_vector3 GDAPI godot_vector3_ceil(const godot_vector3 *p_self);
+
+godot_vector3 GDAPI godot_vector3_direction_to(const godot_vector3 *p_self, const godot_vector3 *p_b);
 
 godot_real GDAPI godot_vector3_distance_to(const godot_vector3 *p_self, const godot_vector3 *p_b);
 
