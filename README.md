@@ -5,8 +5,21 @@
 
 > `NativeScript` uses GDNative to implement scripts backed by native code.
 
+-   [**Branches**](#branches)
 -   [**Getting Started**](#getting-started)
 -   [**FAQ**](#faq)
+
+## Branches
+
+We maintain branches on this repo that relate directly to the main builds of Godot.
+Make sure you use the correct branch for the version of Godot you are using!
+
+| Branch | Version of Godot |
+| --- | --- |
+| [master](https://github.com/GodotNativeTools/godot_headers) | Godot master  |
+| [3.2](https://github.com/GodotNativeTools/godot_headers/tree/3.2) | Godot 3.2.x  |
+| [3.1](https://github.com/GodotNativeTools/godot_headers/tree/3.1) | Godot 3.1.x  |
+| [3.0](https://github.com/GodotNativeTools/godot_headers/tree/3.0) | Godot 3.0.x  |
 
 ## Getting Started
 

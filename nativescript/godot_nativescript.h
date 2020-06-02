@@ -42,9 +42,7 @@ typedef enum {
 	GODOT_METHOD_RPC_MODE_REMOTE,
 	GODOT_METHOD_RPC_MODE_MASTER,
 	GODOT_METHOD_RPC_MODE_PUPPET,
-	GODOT_METHOD_RPC_MODE_SLAVE = GODOT_METHOD_RPC_MODE_PUPPET,
 	GODOT_METHOD_RPC_MODE_REMOTESYNC,
-	GODOT_METHOD_RPC_MODE_SYNC = GODOT_METHOD_RPC_MODE_REMOTESYNC,
 	GODOT_METHOD_RPC_MODE_MASTERSYNC,
 	GODOT_METHOD_RPC_MODE_PUPPETSYNC,
 } godot_method_rpc_mode;
@@ -56,7 +54,6 @@ typedef enum {
 	GODOT_PROPERTY_HINT_ENUM, ///< hint_text= "val1,val2,val3,etc"
 	GODOT_PROPERTY_HINT_EXP_EASING, /// exponential easing function (Math::ease)
 	GODOT_PROPERTY_HINT_LENGTH, ///< hint_text= "length" (as integer)
-	GODOT_PROPERTY_HINT_SPRITE_FRAME, // FIXME: Obsolete: drop whenever we can break compat
 	GODOT_PROPERTY_HINT_KEY_ACCEL, ///< hint_text= "length" (as integer)
 	GODOT_PROPERTY_HINT_FLAGS, ///< hint_text= "flag1,flag2,etc" (as bit flags)
 	GODOT_PROPERTY_HINT_LAYERS_2D_RENDER,
@@ -98,8 +95,7 @@ typedef enum {
 	GODOT_PROPERTY_USAGE_INTERNATIONALIZED = 64, //hint for internationalized strings
 	GODOT_PROPERTY_USAGE_GROUP = 128, //used for grouping props in the editor
 	GODOT_PROPERTY_USAGE_CATEGORY = 256,
-	GODOT_PROPERTY_USAGE_STORE_IF_NONZERO = 512, // FIXME: Obsolete: drop whenever we can break compat
-	GODOT_PROPERTY_USAGE_STORE_IF_NONONE = 1024, // FIXME: Obsolete: drop whenever we can break compat
+	GODOT_PROPERTY_USAGE_SUBGROUP = 512,
 	GODOT_PROPERTY_USAGE_NO_INSTANCE_STATE = 2048,
 	GODOT_PROPERTY_USAGE_RESTART_IF_CHANGED = 4096,
 	GODOT_PROPERTY_USAGE_SCRIPT_VARIABLE = 8192,
@@ -176,17 +172,17 @@ typedef struct {
 	godot_string hint_string;
 	godot_property_usage_flags usage;
 	godot_variant default_value;
-} godot_signal_argument;
+} godot_nativescript_signal_argument;
 
 typedef struct {
 	godot_string name;
 	int num_args;
-	godot_signal_argument *args;
+	godot_nativescript_signal_argument *args;
 	int num_default_args;
 	godot_variant *default_args;
-} godot_signal;
+} godot_nativescript_signal;
 
-void GDAPI godot_nativescript_register_signal(void *p_gdnative_handle, const char *p_name, const godot_signal *p_signal);
+void GDAPI godot_nativescript_register_signal(void *p_gdnative_handle, const char *p_name, const godot_nativescript_signal *p_signal);
 
 void GDAPI *godot_nativescript_get_userdata(godot_object *p_instance);
 
