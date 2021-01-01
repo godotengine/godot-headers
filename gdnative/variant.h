@@ -168,6 +168,42 @@ typedef enum godot_variant_operator {
 extern "C" {
 #endif
 
+#if __STDC_VERSION__ >= 201112L
+
+#define godot_variant_new(r_dest, p_value)                              \
+    _Generic((p_value),                                                 \
+        godot_bool: godot_variant_new_bool,                             \
+        int:      godot_variant_new_int,                                \
+        uint64_t: godot_variant_new_uint,                               \
+        int64_t:  godot_variant_new_int,                                \
+        double:   godot_variant_new_real,                               \
+        float:    godot_variant_new_real,                               \
+        godot_string*: godot_variant_new_string,                        \
+        godot_vector2*: godot_variant_new_vector2,                      \
+        godot_rect2*: godot_variant_new_rect2,                          \
+        godot_vector3*: godot_variant_new_vector3,                      \
+        godot_transform2d*: godot_variant_new_transform2d,              \
+        godot_plane*: godot_variant_new_plane,                          \
+        godot_quat*: godot_variant_new_quat,                            \
+        godot_aabb*: godot_variant_new_aabb,                            \
+        godot_basis*: godot_variant_new_basis,                          \
+        godot_transform*: godot_variant_new_transform,                  \
+        godot_color*: godot_variant_new_color,                          \
+        godot_node_path*: godot_variant_new_node_path,                  \
+        godot_rid*: godot_variant_new_rid,                              \
+        godot_object*: godot_variant_new_object,                        \
+        godot_dictionary*: godot_variant_new_dictionary,                \
+        godot_array*: godot_variant_new_array,                          \
+        godot_pool_byte_array*: godot_variant_new_pool_byte_array,      \
+        godot_pool_int_array*: godot_variant_new_pool_int_array,        \
+        godot_pool_real_array*: godot_variant_new_pool_real_array,      \
+        godot_pool_string_array*: godot_variant_new_pool_string_array,  \
+        godot_pool_vector2_array*: godot_variant_new_pool_vector2_array,\
+        godot_pool_vector3_array*: godot_variant_new_pool_vector3_array,\
+        godot_pool_color_array*: godot_variant_new_pool_color_array)    \
+    ((r_dest), (p_value))
+#endif
+
 godot_variant_type GDAPI godot_variant_get_type(const godot_variant *p_v);
 
 void GDAPI godot_variant_new_copy(godot_variant *r_dest, const godot_variant *p_src);
