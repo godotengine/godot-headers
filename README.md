@@ -1,4 +1,5 @@
-# godot_headers
+# godot-headers
+
 #### `GDNative / NativeScript`
 
 > `GDNative` enables the use of dynamically linked libraries inside of [**Godot**](https://github.com/godotengine/godot).
@@ -13,16 +14,16 @@
 | **Build latest version of Godot** | [**GitHub**](https://github.com/godotengine/godot) | [**Docs**](https://godot.readthedocs.io/en/latest/development/compiling/index.html) |
 | --- | --- | --- |
 
-### Clone godot_headers into Library
+### Clone godot-headers into Library
 
-Clone `godot_headers` under `SimpleLibrary/`
+Clone `godot-headers` under `SimpleLibrary/`
 
 ```bash
 cd SimpleLibrary
-git clone https://github.com/GodotNativeTools/godot_headers
+git clone https://github.com/godotengine/godot-headers
 ```
 
-> Note that the master branch of this repository contains the header for the latest Godot master. If you want to build GDNative modules for older versions of Godot add `-b <version>` to the git clone command above. i.e. `git clone https://github.com/GodotNativeTools/godot_headers -b 3.0` will retrieve headers compatible with Godot 3.0.
+> Note that the master branch of this repository contains the header for the latest Godot master. If you want to build GDNative modules for older versions of Godot add `-b <version>` to the git clone command above. i.e. `git clone https://github.com/godotengine/godot-headers -b 3.0` will retrieve headers compatible with Godot 3.0.
 
 > With the exception of a breaking change in the ARVR module between 3.0 and 3.1, GDNative plugins written for an older version of Godot will work in newer versions.
 
@@ -214,8 +215,8 @@ use of GDNative to implement scripts backed by native code.
 
 **Which languages are binding as a NativeScript?**
 
-[**C++**](https://github.com/GodotNativeTools/cpp_bindings),
-[**D**](https://github.com/GodotNativeTools/d_bindings),
+[**C++**](https://github.com/godotengine/godot-cpp),
+[**D**](https://github.com/godot-d/godot-d),
 [**Nim**](https://github.com/pragmagic/godot-nim)
 
 **Can you debug NativeScripts?**
