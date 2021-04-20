@@ -105,6 +105,14 @@ typedef struct godot_gdnative_ext_android_api_struct {
 	bool (*godot_android_is_activity_resumed)();
 } godot_gdnative_ext_android_api_struct;
 
+typedef struct godot_gdnative_ext_arvr_1_2_api_struct {
+	unsigned int type;
+	godot_gdnative_api_version version;
+	const godot_gdnative_api_struct *next;
+	void (*godot_arvr_set_interface)(godot_object *p_arvr_interface, const godot_arvr_interface_gdnative *p_gdn_interface);
+	godot_int (*godot_arvr_get_depthid)(godot_rid *p_render_target);
+} godot_gdnative_ext_arvr_1_2_api_struct;
+
 typedef struct godot_gdnative_ext_arvr_api_struct {
 	unsigned int type;
 	godot_gdnative_api_version version;
@@ -916,7 +924,7 @@ typedef struct godot_gdnative_core_api_struct {
 	godot_bool (*godot_string_empty)(const godot_string *p_self);
 	godot_string (*godot_string_get_base_dir)(const godot_string *p_self);
 	godot_string (*godot_string_get_file)(const godot_string *p_self);
-	godot_string (*godot_string_humanize_size)(size_t p_size);
+	godot_string (*godot_string_humanize_size)(uint64_t p_size);
 	godot_bool (*godot_string_is_abs_path)(const godot_string *p_self);
 	godot_bool (*godot_string_is_rel_path)(const godot_string *p_self);
 	godot_bool (*godot_string_is_resource_file)(const godot_string *p_self);
