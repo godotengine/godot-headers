@@ -187026,6 +187026,19 @@
 				]
 			},
 			{
+				"name": "get_buffered_amount",
+				"return_type": "int",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
+			{
 				"name": "get_id",
 				"return_type": "int",
 				"is_editor": false,
