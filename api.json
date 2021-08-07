@@ -44008,25 +44008,6 @@
 				]
 			},
 			{
-				"name": "_shape_changed",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": true,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "shape",
-						"type": "Shape",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
 				"name": "_update_debug_shapes",
 				"return_type": "void",
 				"is_editor": false,
@@ -45413,6 +45394,19 @@
 		"signals": [
 		],
 		"methods": [
+			{
+				"name": "_shape_changed",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": true,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+				]
+			},
 			{
 				"name": "get_shape",
 				"return_type": "Shape",
@@ -77059,6 +77053,31 @@
 				]
 			},
 			{
+				"name": "get_action_raw_strength",
+				"return_type": "float",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "action",
+						"type": "String",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "exact",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
+					}
+				]
+			},
+			{
 				"name": "get_action_strength",
 				"return_type": "float",
 				"is_editor": false,
@@ -77076,7 +77095,7 @@
 						"default_value": ""
 					},
 					{
-						"name": "exact_match",
+						"name": "exact",
 						"type": "bool",
 						"has_default_value": true,
 						"default_value": "False"
@@ -77382,7 +77401,7 @@
 						"default_value": ""
 					},
 					{
-						"name": "exact_match",
+						"name": "exact",
 						"type": "bool",
 						"has_default_value": true,
 						"default_value": "False"
@@ -77407,7 +77426,7 @@
 						"default_value": ""
 					},
 					{
-						"name": "exact_match",
+						"name": "exact",
 						"type": "bool",
 						"has_default_value": true,
 						"default_value": "False"
@@ -77432,7 +77451,7 @@
 						"default_value": ""
 					},
 					{
-						"name": "exact_match",
+						"name": "exact",
 						"type": "bool",
 						"has_default_value": true,
 						"default_value": "False"
@@ -129676,13 +129695,13 @@
 				"arguments": [
 					{
 						"name": "id",
-						"type": "Variant",
+						"type": "void",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
 						"name": "meta",
-						"type": "Variant",
+						"type": "void",
 						"has_default_value": false,
 						"default_value": ""
 					}
@@ -133495,19 +133514,6 @@
 		],
 		"methods": [
 			{
-				"name": "get_debug_mesh",
-				"return_type": "ArrayMesh",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
 				"name": "get_margin",
 				"return_type": "float",
 				"is_editor": false,
@@ -134021,25 +134027,6 @@
 			},
 			{
 				"name": "get_bone_global_pose",
-				"return_type": "Transform",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "bone_idx",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "get_bone_global_pose_no_override",
 				"return_type": "Transform",
 				"is_editor": false,
 				"is_noscript": false,
@@ -136615,7 +136602,7 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "point_index",
+						"name": "arg0",
 						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
@@ -136623,18 +136610,18 @@
 				]
 			},
 			{
-				"name": "pin_point_toggle",
-				"return_type": "void",
+				"name": "is_point_pinned",
+				"return_type": "bool",
 				"is_editor": false,
 				"is_noscript": false,
-				"is_const": false,
+				"is_const": true,
 				"is_reverse": false,
 				"is_virtual": false,
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "point_index",
+						"name": "arg0",
 						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
@@ -136653,19 +136640,19 @@
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "point_index",
+						"name": "arg0",
 						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "pin",
+						"name": "arg1",
 						"type": "bool",
 						"has_default_value": false,
 						"default_value": ""
 					},
 					{
-						"name": "spatial_attachment_path",
+						"name": "arg2",
 						"type": "NodePath",
 						"has_default_value": false,
 						"default_value": ""
@@ -136673,18 +136660,18 @@
 				]
 			},
 			{
-				"name": "is_point_pinned",
-				"return_type": "bool",
+				"name": "pin_point_toggle",
+				"return_type": "void",
 				"is_editor": false,
 				"is_noscript": false,
-				"is_const": true,
+				"is_const": false,
 				"is_reverse": false,
 				"is_virtual": false,
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
 					{
-						"name": "point_index",
+						"name": "arg0",
 						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
@@ -184221,13 +184208,6 @@
 		"constants": {
 		},
 		"properties": [
-			{
-				"name": "initialized",
-				"type": "bool",
-				"getter": "_is_initialized",
-				"setter": "_set_initialized",
-				"index": -1
-			}
 		],
 		"signals": [
 		],
@@ -184453,63 +184433,6 @@
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
-				]
-			},
-			{
-				"name": "_is_initialized",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": true,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "_set_initialized",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": true,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "enabled",
-						"type": "bool",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "_set_input_port_default_value",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": true,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "port",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					},
-					{
-						"name": "value",
-						"type": "Variant",
-						"has_default_value": false,
-						"default_value": ""
-					}
 				]
 			}
 		],
@@ -187160,19 +187083,6 @@
 				"is_editor": false,
 				"is_noscript": false,
 				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-				]
-			},
-			{
-				"name": "get_buffered_amount",
-				"return_type": "int",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
 				"is_reverse": false,
 				"is_virtual": false,
 				"has_varargs": false,
