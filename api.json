@@ -136602,6 +136602,94 @@
 						"default_value": ""
 					}
 				]
+			},
+			{
+				"name": "get_point_transform",
+				"return_type": "Vector3",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "point_index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "pin_point_toggle",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "point_index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "pin_point",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "point_index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "pin",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "spatial_attachment_path",
+						"type": "NodePath",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "is_point_pinned",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "point_index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
 			}
 		],
 		"enums": [
