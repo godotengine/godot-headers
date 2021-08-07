@@ -77074,6 +77074,12 @@
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "exact_match",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -77374,6 +77380,12 @@
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "exact_match",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -77393,6 +77405,12 @@
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "exact_match",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -77412,6 +77430,12 @@
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "exact_match",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -77878,6 +77902,12 @@
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "exact_match",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -77910,6 +77940,12 @@
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "exact_match",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -77935,6 +77971,12 @@
 						"type": "bool",
 						"has_default_value": true,
 						"default_value": "False"
+					},
+					{
+						"name": "exact_match",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -77954,6 +77996,12 @@
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "exact_match",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
@@ -80258,6 +80306,12 @@
 						"type": "String",
 						"has_default_value": false,
 						"default_value": ""
+					},
+					{
+						"name": "exact_match",
+						"type": "bool",
+						"has_default_value": true,
+						"default_value": "False"
 					}
 				]
 			},
