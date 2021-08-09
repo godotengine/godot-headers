@@ -136197,6 +136197,25 @@
 				]
 			},
 			{
+				"name": "get_point_transform",
+				"return_type": "Vector3",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "point_index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "get_pose_matching_coefficient",
 				"return_type": "float",
 				"is_editor": false,
@@ -136262,6 +136281,25 @@
 				]
 			},
 			{
+				"name": "is_point_pinned",
+				"return_type": "bool",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": true,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "point_index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
 				"name": "is_ray_pickable",
 				"return_type": "bool",
 				"is_editor": false,
@@ -136272,6 +136310,56 @@
 				"has_varargs": false,
 				"is_from_script": false,
 				"arguments": [
+				]
+			},
+			{
+				"name": "pin_point",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "point_index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "pin",
+						"type": "bool",
+						"has_default_value": false,
+						"default_value": ""
+					},
+					{
+						"name": "spatial_attachment_path",
+						"type": "NodePath",
+						"has_default_value": false,
+						"default_value": ""
+					}
+				]
+			},
+			{
+				"name": "pin_point_toggle",
+				"return_type": "void",
+				"is_editor": false,
+				"is_noscript": false,
+				"is_const": false,
+				"is_reverse": false,
+				"is_virtual": false,
+				"has_varargs": false,
+				"is_from_script": false,
+				"arguments": [
+					{
+						"name": "point_index",
+						"type": "int",
+						"has_default_value": false,
+						"default_value": ""
+					}
 				]
 			},
 			{
@@ -136585,94 +136673,6 @@
 					{
 						"name": "volume_stiffness",
 						"type": "float",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "get_point_transform",
-				"return_type": "Vector3",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "arg0",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "is_point_pinned",
-				"return_type": "bool",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": true,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "arg0",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "pin_point",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "arg0",
-						"type": "int",
-						"has_default_value": false,
-						"default_value": ""
-					},
-					{
-						"name": "arg1",
-						"type": "bool",
-						"has_default_value": false,
-						"default_value": ""
-					},
-					{
-						"name": "arg2",
-						"type": "NodePath",
-						"has_default_value": false,
-						"default_value": ""
-					}
-				]
-			},
-			{
-				"name": "pin_point_toggle",
-				"return_type": "void",
-				"is_editor": false,
-				"is_noscript": false,
-				"is_const": false,
-				"is_reverse": false,
-				"is_virtual": false,
-				"has_varargs": false,
-				"is_from_script": false,
-				"arguments": [
-					{
-						"name": "arg0",
-						"type": "int",
 						"has_default_value": false,
 						"default_value": ""
 					}
