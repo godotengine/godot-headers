@@ -10671,6 +10671,15 @@
 						{
 							"name": "normal",
 							"type": "Vector3"
+						}
+					]
+				},
+				{
+					"index": 3,
+					"arguments": [
+						{
+							"name": "normal",
+							"type": "Vector3"
 						},
 						{
 							"name": "d",
@@ -10679,20 +10688,20 @@
 					]
 				},
 				{
-					"index": 3,
+					"index": 4,
 					"arguments": [
 						{
-							"name": "point",
+							"name": "normal",
 							"type": "Vector3"
 						},
 						{
-							"name": "normal",
+							"name": "point",
 							"type": "Vector3"
 						}
 					]
 				},
 				{
-					"index": 4,
+					"index": 5,
 					"arguments": [
 						{
 							"name": "point1",
@@ -10709,7 +10718,7 @@
 					]
 				},
 				{
-					"index": 5,
+					"index": 6,
 					"arguments": [
 						{
 							"name": "a",
@@ -23416,24 +23425,36 @@
 							"value": 0
 						},
 						{
-							"name": "TYPE_TRANSFORM3D",
+							"name": "TYPE_POSITION_3D",
 							"value": 1
 						},
 						{
-							"name": "TYPE_METHOD",
+							"name": "TYPE_ROTATION_3D",
 							"value": 2
 						},
 						{
-							"name": "TYPE_BEZIER",
+							"name": "TYPE_SCALE_3D",
 							"value": 3
 						},
 						{
-							"name": "TYPE_AUDIO",
+							"name": "TYPE_BLEND_SHAPE",
 							"value": 4
 						},
 						{
-							"name": "TYPE_ANIMATION",
+							"name": "TYPE_METHOD",
 							"value": 5
+						},
+						{
+							"name": "TYPE_BEZIER",
+							"value": 6
+						},
+						{
+							"name": "TYPE_AUDIO",
+							"value": 7
+						},
+						{
+							"name": "TYPE_ANIMATION",
+							"value": 8
 						}
 					]
 				},
@@ -23731,11 +23752,11 @@
 					]
 				},
 				{
-					"name": "transform_track_insert_key",
+					"name": "position_track_insert_key",
 					"is_const": false,
 					"is_vararg": false,
 					"is_virtual": false,
-					"hash": 135517835,
+					"hash": 135445961,
 					"return_value": {
 						"type": "int",
 						"meta": "int32"
@@ -23752,16 +23773,90 @@
 							"meta": "double"
 						},
 						{
-							"name": "location",
+							"name": "position",
 							"type": "Vector3"
+						}
+					]
+				},
+				{
+					"name": "rotation_track_insert_key",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135445961,
+					"return_value": {
+						"type": "int",
+						"meta": "int32"
+					},
+					"arguments": [
+						{
+							"name": "track_idx",
+							"type": "int",
+							"meta": "int32"
+						},
+						{
+							"name": "time",
+							"type": "float",
+							"meta": "double"
 						},
 						{
 							"name": "rotation",
 							"type": "Quaternion"
+						}
+					]
+				},
+				{
+					"name": "scale_track_insert_key",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135445961,
+					"return_value": {
+						"type": "int",
+						"meta": "int32"
+					},
+					"arguments": [
+						{
+							"name": "track_idx",
+							"type": "int",
+							"meta": "int32"
+						},
+						{
+							"name": "time",
+							"type": "float",
+							"meta": "double"
 						},
 						{
 							"name": "scale",
 							"type": "Vector3"
+						}
+					]
+				},
+				{
+					"name": "blend_shape_track_insert_key",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135445961,
+					"return_value": {
+						"type": "int",
+						"meta": "int32"
+					},
+					"arguments": [
+						{
+							"name": "track_idx",
+							"type": "int",
+							"meta": "int32"
+						},
+						{
+							"name": "time",
+							"type": "float",
+							"meta": "double"
+						},
+						{
+							"name": "amount",
+							"type": "float",
+							"meta": "float"
 						}
 					]
 				},
@@ -24084,28 +24179,6 @@
 							"name": "track_idx",
 							"type": "int",
 							"meta": "int32"
-						}
-					]
-				},
-				{
-					"name": "transform_track_interpolate",
-					"is_const": true,
-					"is_vararg": false,
-					"is_virtual": false,
-					"hash": 135410057,
-					"return_value": {
-						"type": "Array"
-					},
-					"arguments": [
-						{
-							"name": "track_idx",
-							"type": "int",
-							"meta": "int32"
-						},
-						{
-							"name": "time_sec",
-							"type": "float",
-							"meta": "double"
 						}
 					]
 				},
@@ -31086,11 +31159,11 @@
 							"type": "Area2D"
 						},
 						{
-							"name": "area_shape",
+							"name": "area_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -31116,11 +31189,11 @@
 							"type": "Node2D"
 						},
 						{
-							"name": "body_shape",
+							"name": "body_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -31146,11 +31219,11 @@
 							"type": "Area2D"
 						},
 						{
-							"name": "area_shape",
+							"name": "area_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -31176,11 +31249,11 @@
 							"type": "Node2D"
 						},
 						{
-							"name": "body_shape",
+							"name": "body_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -31837,11 +31910,11 @@
 							"type": "Area3D"
 						},
 						{
-							"name": "area_shape",
+							"name": "area_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -31867,11 +31940,11 @@
 							"type": "Node3D"
 						},
 						{
-							"name": "body_shape",
+							"name": "body_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -31897,11 +31970,11 @@
 							"type": "Area3D"
 						},
 						{
-							"name": "area_shape",
+							"name": "area_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -31927,11 +32000,11 @@
 							"type": "Node3D"
 						},
 						{
-							"name": "body_shape",
+							"name": "body_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -43407,7 +43480,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -49162,7 +49235,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -49249,7 +49322,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "fov",
 							"type": "float",
 							"meta": "float"
 						}
@@ -49263,7 +49336,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "offset",
 							"type": "Vector2"
 						}
 					]
@@ -49276,7 +49349,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "size",
 							"type": "float",
 							"meta": "float"
 						}
@@ -49290,7 +49363,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "far",
 							"type": "float",
 							"meta": "float"
 						}
@@ -49304,7 +49377,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "near",
 							"type": "float",
 							"meta": "float"
 						}
@@ -49328,7 +49401,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "mode",
 							"type": "enum::Camera3D.Projection"
 						}
 					]
@@ -59014,7 +59087,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -59037,7 +59110,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -71279,7 +71352,7 @@
 					},
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "id",
 							"type": "int",
 							"meta": "int32"
 						}
@@ -71721,9 +71794,9 @@
 		{
 			"name": "EditorPaths",
 			"is_refcounted": false,
-			"is_instantiable": true,
+			"is_instantiable": false,
 			"inherits": "Object",
-			"api_type": "core",
+			"api_type": "editor",
 			"methods": [
 				{
 					"name": "get_data_dir",
@@ -72460,28 +72533,54 @@
 					]
 				},
 				{
-					"name": "add_scene_import_plugin",
+					"name": "add_scene_format_importer_plugin",
 					"is_const": false,
 					"is_vararg": false,
 					"is_virtual": false,
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "scene_importer",
-							"type": "EditorSceneImporter"
+							"name": "scene_format_importer",
+							"type": "EditorSceneFormatImporter"
 						}
 					]
 				},
 				{
-					"name": "remove_scene_import_plugin",
+					"name": "remove_scene_format_importer_plugin",
 					"is_const": false,
 					"is_vararg": false,
 					"is_virtual": false,
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "scene_importer",
-							"type": "EditorSceneImporter"
+							"name": "scene_format_importer",
+							"type": "EditorSceneFormatImporter"
+						}
+					]
+				},
+				{
+					"name": "add_scene_post_import_plugin",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 134188166,
+					"arguments": [
+						{
+							"name": "scene_import_plugin",
+							"type": "EditorScenePostImportPlugin"
+						}
+					]
+				},
+				{
+					"name": "remove_scene_post_import_plugin",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 134188166,
+					"arguments": [
+						{
+							"name": "scene_import_plugin",
+							"type": "EditorScenePostImportPlugin"
 						}
 					]
 				},
@@ -73530,7 +73629,7 @@
 			]
 		},
 		{
-			"name": "EditorSceneImporter",
+			"name": "EditorSceneFormatImporter",
 			"is_refcounted": true,
 			"is_instantiable": false,
 			"inherits": "RefCounted",
@@ -73677,17 +73776,17 @@
 			]
 		},
 		{
-			"name": "EditorSceneImporterFBX",
+			"name": "EditorSceneFormatImporterFBX",
 			"is_refcounted": true,
 			"is_instantiable": false,
-			"inherits": "EditorSceneImporter",
+			"inherits": "EditorSceneFormatImporter",
 			"api_type": "editor"
 		},
 		{
-			"name": "EditorSceneImporterGLTF",
+			"name": "EditorSceneFormatImporterGLTF",
 			"is_refcounted": true,
 			"is_instantiable": false,
-			"inherits": "EditorSceneImporter",
+			"inherits": "EditorSceneFormatImporter",
 			"api_type": "editor"
 		},
 		{
@@ -73721,6 +73820,239 @@
 					"return_value": {
 						"type": "String"
 					}
+				}
+			]
+		},
+		{
+			"name": "EditorScenePostImportPlugin",
+			"is_refcounted": true,
+			"is_instantiable": false,
+			"inherits": "RefCounted",
+			"api_type": "editor",
+			"enums": [
+				{
+					"name": "InternalImportCategory",
+					"values": [
+						{
+							"name": "INTERNAL_IMPORT_CATEGORY_NODE",
+							"value": 0
+						},
+						{
+							"name": "INTERNAL_IMPORT_CATEGORY_MESH_3D_NODE",
+							"value": 1
+						},
+						{
+							"name": "INTERNAL_IMPORT_CATEGORY_MESH",
+							"value": 2
+						},
+						{
+							"name": "INTERNAL_IMPORT_CATEGORY_MATERIAL",
+							"value": 3
+						},
+						{
+							"name": "INTERNAL_IMPORT_CATEGORY_ANIMATION",
+							"value": 4
+						},
+						{
+							"name": "INTERNAL_IMPORT_CATEGORY_ANIMATION_NODE",
+							"value": 5
+						},
+						{
+							"name": "INTERNAL_IMPORT_CATEGORY_MAX",
+							"value": 6
+						}
+					]
+				}
+			],
+			"methods": [
+				{
+					"name": "_get_internal_import_options",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": true,
+					"arguments": [
+						{
+							"name": "category",
+							"type": "int"
+						}
+					]
+				},
+				{
+					"name": "_get_internal_option_visibility",
+					"is_const": true,
+					"is_vararg": false,
+					"is_virtual": true,
+					"return_value": {
+						"type": "Variant"
+					},
+					"arguments": [
+						{
+							"name": "category",
+							"type": "int"
+						},
+						{
+							"name": "option",
+							"type": "String"
+						}
+					]
+				},
+				{
+					"name": "_get_internal_option_update_view_required",
+					"is_const": true,
+					"is_vararg": false,
+					"is_virtual": true,
+					"return_value": {
+						"type": "Variant"
+					},
+					"arguments": [
+						{
+							"name": "category",
+							"type": "int"
+						},
+						{
+							"name": "option",
+							"type": "String"
+						}
+					]
+				},
+				{
+					"name": "_internal_process",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": true,
+					"arguments": [
+						{
+							"name": "category",
+							"type": "int"
+						},
+						{
+							"name": "base_node",
+							"type": "Node"
+						},
+						{
+							"name": "node",
+							"type": "Node"
+						},
+						{
+							"name": "resource",
+							"type": "Resource"
+						}
+					]
+				},
+				{
+					"name": "_get_import_options",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": true
+				},
+				{
+					"name": "_get_option_visibility",
+					"is_const": true,
+					"is_vararg": false,
+					"is_virtual": true,
+					"return_value": {
+						"type": "Variant"
+					},
+					"arguments": [
+						{
+							"name": "option",
+							"type": "String"
+						}
+					]
+				},
+				{
+					"name": "_pre_process",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": true,
+					"arguments": [
+						{
+							"name": "scene",
+							"type": "Node"
+						}
+					]
+				},
+				{
+					"name": "_post_process",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": true,
+					"arguments": [
+						{
+							"name": "scene",
+							"type": "Node"
+						}
+					]
+				},
+				{
+					"name": "get_option_value",
+					"is_const": true,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135374120,
+					"return_value": {
+						"type": "Variant"
+					},
+					"arguments": [
+						{
+							"name": "name",
+							"type": "StringName"
+						}
+					]
+				},
+				{
+					"name": "add_import_option",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 134224103,
+					"arguments": [
+						{
+							"name": "name",
+							"type": "String"
+						},
+						{
+							"name": "value",
+							"type": "Variant"
+						}
+					]
+				},
+				{
+					"name": "add_import_option_advanced",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 1351626862,
+					"arguments": [
+						{
+							"name": "type",
+							"type": "enum::Variant.Type"
+						},
+						{
+							"name": "name",
+							"type": "String"
+						},
+						{
+							"name": "default_value",
+							"type": "Variant"
+						},
+						{
+							"name": "hint",
+							"type": "enum::PropertyHint",
+							"default_value": "0"
+						},
+						{
+							"name": "hint_string",
+							"type": "String",
+							"default_value": "\"\""
+						},
+						{
+							"name": "usage_flags",
+							"type": "int",
+							"meta": "int32",
+							"default_value": "7"
+						}
+					]
 				}
 			]
 		},
@@ -80303,11 +80635,11 @@
 							"meta": "int32"
 						},
 						{
-							"name": "spacing",
+							"name": "spacing_type",
 							"type": "enum::TextServer.SpacingType"
 						},
 						{
-							"name": "arg3",
+							"name": "value",
 							"type": "int",
 							"meta": "int32"
 						}
@@ -80335,7 +80667,7 @@
 							"meta": "int32"
 						},
 						{
-							"name": "arg2",
+							"name": "spacing_type",
 							"type": "enum::TextServer.SpacingType"
 						}
 					]
@@ -81205,16 +81537,16 @@
 					},
 					"arguments": [
 						{
-							"name": "char",
+							"name": "size",
 							"type": "int",
 							"meta": "int32"
 						},
 						{
-							"name": "variation_selector",
+							"name": "char",
 							"type": "int"
 						},
 						{
-							"name": "arg2",
+							"name": "variation_selector",
 							"type": "int"
 						}
 					]
@@ -93228,7 +93560,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "chunk_size",
 							"type": "int",
 							"meta": "int32"
 						}
@@ -107261,6 +107593,71 @@
 					"is_vararg": false,
 					"is_virtual": false,
 					"hash": 134152229
+				},
+				{
+					"name": "get_blend_shape_count",
+					"is_const": true,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135338183,
+					"return_value": {
+						"type": "int",
+						"meta": "int32"
+					}
+				},
+				{
+					"name": "find_blend_shape_by_name",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135374087,
+					"return_value": {
+						"type": "int",
+						"meta": "int32"
+					},
+					"arguments": [
+						{
+							"name": "name",
+							"type": "StringName"
+						}
+					]
+				},
+				{
+					"name": "get_blend_shape_value",
+					"is_const": true,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135374120,
+					"return_value": {
+						"type": "float",
+						"meta": "float"
+					},
+					"arguments": [
+						{
+							"name": "blend_shape_idx",
+							"type": "int",
+							"meta": "int32"
+						}
+					]
+				},
+				{
+					"name": "set_blend_shape_value",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 134224103,
+					"arguments": [
+						{
+							"name": "blend_shape_idx",
+							"type": "int",
+							"meta": "int32"
+						},
+						{
+							"name": "value",
+							"type": "float",
+							"meta": "float"
+						}
+					]
 				},
 				{
 					"name": "create_debug_tangents",
@@ -131599,7 +131996,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "from",
 							"type": "Transform2D"
 						}
 					]
@@ -131622,7 +132019,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "motion",
 							"type": "Vector2"
 						}
 					]
@@ -131646,7 +132043,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "margin",
 							"type": "float",
 							"meta": "float"
 						}
@@ -131670,7 +132067,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -131693,7 +132090,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "exclude_list",
 							"type": "Array"
 						}
 					]
@@ -131716,7 +132113,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "exclude_list",
 							"type": "Array"
 						}
 					]
@@ -131792,7 +132189,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "from",
 							"type": "Transform3D"
 						}
 					]
@@ -131815,7 +132212,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "motion",
 							"type": "Vector3"
 						}
 					]
@@ -131839,7 +132236,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "margin",
 							"type": "float",
 							"meta": "float"
 						}
@@ -131864,7 +132261,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "max_collisions",
 							"type": "int",
 							"meta": "int32"
 						}
@@ -131888,7 +132285,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -131911,7 +132308,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "exclude_list",
 							"type": "Array"
 						}
 					]
@@ -131934,7 +132331,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "exclude_list",
 							"type": "Array"
 						}
 					]
@@ -146179,7 +146576,7 @@
 					},
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "type",
 							"type": "enum::RenderingDevice.MemoryType"
 						}
 					]
@@ -159570,11 +159967,11 @@
 							"type": "Node"
 						},
 						{
-							"name": "body_shape",
+							"name": "body_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -159603,11 +160000,11 @@
 							"type": "Node"
 						},
 						{
-							"name": "body_shape",
+							"name": "body_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -160401,11 +160798,11 @@
 							"type": "Node"
 						},
 						{
-							"name": "body_shape",
+							"name": "body_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -160434,11 +160831,11 @@
 							"type": "Node"
 						},
 						{
-							"name": "body_shape",
+							"name": "body_shape_index",
 							"type": "int"
 						},
 						{
-							"name": "local_shape",
+							"name": "local_shape_index",
 							"type": "int"
 						}
 					]
@@ -162095,6 +162492,19 @@
 					"return_value": {
 						"type": "Control"
 					}
+				},
+				{
+					"name": "add_syntax_highlighter",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 134188166,
+					"arguments": [
+						{
+							"name": "highlighter",
+							"type": "EditorSyntaxHighlighter"
+						}
+					]
 				}
 			],
 			"signals": [
@@ -163696,6 +164106,16 @@
 					]
 				},
 				{
+					"name": "create_skin_from_rest_transforms",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135338150,
+					"return_value": {
+						"type": "Skin"
+					}
+				},
+				{
 					"name": "register_skin",
 					"is_const": false,
 					"is_vararg": false,
@@ -163717,41 +164137,6 @@
 					"is_vararg": false,
 					"is_virtual": false,
 					"hash": 134152229
-				},
-				{
-					"name": "set_bone_disable_rest",
-					"is_const": false,
-					"is_vararg": false,
-					"is_virtual": false,
-					"hash": 134224103,
-					"arguments": [
-						{
-							"name": "bone_idx",
-							"type": "int",
-							"meta": "int32"
-						},
-						{
-							"name": "disable",
-							"type": "bool"
-						}
-					]
-				},
-				{
-					"name": "is_bone_rest_disabled",
-					"is_const": true,
-					"is_vararg": false,
-					"is_virtual": false,
-					"hash": 135374120,
-					"return_value": {
-						"type": "bool"
-					},
-					"arguments": [
-						{
-							"name": "bone_idx",
-							"type": "int",
-							"meta": "int32"
-						}
-					]
 				},
 				{
 					"name": "clear_bones",
@@ -163778,7 +164163,7 @@
 					]
 				},
 				{
-					"name": "set_bone_pose",
+					"name": "set_bone_pose_position",
 					"is_const": false,
 					"is_vararg": false,
 					"is_virtual": false,
@@ -163790,8 +164175,95 @@
 							"meta": "int32"
 						},
 						{
-							"name": "pose",
-							"type": "Transform3D"
+							"name": "position",
+							"type": "Vector3"
+						}
+					]
+				},
+				{
+					"name": "set_bone_pose_rotation",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 134224103,
+					"arguments": [
+						{
+							"name": "bone_idx",
+							"type": "int",
+							"meta": "int32"
+						},
+						{
+							"name": "rotation",
+							"type": "Quaternion"
+						}
+					]
+				},
+				{
+					"name": "set_bone_pose_scale",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 134224103,
+					"arguments": [
+						{
+							"name": "bone_idx",
+							"type": "int",
+							"meta": "int32"
+						},
+						{
+							"name": "scale",
+							"type": "Vector3"
+						}
+					]
+				},
+				{
+					"name": "get_bone_pose_position",
+					"is_const": true,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135374120,
+					"return_value": {
+						"type": "Vector3"
+					},
+					"arguments": [
+						{
+							"name": "bone_idx",
+							"type": "int",
+							"meta": "int32"
+						}
+					]
+				},
+				{
+					"name": "get_bone_pose_rotation",
+					"is_const": true,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135374120,
+					"return_value": {
+						"type": "Quaternion"
+					},
+					"arguments": [
+						{
+							"name": "bone_idx",
+							"type": "int",
+							"meta": "int32"
+						}
+					]
+				},
+				{
+					"name": "get_bone_pose_scale",
+					"is_const": true,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135374120,
+					"return_value": {
+						"type": "Vector3"
+					},
+					"arguments": [
+						{
+							"name": "bone_idx",
+							"type": "int",
+							"meta": "int32"
 						}
 					]
 				},
@@ -163970,41 +164442,6 @@
 					]
 				},
 				{
-					"name": "get_bone_custom_pose",
-					"is_const": true,
-					"is_vararg": false,
-					"is_virtual": false,
-					"hash": 135374120,
-					"return_value": {
-						"type": "Transform3D"
-					},
-					"arguments": [
-						{
-							"name": "bone_idx",
-							"type": "int",
-							"meta": "int32"
-						}
-					]
-				},
-				{
-					"name": "set_bone_custom_pose",
-					"is_const": false,
-					"is_vararg": false,
-					"is_virtual": false,
-					"hash": 134224103,
-					"arguments": [
-						{
-							"name": "bone_idx",
-							"type": "int",
-							"meta": "int32"
-						},
-						{
-							"name": "custom_pose",
-							"type": "Transform3D"
-						}
-					]
-				},
-				{
 					"name": "force_update_all_bone_transforms",
 					"is_const": false,
 					"is_vararg": false,
@@ -164128,7 +164565,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -164151,7 +164588,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -168841,7 +169278,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "count",
 							"type": "int",
 							"meta": "int32"
 						}
@@ -169067,7 +169504,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "count",
 							"type": "int",
 							"meta": "int32"
 						}
@@ -170806,7 +171243,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "editable",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -170829,7 +171266,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -177718,7 +178155,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "enable",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -177923,7 +178360,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "enable",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -177946,7 +178383,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "enable",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -177969,7 +178406,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "enable",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -179357,14 +179794,14 @@
 					"hash": 134152229
 				},
 				{
-					"name": "draw_minimap",
+					"name": "set_draw_minimap",
 					"is_const": false,
 					"is_vararg": false,
 					"is_virtual": false,
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "draw",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -180033,7 +180470,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "enable",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -180066,7 +180503,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "enable",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -180079,7 +180516,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -180102,7 +180539,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "enabled",
 							"type": "bool"
 						}
 					]
@@ -180346,7 +180783,7 @@
 				{
 					"type": "bool",
 					"name": "minimap_draw",
-					"setter": "draw_minimap",
+					"setter": "set_draw_minimap",
 					"getter": "is_drawing_minimap",
 					"index": -1
 				},
@@ -191796,6 +192233,41 @@
 					]
 				},
 				{
+					"name": "set_layer_modulate",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 134224103,
+					"arguments": [
+						{
+							"name": "layer",
+							"type": "int",
+							"meta": "int32"
+						},
+						{
+							"name": "enabled",
+							"type": "Color"
+						}
+					]
+				},
+				{
+					"name": "get_layer_modulate",
+					"is_const": true,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135374120,
+					"return_value": {
+						"type": "Color"
+					},
+					"arguments": [
+						{
+							"name": "layer",
+							"type": "int",
+							"meta": "int32"
+						}
+					]
+				},
+				{
 					"name": "set_layer_y_sort_enabled",
 					"is_const": false,
 					"is_vararg": false,
@@ -193987,6 +194459,34 @@
 					]
 				},
 				{
+					"name": "get_tiles_to_be_removed_on_change",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 135481898,
+					"return_value": {
+						"type": "PackedVector2Array"
+					},
+					"arguments": [
+						{
+							"name": "texture",
+							"type": "Texture2D"
+						},
+						{
+							"name": "margins",
+							"type": "Vector2i"
+						},
+						{
+							"name": "separation",
+							"type": "Vector2i"
+						},
+						{
+							"name": "texture_region_size",
+							"type": "Vector2i"
+						}
+					]
+				},
+				{
 					"name": "get_tile_at_coords",
 					"is_const": true,
 					"is_vararg": false,
@@ -194313,23 +194813,6 @@
 					"return_value": {
 						"type": "Vector2i"
 					}
-				},
-				{
-					"name": "has_tiles_outside_texture",
-					"is_const": false,
-					"is_vararg": false,
-					"is_virtual": false,
-					"hash": 135338150,
-					"return_value": {
-						"type": "bool"
-					}
-				},
-				{
-					"name": "clear_tiles_outside_texture",
-					"is_const": false,
-					"is_vararg": false,
-					"is_virtual": false,
-					"hash": 134152229
 				},
 				{
 					"name": "get_tile_texture_region",
@@ -200477,6 +200960,20 @@
 					]
 				},
 				{
+					"name": "start_force_keep_in_merge_ends",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 134152229
+				},
+				{
+					"name": "end_force_keep_in_merge_ends",
+					"is_const": false,
+					"is_vararg": false,
+					"is_virtual": false,
+					"hash": 134152229
+				},
+				{
 					"name": "get_history_count",
 					"is_const": false,
 					"is_vararg": false,
@@ -201723,47 +202220,6 @@
 		},
 		{
 			"name": "VideoStreamTheora",
-			"is_refcounted": true,
-			"is_instantiable": true,
-			"inherits": "VideoStream",
-			"api_type": "core",
-			"methods": [
-				{
-					"name": "set_file",
-					"is_const": false,
-					"is_vararg": false,
-					"is_virtual": false,
-					"hash": 134188166,
-					"arguments": [
-						{
-							"name": "file",
-							"type": "String"
-						}
-					]
-				},
-				{
-					"name": "get_file",
-					"is_const": false,
-					"is_vararg": false,
-					"is_virtual": false,
-					"hash": 135338150,
-					"return_value": {
-						"type": "String"
-					}
-				}
-			],
-			"properties": [
-				{
-					"type": "String",
-					"name": "file",
-					"setter": "set_file",
-					"getter": "get_file",
-					"index": -1
-				}
-			]
-		},
-		{
-			"name": "VideoStreamWebm",
 			"is_refcounted": true,
 			"is_instantiable": true,
 			"inherits": "VideoStream",
@@ -215258,7 +215714,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "cert",
 							"type": "X509Certificate"
 						}
 					]
@@ -215667,7 +216123,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "ip",
 							"type": "String"
 						}
 					]
@@ -215690,7 +216146,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "key",
 							"type": "CryptoKey"
 						}
 					]
@@ -215713,7 +216169,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "cert",
 							"type": "X509Certificate"
 						}
 					]
@@ -215736,7 +216192,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "ca_chain",
 							"type": "X509Certificate"
 						}
 					]
@@ -219305,7 +219761,7 @@
 					"hash": 134188166,
 					"arguments": [
 						{
-							"name": "arg0",
+							"name": "scale",
 							"type": "float",
 							"meta": "double"
 						}
