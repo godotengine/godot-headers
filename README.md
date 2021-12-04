@@ -33,7 +33,7 @@ Godot version.**
 
 ## Using this library
 
-This library is meant to be used in conjunction with a code generator that creates the binding code necesairy to interact with Godot. This library only provides access to the API over which communication with the Godot core is implemented and binding meta data in the form of a json document.
+This library is meant to be used in conjunction with a code generator that creates the binding code necessary to interact with Godot. This library only provides access to the API over which communication with the Godot core is implemented and binding meta data in the form of a json document.
 
 One such binding library is [godot-cpp](https://github.com/godotengine/godot-cpp) which implements the bindings using C++.
 
