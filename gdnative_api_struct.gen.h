@@ -157,6 +157,31 @@ typedef struct godot_gdnative_ext_net_api_struct {
 	void (*godot_net_bind_multiplayer_peer)(godot_object *p_obj, const godot_net_multiplayer_peer *p_interface);
 } godot_gdnative_ext_net_api_struct;
 
+typedef struct godot_gdnative_core_1_3_api_struct {
+	unsigned int type;
+	godot_gdnative_api_version version;
+	const godot_gdnative_api_struct *next;
+	void (*godot_dictionary_merge)(godot_dictionary *p_self, const godot_dictionary *p_dictionary, const godot_bool p_overwrite);
+	godot_bool (*godot_pool_byte_array_has)(const godot_pool_byte_array *p_self, const uint8_t p_data);
+	void (*godot_pool_byte_array_sort)(godot_pool_byte_array *p_self);
+	godot_bool (*godot_pool_int_array_has)(const godot_pool_int_array *p_self, const godot_int p_data);
+	void (*godot_pool_int_array_sort)(godot_pool_int_array *p_self);
+	godot_bool (*godot_pool_real_array_has)(const godot_pool_real_array *p_self, const godot_real p_data);
+	void (*godot_pool_real_array_sort)(godot_pool_real_array *p_self);
+	godot_bool (*godot_pool_string_array_has)(const godot_pool_string_array *p_self, const godot_string *p_data);
+	godot_string (*godot_pool_string_array_join)(const godot_pool_string_array *p_self, const godot_string *p_delimiter);
+	void (*godot_pool_string_array_sort)(godot_pool_string_array *p_self);
+	godot_bool (*godot_pool_vector2_array_has)(const godot_pool_vector2_array *p_self, const godot_vector2 *p_data);
+	void (*godot_pool_vector2_array_sort)(godot_pool_vector2_array *p_self);
+	godot_bool (*godot_pool_vector3_array_has)(const godot_pool_vector3_array *p_self, const godot_vector3 *p_data);
+	void (*godot_pool_vector3_array_sort)(godot_pool_vector3_array *p_self);
+	godot_bool (*godot_pool_color_array_has)(const godot_pool_color_array *p_self, const godot_color *p_data);
+	void (*godot_pool_color_array_sort)(godot_pool_color_array *p_self);
+	godot_string (*godot_string_join)(const godot_string *p_self, const godot_array *p_parts);
+	godot_string (*godot_string_num_uint64)(uint64_t p_num, godot_int p_base);
+	godot_string (*godot_string_num_uint64_capitalized)(uint64_t p_num, godot_int p_base, godot_bool p_capitalize_hex);
+} godot_gdnative_core_1_3_api_struct;
+
 typedef struct godot_gdnative_core_1_2_api_struct {
 	unsigned int type;
 	godot_gdnative_api_version version;
