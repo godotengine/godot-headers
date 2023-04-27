@@ -15,17 +15,19 @@ This repository contains C headers for
 This repositories follows the same branch versioning as the main [Godot Engine
 repository](https://github.com/godotengine/godot):
 
-- `master` tracks the current development branch. As this is a moving target,
+- `master` tracks the current release branch. As this is a moving target,
   the headers in this repository may not always be fully in sync with upstream.
   See [**Updating Headers**](#updating-headers) if you need to bring
   them up to date.
-- `3.x` tracks the development of the next 3.x minor release. Like `master`, it
+- `4.x` tracks the release of the next 4.x minor release. Like `master`, it
   might not always be fully up-to-date with upstream.
-- Other versioned branches (e.g. `3.3`, `3.2`) track the latest stable release
+- `3.x` tracks the release of the next 3.x minor LTS release. Like `master`, it
+  might not always be fully up-to-date with upstream.
+- Other versioned branches (e.g. `4.0`, `3.5`) track the latest stable release
   in the corresponding branch.
 
-Stable releases are also tagged on this repository:
-[**Tags**](https://github.com/godotengine/godot-headers/tags).
+Stable releases are also tagged on this repository (except for 4.0.0 and 4.0.1):
+[**Tags**](../../tags).
 
 **For any project built against a stable release of Godot, we recommend using
 this repository as a Git submodule, checking out the specific tag matching your
@@ -37,7 +39,7 @@ This library is meant to be used in conjunction with a code generator that creat
 
 One such binding library is [godot-cpp](https://github.com/godotengine/godot-cpp) which implements the bindings using C++.
 
-A pure C sample project is currently not available.
+An official pure C sample project is currently not available.
 
 ## Updating Headers
 
