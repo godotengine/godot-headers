@@ -746,6 +746,7 @@ typedef struct godot_gdnative_core_api_struct {
 	godot_real (*godot_transform2d_get_rotation)(const godot_transform2d *p_self);
 	godot_vector2 (*godot_transform2d_get_origin)(const godot_transform2d *p_self);
 	godot_vector2 (*godot_transform2d_get_scale)(const godot_transform2d *p_self);
+	godot_real (*godot_transform2d_determinant)(const godot_transform2d *p_self);
 	godot_transform2d (*godot_transform2d_orthonormalized)(const godot_transform2d *p_self);
 	godot_transform2d (*godot_transform2d_rotated)(const godot_transform2d *p_self, const godot_real p_phi);
 	godot_transform2d (*godot_transform2d_scaled)(const godot_transform2d *p_self, const godot_vector2 *p_scale);
