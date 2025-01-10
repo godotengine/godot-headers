@@ -1,6 +1,7 @@
 project('godot-headers',
   'c',
-  license : 'MIT')
+  license : 'MIT',
+  meson_version: '>= 1.3.0')
 
 pkgconfig = import('pkgconfig')
 
