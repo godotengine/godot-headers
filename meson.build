@@ -2,6 +2,18 @@ project('godot-headers',
   'c',
   license : 'MIT')
 
+pkgconfig = import('pkgconfig')
+
+h = [
+  'android',
+  'arvr',
+  'gdnative',
+  'nativescript',
+  'net',
+  'pluginscript',
+  'videodecoder',
+]
+
 install_headers(
   'android/godot_android.h',
   'arvr/godot_arvr.h',
@@ -42,3 +54,4 @@ install_data(
   'images/faq/set_script_dllibrary.png',
   preserve_path: true)
 
+pkgconfig.generate(subdirs: h, name: 'godot-headers', description: 'Headers for the Godot API supplied by the GDNative module')
