@@ -2,10 +2,10 @@
 	"header": {
 		"version_major": 4,
 		"version_minor": 0,
-		"version_patch": 1,
+		"version_patch": 2,
 		"version_status": "stable",
 		"version_build": "official",
-		"version_full_name": "Godot Engine v4.0.1.stable.official"
+		"version_full_name": "Godot Engine v4.0.2.stable.official"
 	},
 	"builtin_class_sizes": [
 		{
@@ -25216,7 +25216,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 1459844657,
+					"hash": 2372066587,
 					"arguments": [
 						{
 							"name": "name",
@@ -25660,7 +25660,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 1459844657,
+					"hash": 2372066587,
 					"arguments": [
 						{
 							"name": "name",
@@ -27761,7 +27761,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 1804059263,
+					"hash": 3608408117,
 					"arguments": [
 						{
 							"name": "page_size",
@@ -31335,7 +31335,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 2221377757,
+					"hash": 3118260607,
 					"arguments": [
 						{
 							"name": "name",
@@ -39806,7 +39806,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 3041634712,
+					"hash": 1958160172,
 					"arguments": [
 						{
 							"name": "from_position",
@@ -40166,7 +40166,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 3041634712,
+					"hash": 1958160172,
 					"arguments": [
 						{
 							"name": "from_position",
@@ -40723,7 +40723,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 3041634712,
+					"hash": 1958160172,
 					"arguments": [
 						{
 							"name": "from_position",
@@ -56074,7 +56074,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 4181505845,
+					"hash": 3283884939,
 					"arguments": [
 						{
 							"name": "position",
@@ -58299,6 +58299,14 @@
 					}
 				},
 				{
+					"name": "apply_floor_snap",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 3218959716
+				},
+				{
 					"name": "set_velocity",
 					"is_const": false,
 					"is_vararg": false,
@@ -59024,6 +59032,14 @@
 					"return_value": {
 						"type": "bool"
 					}
+				},
+				{
+					"name": "apply_floor_snap",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 3218959716
 				},
 				{
 					"name": "set_velocity",
@@ -69645,7 +69661,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 3750540263,
+					"hash": 3464257706,
 					"return_value": {
 						"type": "Vector2"
 					},
@@ -69669,7 +69685,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 255128112,
+					"hash": 3296056341,
 					"return_value": {
 						"type": "Transform2D"
 					},
@@ -69764,7 +69780,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 4229237857,
+					"hash": 2319761637,
 					"return_value": {
 						"type": "PackedVector2Array"
 					},
@@ -70147,7 +70163,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 4240323138,
+					"hash": 1350085894,
 					"return_value": {
 						"type": "Vector3"
 					},
@@ -70171,7 +70187,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 2486289007,
+					"hash": 1939359131,
 					"return_value": {
 						"type": "Transform3D"
 					},
@@ -70316,7 +70332,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 3915530683,
+					"hash": 133237049,
 					"return_value": {
 						"type": "PackedVector3Array"
 					},
@@ -74057,7 +74073,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 3723082199,
+					"hash": 3741216677,
 					"arguments": [
 						{
 							"name": "text",
@@ -91109,7 +91125,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 3705324482,
+					"hash": 1149405976,
 					"return_value": {
 						"type": "RID"
 					},
@@ -106344,7 +106360,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 1135556294,
+					"hash": 3609286057,
 					"arguments": [
 						{
 							"name": "gen_lightmap_uv",
@@ -109105,7 +109121,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 310747435,
+					"hash": 592235273,
 					"return_value": {
 						"type": "PackedByteArray"
 					},
@@ -109192,7 +109208,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 1235769281,
+					"hash": 1214628238,
 					"return_value": {
 						"type": "PackedByteArray"
 					},
@@ -109396,7 +109412,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 336773324,
+					"hash": 3423495036,
 					"arguments": [
 						{
 							"name": "bump_scale",
@@ -149306,7 +149322,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 3198110832,
+					"hash": 1529961754,
 					"return_value": {
 						"type": "KinematicCollision2D"
 					},
@@ -149424,7 +149440,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 1140990067,
+					"hash": 2825704414,
 					"return_value": {
 						"type": "KinematicCollision3D"
 					},
@@ -149463,7 +149479,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 2082761915,
+					"hash": 680299713,
 					"return_value": {
 						"type": "bool"
 					},
@@ -152320,7 +152336,7 @@
 					"is_virtual": false,
 					"hash": 3803848594,
 					"return_value": {
-						"type": "typedarray::PackedVector2Array"
+						"type": "typedarray::Vector2"
 					},
 					"arguments": [
 						{
@@ -152763,7 +152779,7 @@
 					"is_virtual": false,
 					"hash": 550215980,
 					"return_value": {
-						"type": "typedarray::PackedVector3Array"
+						"type": "typedarray::Vector3"
 					},
 					"arguments": [
 						{
@@ -175615,7 +175631,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 2207676613,
+					"hash": 837325100,
 					"return_value": {
 						"type": "float",
 						"meta": "float"
@@ -189948,7 +189964,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 362573166,
+					"hash": 491659071,
 					"arguments": [
 						{
 							"name": "env",
@@ -192731,7 +192747,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 1568036344,
+					"hash": 41973386,
 					"arguments": [
 						{
 							"name": "item",
@@ -193752,7 +193768,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 899045543,
+					"hash": 1076185472,
 					"arguments": [
 						{
 							"name": "swap_buffers",
@@ -263404,7 +263420,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 1912078273,
+					"hash": 1014814997,
 					"arguments": [
 						{
 							"name": "ratio",
@@ -263435,7 +263451,7 @@
 					"is_vararg": false,
 					"is_static": false,
 					"is_virtual": false,
-					"hash": 3728566557,
+					"hash": 2613752477,
 					"arguments": [
 						{
 							"name": "minsize",
@@ -266687,6 +266703,31 @@
 					]
 				},
 				{
+					"name": "get_world_origin",
+					"is_const": true,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 3229777777,
+					"return_value": {
+						"type": "Transform3D"
+					}
+				},
+				{
+					"name": "set_world_origin",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 2952846383,
+					"arguments": [
+						{
+							"name": "world_origin",
+							"type": "Transform3D"
+						}
+					]
+				},
+				{
 					"name": "get_reference_frame",
 					"is_const": true,
 					"is_vararg": false,
@@ -266966,6 +267007,12 @@
 					"name": "world_scale",
 					"setter": "set_world_scale",
 					"getter": "get_world_scale"
+				},
+				{
+					"type": "Vector3",
+					"name": "world_origin",
+					"setter": "set_world_origin",
+					"getter": "get_world_origin"
 				},
 				{
 					"type": "Object",
