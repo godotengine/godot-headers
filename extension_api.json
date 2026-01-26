@@ -2,10 +2,10 @@
 	"header": {
 		"version_major": 4,
 		"version_minor": 1,
-		"version_patch": 3,
+		"version_patch": 4,
 		"version_status": "stable",
 		"version_build": "official",
-		"version_full_name": "Godot Engine v4.1.3.stable.official"
+		"version_full_name": "Godot Engine v4.1.4.stable.official"
 	},
 	"builtin_class_sizes": [
 		{
@@ -198990,6 +198990,23 @@
 							"name": "blur_mipmaps",
 							"type": "bool",
 							"default_value": "false"
+						}
+					]
+				},
+				{
+					"name": "debug_canvas_item_get_rect",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 624227424,
+					"return_value": {
+						"type": "Rect2"
+					},
+					"arguments": [
+						{
+							"name": "item",
+							"type": "RID"
 						}
 					]
 				},
