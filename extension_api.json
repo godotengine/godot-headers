@@ -2,10 +2,10 @@
 	"header": {
 		"version_major": 4,
 		"version_minor": 0,
-		"version_patch": 3,
+		"version_patch": 4,
 		"version_status": "stable",
 		"version_build": "official",
-		"version_full_name": "Godot Engine v4.0.3.stable.official"
+		"version_full_name": "Godot Engine v4.0.4.stable.official"
 	},
 	"builtin_class_sizes": [
 		{
