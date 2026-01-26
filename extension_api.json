@@ -2,10 +2,10 @@
 	"header": {
 		"version_major": 4,
 		"version_minor": 0,
-		"version_patch": 2,
+		"version_patch": 3,
 		"version_status": "stable",
 		"version_build": "official",
-		"version_full_name": "Godot Engine v4.0.2.stable.official"
+		"version_full_name": "Godot Engine v4.0.3.stable.official"
 	},
 	"builtin_class_sizes": [
 		{
@@ -12366,7 +12366,7 @@
 					"hash": 88913544,
 					"arguments": [
 						{
-							"name": "with",
+							"name": "to",
 							"type": "Vector4"
 						}
 					]
@@ -108638,6 +108638,14 @@
 						{
 							"name": "COMPRESS_BPTC",
 							"value": 3
+						},
+						{
+							"name": "COMPRESS_ASTC",
+							"value": 4
+						},
+						{
+							"name": "COMPRESS_MAX",
+							"value": 5
 						}
 					]
 				},
@@ -127885,6 +127893,27 @@
 					]
 				},
 				{
+					"name": "_get_packet_channel",
+					"is_const": true,
+					"is_static": false,
+					"is_vararg": false,
+					"is_virtual": true,
+					"return_value": {
+						"type": "int",
+						"meta": "int32"
+					}
+				},
+				{
+					"name": "_get_packet_mode",
+					"is_const": true,
+					"is_static": false,
+					"is_vararg": false,
+					"is_virtual": true,
+					"return_value": {
+						"type": "enum::MultiplayerPeer.TransferMode"
+					}
+				},
+				{
 					"name": "_set_transfer_channel",
 					"is_const": false,
 					"is_static": false,
@@ -128025,6 +128054,16 @@
 				},
 				{
 					"name": "_is_refusing_new_connections",
+					"is_const": true,
+					"is_static": false,
+					"is_vararg": false,
+					"is_virtual": true,
+					"return_value": {
+						"type": "bool"
+					}
+				},
+				{
+					"name": "_is_server_relay_supported",
 					"is_const": true,
 					"is_static": false,
 					"is_vararg": false,
@@ -128884,6 +128923,56 @@
 					]
 				},
 				{
+					"name": "set_pathfinding_algorithm",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 2783519915,
+					"arguments": [
+						{
+							"name": "pathfinding_algorithm",
+							"type": "enum::NavigationPathQueryParameters2D.PathfindingAlgorithm"
+						}
+					]
+				},
+				{
+					"name": "get_pathfinding_algorithm",
+					"is_const": true,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 3000421146,
+					"return_value": {
+						"type": "enum::NavigationPathQueryParameters2D.PathfindingAlgorithm"
+					}
+				},
+				{
+					"name": "set_path_postprocessing",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 2864409082,
+					"arguments": [
+						{
+							"name": "path_postprocessing",
+							"type": "enum::NavigationPathQueryParameters2D.PathPostProcessing"
+						}
+					]
+				},
+				{
+					"name": "get_path_postprocessing",
+					"is_const": true,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 3798118993,
+					"return_value": {
+						"type": "enum::NavigationPathQueryParameters2D.PathPostProcessing"
+					}
+				},
+				{
 					"name": "set_path_metadata_flags",
 					"is_const": false,
 					"is_vararg": false,
@@ -129271,6 +129360,18 @@
 					"name": "navigation_layers",
 					"setter": "set_navigation_layers",
 					"getter": "get_navigation_layers"
+				},
+				{
+					"type": "int",
+					"name": "pathfinding_algorithm",
+					"setter": "set_pathfinding_algorithm",
+					"getter": "get_pathfinding_algorithm"
+				},
+				{
+					"type": "int",
+					"name": "path_postprocessing",
+					"setter": "set_path_postprocessing",
+					"getter": "get_path_postprocessing"
 				},
 				{
 					"type": "int",
@@ -129722,6 +129823,56 @@
 					]
 				},
 				{
+					"name": "set_pathfinding_algorithm",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 394560454,
+					"arguments": [
+						{
+							"name": "pathfinding_algorithm",
+							"type": "enum::NavigationPathQueryParameters3D.PathfindingAlgorithm"
+						}
+					]
+				},
+				{
+					"name": "get_pathfinding_algorithm",
+					"is_const": true,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 3398491350,
+					"return_value": {
+						"type": "enum::NavigationPathQueryParameters3D.PathfindingAlgorithm"
+					}
+				},
+				{
+					"name": "set_path_postprocessing",
+					"is_const": false,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 2267362344,
+					"arguments": [
+						{
+							"name": "path_postprocessing",
+							"type": "enum::NavigationPathQueryParameters3D.PathPostProcessing"
+						}
+					]
+				},
+				{
+					"name": "get_path_postprocessing",
+					"is_const": true,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 3883858360,
+					"return_value": {
+						"type": "enum::NavigationPathQueryParameters3D.PathPostProcessing"
+					}
+				},
+				{
 					"name": "set_path_metadata_flags",
 					"is_const": false,
 					"is_vararg": false,
@@ -130088,6 +130239,18 @@
 					"name": "navigation_layers",
 					"setter": "set_navigation_layers",
 					"getter": "get_navigation_layers"
+				},
+				{
+					"type": "int",
+					"name": "pathfinding_algorithm",
+					"setter": "set_pathfinding_algorithm",
+					"getter": "get_pathfinding_algorithm"
+				},
+				{
+					"type": "int",
+					"name": "path_postprocessing",
+					"setter": "set_path_postprocessing",
+					"getter": "get_path_postprocessing"
 				},
 				{
 					"type": "int",
@@ -137951,6 +138114,17 @@
 					"is_static": false,
 					"is_virtual": false,
 					"hash": 3218959716
+				},
+				{
+					"name": "is_node_ready",
+					"is_const": true,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 36873697,
+					"return_value": {
+						"type": "bool"
+					}
 				},
 				{
 					"name": "set_multiplayer_authority",
@@ -180952,6 +181126,27 @@
 					]
 				},
 				{
+					"name": "sampler_is_format_supported_for_filter",
+					"is_const": true,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 2247922238,
+					"return_value": {
+						"type": "bool"
+					},
+					"arguments": [
+						{
+							"name": "format",
+							"type": "enum::RenderingDevice.DataFormat"
+						},
+						{
+							"name": "sampler_filter",
+							"type": "enum::RenderingDevice.SamplerFilter"
+						}
+					]
+				},
+				{
 					"name": "vertex_buffer_create",
 					"is_const": false,
 					"is_vararg": false,
@@ -189072,6 +189267,23 @@
 						{
 							"name": "clear_mode",
 							"type": "enum::RenderingServer.ViewportClearMode"
+						}
+					]
+				},
+				{
+					"name": "viewport_get_render_target",
+					"is_const": true,
+					"is_vararg": false,
+					"is_static": false,
+					"is_virtual": false,
+					"hash": 3814569979,
+					"return_value": {
+						"type": "RID"
+					},
+					"arguments": [
+						{
+							"name": "viewport",
+							"type": "RID"
 						}
 					]
 				},
@@ -225051,6 +225263,10 @@
 						{
 							"name": "GRAPHEME_IS_SAFE_TO_INSERT_TATWEEL",
 							"value": 2048
+						},
+						{
+							"name": "GRAPHEME_IS_EMBEDDED_OBJECT",
+							"value": 4096
 						}
 					]
 				},
