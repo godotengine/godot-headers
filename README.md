@@ -26,8 +26,8 @@ repository](https://github.com/godotengine/godot):
 - Other versioned branches (e.g. `4.0`, `3.5`) track the latest stable release
   in the corresponding branch.
 
-Stable releases are also tagged on this repository (except for 4.0.0 and 4.0.1):
-[**Tags**](../../tags).
+Stable releases are also tagged on this repository:
+[**Tags**](../../tags)
 
 **For any project built against a stable release of Godot, we recommend using
 this repository as a Git submodule, checking out the specific tag matching your
