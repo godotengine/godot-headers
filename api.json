@@ -36123,7 +36123,7 @@
 			},
 			{
 				"name": "material",
-				"type": "SpatialMaterial,ORMSpatialMaterial,ShaderMaterial",
+				"type": "Material",
 				"getter": "get_material",
 				"setter": "set_material",
 				"index": -1
@@ -36317,7 +36317,7 @@
 			},
 			{
 				"name": "material",
-				"type": "SpatialMaterial,ORMSpatialMaterial,ShaderMaterial",
+				"type": "Material",
 				"getter": "get_material",
 				"setter": "set_material",
 				"index": -1
@@ -36556,7 +36556,7 @@
 		"properties": [
 			{
 				"name": "material",
-				"type": "SpatialMaterial,ORMSpatialMaterial,ShaderMaterial",
+				"type": "Material",
 				"getter": "get_material",
 				"setter": "set_material",
 				"index": -1
@@ -36681,7 +36681,7 @@
 			},
 			{
 				"name": "material",
-				"type": "SpatialMaterial,ORMSpatialMaterial,ShaderMaterial",
+				"type": "Material",
 				"getter": "get_material",
 				"setter": "set_material",
 				"index": -1
@@ -37841,7 +37841,7 @@
 		"properties": [
 			{
 				"name": "material",
-				"type": "SpatialMaterial,ORMSpatialMaterial,ShaderMaterial",
+				"type": "Material",
 				"getter": "get_material",
 				"setter": "set_material",
 				"index": -1
@@ -38062,7 +38062,7 @@
 			},
 			{
 				"name": "material",
-				"type": "SpatialMaterial,ORMSpatialMaterial,ShaderMaterial",
+				"type": "Material",
 				"getter": "get_material",
 				"setter": "set_material",
 				"index": -1
@@ -141392,7 +141392,7 @@
 			},
 			{
 				"name": "material",
-				"type": "SpatialMaterial,ORMSpatialMaterial,ShaderMaterial",
+				"type": "Material",
 				"getter": "get_material",
 				"setter": "set_material",
 				"index": -1
