@@ -40839,7 +40839,7 @@
 			},
 			{
 				"name": "material",
-				"type": "ShaderMaterial,CanvasItemMaterial",
+				"type": "Material",
 				"getter": "get_material",
 				"setter": "set_material",
 				"index": -1
@@ -78277,14 +78277,14 @@
 			},
 			{
 				"name": "material_overlay",
-				"type": "ShaderMaterial,SpatialMaterial,ORMSpatialMaterial",
+				"type": "Material",
 				"getter": "get_material_overlay",
 				"setter": "set_material_overlay",
 				"index": -1
 			},
 			{
 				"name": "material_override",
-				"type": "ShaderMaterial,SpatialMaterial,ORMSpatialMaterial",
+				"type": "Material",
 				"getter": "get_material_override",
 				"setter": "set_material_override",
 				"index": -1
@@ -124079,7 +124079,7 @@
 			},
 			{
 				"name": "process_material",
-				"type": "ShaderMaterial,ParticlesMaterial",
+				"type": "Material",
 				"getter": "get_process_material",
 				"setter": "set_process_material",
 				"index": -1
@@ -124768,7 +124768,7 @@
 			},
 			{
 				"name": "process_material",
-				"type": "ShaderMaterial,ParticlesMaterial",
+				"type": "Material",
 				"getter": "get_process_material",
 				"setter": "set_process_material",
 				"index": -1
