@@ -73976,7 +73976,7 @@
 			},
 			{
 				"name": "mesh",
-				"type": "Object",
+				"type": "ArrayMesh",
 				"getter": "get_mesh",
 				"setter": "set_mesh",
 				"index": -1
@@ -75089,7 +75089,7 @@
 		"properties": [
 			{
 				"name": "godot_skin",
-				"type": "Object",
+				"type": "Skin",
 				"getter": "get_godot_skin",
 				"setter": "set_godot_skin",
 				"index": -1
@@ -75505,7 +75505,7 @@
 			},
 			{
 				"name": "diffuse_img",
-				"type": "Object",
+				"type": "Image",
 				"getter": "get_diffuse_img",
 				"setter": "set_diffuse_img",
 				"index": -1
@@ -75519,7 +75519,7 @@
 			},
 			{
 				"name": "spec_gloss_img",
-				"type": "Object",
+				"type": "Image",
 				"getter": "get_spec_gloss_img",
 				"setter": "set_spec_gloss_img",
 				"index": -1
@@ -75817,7 +75817,7 @@
 			},
 			{
 				"name": "root_nodes",
-				"type": "PoolIntArray",
+				"type": "Array",
 				"getter": "get_root_nodes",
 				"setter": "set_root_nodes",
 				"index": -1
@@ -125487,7 +125487,7 @@
 			},
 			{
 				"name": "color_initial_ramp",
-				"type": "GradientTexture",
+				"type": "Texture",
 				"getter": "get_color_initial_ramp",
 				"setter": "set_color_initial_ramp",
 				"index": -1
